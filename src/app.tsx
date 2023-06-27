@@ -13,7 +13,11 @@ function App() {
     <>
       {
         welcome
-          ? <WelcomeOverlay sectionStyles={sectionStyles} setMood={setMood} setWelcome={setWelcome} />
+          ? (
+            <div className={`sticky left-0 right-0 top-64 ${welcome ? '' : 'animate-ping'}`}>
+              <WelcomeOverlay sectionStyles={sectionStyles} setMood={setMood} setWelcome={setWelcome} />
+            </div>
+          )
           : (
             <PrimaryView mood={mood} setMood={setMood} setWelcome={setWelcome} sectionStyles={sectionStyles} />
         )}

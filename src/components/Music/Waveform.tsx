@@ -1,54 +1,32 @@
 import { useRef, useEffect } from "react"
-// This function takes in the audio data, analyzes it, and generates a waveform
-// that is visualized on a canvas element.
+
 function animateBars(analyser: any, canvas: any, canvasCtx: any, dataArray: any, bufferLength: any) {
-  // Analyze the audio data using the Web Audio API's `getByteFrequencyData` method.
+
   analyser.getByteFrequencyData(dataArray)
-
-  // Set the canvas fill style to black.
-  canvasCtx.fillStyle = '#000'
-
-  // Calculate the height of the canvas.
-  const canvasHeight = canvas.height / 1.15
+  const canvasHeight = canvas.height / 1.4
 
   // Calculate the width of each bar in the waveform based on the canvas width and the buffer length.
   var barWidth = Math.ceil(canvas.width / bufferLength) * 2.5
-
-  // Initialize variables for the bar height and x-position.
   let barHeight
   let x = 0
-
+  canvasCtx.fillStyle = '#00CCFF'
   // Loop through each element in the `dataArray`.
   for (var i = 0; i < bufferLength; i++) {
     // Calculate the height of the current bar based on the audio data and the canvas height.
     barHeight = (dataArray[i] / 255) * canvasHeight
-
-    // Generate random RGB values for each bar.
-    const maximum = 10
-    const minimum = -10
-    var r = 242 + Math.floor(Math.random() * (maximum - minimum + 1)) + minimum
-    var g = 104 + Math.floor(Math.random() * (maximum - minimum + 1)) + minimum
-    var b = 65 + Math.floor(Math.random() * (maximum - minimum + 1)) + minimum
-
-    // Set the canvas fill style to the random RGB values.
-    canvasCtx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
-
     // Draw the bar on the canvas at the current x-position and with the calculated height and width.
     canvasCtx.fillRect(x, canvasHeight - barHeight, barWidth, barHeight)
-
     // Update the x-position for the next bar.
     x += barWidth + 3
   }
 }
 
-// Component to render the waveform
-const WaveForm = ({ analyzerData, containerDimensions }: { analyzerData: any, containerDimensions: { height: number, width: number } }) => {
-  // Ref for the canvas element
+const Waveform = ({ analyzerData, containerDimensions }: { analyzerData: any, containerDimensions: { height: number, width: number } }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { dataArray, analyzer, bufferLength } = analyzerData
 
   // Function to draw the waveform
-  const draw = (dataArray: Array<any>, analyzer: any, bufferLength: any) => {
+  const drawWaveform = (dataArray: Array<number>, analyzer: any, bufferLength: any) => {
     const canvas = canvasRef.current
     if (!canvas || !analyzer) return
     const canvasCtx = canvas.getContext("2d")
@@ -58,23 +36,17 @@ const WaveForm = ({ analyzerData, containerDimensions }: { analyzerData: any, co
       canvas.width = canvas.width
       animateBars(analyzer, canvas, canvasCtx, dataArray, bufferLength)
     }
-
     animate()
   }
 
-  // Effect to draw the waveform on mount and update
   useEffect(() => {
-    draw(dataArray, analyzer, bufferLength)
+    drawWaveform(dataArray, analyzer, bufferLength)
   }, [dataArray, analyzer, bufferLength])
-  // Return the canvas element
+
   return (
     <canvas
-      style={{
-        position: "absolute",
-        top: "0",
-        left: "0",
-        zIndex: "-10"
-      }}
+      className='absolute top-0 left-0'
+      style={{ zIndex: '-5' }}
       ref={canvasRef}
       width={containerDimensions.width}
       height={containerDimensions.height}
@@ -82,4 +54,4 @@ const WaveForm = ({ analyzerData, containerDimensions }: { analyzerData: any, co
   )
 }
 
-export default WaveForm
+export default Waveform

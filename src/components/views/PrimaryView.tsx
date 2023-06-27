@@ -7,9 +7,10 @@ import { useRef, useState } from "react"
 import Home from "./Home"
 import AboutMe from "./AboutMe"
 import { BrowserRouter } from "react-router-dom";
+import { TrackInfoType } from "../../assets/music/MusicMoods";
 const Services= lazy(() => import('./Services'))
 
-const PrimaryView = ({ mood, setMood, setWelcome, sectionStyles }: { mood: string, setMood: (mood: string) => void, setWelcome: (welcome: string) => void, sectionStyles: string }) => {
+const PrimaryView = ({ mood, setMood, setWelcome, sectionStyles }: { mood: string, setMood: (mood: string) => void, setWelcome: (welcome: boolean) => void, sectionStyles: string }) => {
   const [collapsed, setCollapsed] = useState<boolean>(true)
   const [currentTrack, setCurrentTrack] = useState<TrackInfoType>()
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -29,7 +30,6 @@ const PrimaryView = ({ mood, setMood, setWelcome, sectionStyles }: { mood: strin
             </Routes>
             <Socials stack={'flex-col'} />
             {mood !== 'none' ? <MusicPlayer mood={mood} audioRef={audioRef} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} /> : null}
-            {/* <MusicAnalyzer /> */}
         </main>
     </BrowserRouter>
   )

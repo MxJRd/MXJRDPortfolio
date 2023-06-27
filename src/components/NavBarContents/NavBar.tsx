@@ -9,9 +9,12 @@ const NavBarContents = ({ setCollapsed, audioRef, currentTrack }: { setCollapsed
   const navBarRef = useRef<HTMLElement>(null)
   const { current } = navBarRef
   const [containerDimensions, setContainerDimensions] = useState<{ height: number, width: number}>({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
+
   useEffect(() => {
     setContainerDimensions({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0})
+    console.log(containerDimensions)
   }, [containerDimensions])
+
   return (
     <nav ref={navBarRef} className="pt-8 pb-8 pr-14 flex justify-between shadow-md overflow-hidden min-w-full h-[260px] z-1000 font-poppins font-medium text-blue-500">
       { audioRef && <MusicAnalyzer containerDimensions={containerDimensions} audioRef={audioRef} currentTrack={currentTrack} /> }

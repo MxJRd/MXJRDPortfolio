@@ -6,7 +6,8 @@ import { useRef, useState } from 'preact/hooks'
 import useClickAway from './hooks/useClickAway'
 
 const PhoneNumberComponent = ({ phoneNumber, clickedAway, setClickedAway }: { phoneNumber: string, clickedAway: boolean, setClickedAway: (clickedAway: boolean) => void }) => {
-  const divRef = useClickAway(() => setClickedAway(!clickedAway))
+  const divRef = useRef<HTMLDivElement>(null)
+  useClickAway(() => setClickedAway(!clickedAway))
   return (
     <>
       {clickedAway
@@ -46,7 +47,7 @@ const Socials = ({ stack }: { stack?: string }) => {
         </button>
       </a>
       <div>
-        <button alt='Phone number, hidden unless clicked on. No web scraping for u ;P' className='border-2 p-2 rounded text-blue-500' onClick={() => {
+        <button alt='Phone number, hidden unless clicked on. No ez web scraping for u ;P' className='border-2 p-2 rounded text-blue-500' onClick={() => {
           if(clickedAway) {
             setClickedAway(false)
             setPhoneNumber('')
