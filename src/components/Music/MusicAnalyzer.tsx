@@ -1,5 +1,4 @@
 const MusicAnalyzer = () => {
-  
   return (
     <div>
       Analyzer

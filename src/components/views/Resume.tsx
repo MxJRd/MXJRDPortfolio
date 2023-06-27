@@ -26,18 +26,18 @@ const ProfessionalTech = () => {
   )
 }
 
-const Resume = ({ sectionStyles, scrollToRef }: { sectionStyles: string, scrollToRef: Ref<HTMLParagraphElement> }) => {
+const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
   const { companies: { firstResonance, apple } } = resume || {}
   const [company, setCompany] = useState(firstResonance)
   const { bullets, primer } = company || {}
   return (
     <section className={`flex ${sectionStyles} justify-center h-screen`}>
       <div className='flex flex-col gap-2 text-start rounded-lg w-4/5'>
-        <h1 ref={scrollToRef} id='test' className="text-4xl font-bold self-center">Recent Experience</h1>
+        <h1 id='services-scroll' className="text-4xl font-bold self-center pt-8">Recent Experience</h1>
         <div className='flex items-center gap-4 self-center'>
           <p className="text-2xl font-bold">Résumé</p>
             <button className='border-2 p-1 rounded'>
-              <a href='../../assets/Max_Reed_SinglePager.pdf' download='Max_Reed_Resume'><DownloadIcon /></a>
+              <a href='../../assets/Max_Reed_SinglePager.pdf' download='Max_Reed_Resume' className='text-raisin-black'><DownloadIcon /></a>
             </button>
         </div>
         <div className='flex'>
@@ -45,9 +45,9 @@ const Resume = ({ sectionStyles, scrollToRef }: { sectionStyles: string, scrollT
             <ResumeCard name='First Resonance' setCompany={setCompany} company={firstResonance} />
             <ResumeCard name='Apple' setCompany={setCompany} company={apple} />
           </div>
-          <div className='p-4 flex-2'>
+          <div className='p-4 flex-2 space-y-2'>
             <p className='pb-4 font-roboto-matrix'>{primer}</p>
-            {bullets.map((bull: any) => <p className='font-roboto-default'>{bull}</p>)}
+            {bullets.map((bull: any) => <p className='font-roboto-default tracking-wide'>{bull}</p>)}
           </div>
         </div>
       </div>

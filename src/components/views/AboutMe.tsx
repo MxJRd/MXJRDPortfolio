@@ -2,7 +2,7 @@ import ArticleCard from "../common/ArticleCard"
 import BackgroundBadge from "../common/BackgroundBadge";
 import aboutStrings from "./aboutStrings"
 
-const AboutMe = ({ sectionStyles }: { sectionStyles: string}) => {
+const AboutMe = () => {
   const { about, achievements } = aboutStrings
   return (
     <section className={`flex flex-col items-center align-center w-full h-full overflow-auto pt-1`}>

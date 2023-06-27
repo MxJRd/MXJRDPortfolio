@@ -30,27 +30,24 @@ export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolea
 }
 
 const Services = ({ sectionStyles }: { sectionStyles: string }) => {
-  const scrollToResumeRef = useRef<HTMLParagraphElement>(null)
-  const executeScroll = () => scrollToResumeRef.current!.scrollIntoView({
-    behavior: 'smooth'
-  })
   return (
-    <section className={`flex flex-col items-center ${sectionStyles} overflow-scroll`}>
+    <section className={`flex flex-col ${sectionStyles} overflow-auto`}>
       <BackgroundBadge viewTitle={'Services.'} />
+      <div className='flex flex-col items-center'>
         <ul className='flex w-3/5 items-start justify-between gap-8 h-full flex-2'>
           <ServicesCard title='Employment.' content='Download my resume here!' image={EmploymentPic}/>
           <ServicesCard title='Freelance.' content="Let's build something together." image={FreelancePic}/>
           <ServicesCard title='Mentorship.' content='I love teaching!' image={MentorshipPic}/>
         </ul>
-        <div className='flex flex-col gap-2 p-12 items-center font-poppins flex-1 h-4/5'>
-          <p>Whatever it is you need, I've got your back.</p>
-          <a href='mailto:mxjreed@gmail.com'>
-            <button className='text-steel-blue'>Contact me.</button>
-          </a>
-          <div className='cursor p-6' onClick={executeScroll} >
+        <div className='flex flex-col items-center p-12'>
+          <p className='text-2xl font-poppins text-semibold'>Scroll to see my resume!</p>
+          <a href='#services-scroll' className='cursor p-4 text-fuchsia' >
             <ChevronDown />
-          </div>
-          <Resume sectionStyles={sectionStyles} scrollToRef={scrollToResumeRef}/>
+          </a>
+        </div>
+      </div>
+        <div className='flex flex-col gap-2 p-12 items-center font-poppins flex-1 h-4/5'>
+          <Resume sectionStyles={sectionStyles} />
         </div>
     </section>
   )
