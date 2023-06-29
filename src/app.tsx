@@ -8,7 +8,7 @@ import PrimaryView from './components/views/PrimaryView';
 function App() {
   const [mood, setMood] = useState<string>('none')
   const [welcome, setWelcome] = useState<boolean>(true)
-  const sectionStyles = "flex align-center w-full h-full p-16"
+  const sectionStyles = "flex md:align-center w-full h-full md:p-16 sm:p-4"
   return (
     <>
       {

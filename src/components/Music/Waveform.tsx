@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react"
 function animateBars(analyser: any, canvas: any, canvasCtx: any, dataArray: any, bufferLength: any) {
 
   analyser.getByteFrequencyData(dataArray)
-  const canvasHeight = canvas.height / 1.4
+  const canvasHeight = canvas.height / 1.55
 
   // Calculate the width of each bar in the waveform based on the canvas width and the buffer length.
   var barWidth = Math.ceil(canvas.width / bufferLength) * 2.5

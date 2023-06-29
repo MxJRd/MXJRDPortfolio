@@ -31,10 +31,10 @@ export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolea
 
 const Services = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
-    <section className={`flex flex-col ${sectionStyles} overflow-auto`}>
+    <section className={`flex flex-col ${sectionStyles} overflow-y-auto overflow-x-hidden`}>
       <BackgroundBadge viewTitle={'Services.'} />
-      <div className='flex flex-col items-center'>
-        <ul className='flex w-3/5 items-start justify-between gap-8 h-full flex-2'>
+      <div className='flex flex-col items-center p-4'>
+        <ul className='flex md:w-3/5 sm:w-[400px] items-start justify-between gap-8 h-full flex-2'>
           <ServicesCard title='Employment.' content='Download my resume here!' image={EmploymentPic}/>
           <ServicesCard title='Freelance.' content="Let's build something together." image={FreelancePic}/>
           <ServicesCard title='Mentorship.' content='I love teaching!' image={MentorshipPic}/>
@@ -46,7 +46,7 @@ const Services = ({ sectionStyles }: { sectionStyles: string }) => {
           </a>
         </div>
       </div>
-        <div className='flex flex-col gap-2 p-12 items-center font-poppins flex-1 h-4/5'>
+        <div className='flex flex-col gap-2 md:p-12 items-center font-poppins flex-1 h-4/5'>
           <Resume sectionStyles={sectionStyles} />
         </div>
     </section>

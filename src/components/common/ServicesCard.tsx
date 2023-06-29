@@ -1,7 +1,7 @@
 const ServicesCard = ({ title, content, image }: { title: string, content: string, image: string }) => {
   return (
-    <div className='max-w-sm rounded-lg shadow-xl bg-[#CCCCCC] text-start text-raisin-black flex-1 shadow-md shadow-black'>
-      <img className='rounded' src={image} />
+    <div className='max-w-sm rounded-lg shadow-xl bg-[#CCCCCC] text-start text-raisin-black flex-1 shadow-md shadow-black min-w-[165px]'>
+      <img className='rounded-t-md' src={image} />
       <header class="text-xl font-extrabold p-4">{title}</header>
       {/* <p class="text-black-200 px-4 font-poppins text-md">
         {content}

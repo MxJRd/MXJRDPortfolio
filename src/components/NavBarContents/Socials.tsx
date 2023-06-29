@@ -23,14 +23,49 @@ const PhoneNumberComponent = ({ phoneNumber, clickedAway, setClickedAway }: { ph
 
   )
 }
-
-
-const Socials = ({ stack }: { stack?: string }) => {
+const SmallSocialsBar = () => {
+  return (
+    <div>
+      <a target='_blank' href='https://github.com/mxjrd'>
+        <button className='border-2 p-2 rounded text-blue-500'>
+          <GithubIcon />
+        </button>
+      </a>
+      <a target='_blank' href='https://linkedin.com/in/mxjrd'>
+      <button className='border-2 p-2 rounded text-blue-500'>
+          <LinkedInIcon />
+      </button>
+      </a>
+      <a href='mailto:mxjreed@gmail.com'>
+        <button className='border-2 p-2 rounded text-blue-500'>
+          <MailIcon />
+        </button>
+      </a>
+      <div>
+        <button alt='Phone number, hidden unless clicked on. No ez web scraping for u ;P' className='border-2 p-2 rounded text-blue-500' onClick={() => {
+          if(clickedAway) {
+            setClickedAway(false)
+            setPhoneNumber('')
+          } else {
+            setClickedAway(true)
+            setPhoneNumber(`${String.fromCharCode(56)}${String.fromCharCode(49)}${String.fromCharCode(56)}-${String.fromCharCode(56)}${String.fromCharCode(51)}${String.fromCharCode(54)}-${String.fromCharCode(49)}${String.fromCharCode(57)}${String.fromCharCode(56)}${String.fromCharCode(56)}`)
+          }
+        }}>
+          <PhoneIcon/>
+        </button>
+        <PhoneNumberComponent clickedAway={clickedAway} setClickedAway={setClickedAway} phoneNumber={phoneNumber}/>
+      </div>
+    </div>
+  )
+}
+const Socials = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [clickedAway, setClickedAway] = useState<boolean>(true)
+  const stack = 'flex-col h-full items-center bg-pink-500'
+  const row = 'h-24 flex-row w-full justify-start top-32 right-0'
   return (
-    <section className={`absolute bg-pink-500 flex h-full max-h-screen ${stack ? stack : 'w-full'} items-center gap-2 pl-8 pr-6 pb-2 pt-7 rounded-lg left-0 bg-opacity-10 ml-8`}>
-      <div className='min-h-60 h-72'></div>
+    <section className={`absolute flex ${row} gap-2 pl-8 pr-6 pb-2 pt-7 rounded-lg left-0 bg-opacity-10 ml-8`}>
+      <div className='min-h-60 h-64'></div>
       <a target='_blank' href='https://github.com/mxjrd'>
         <button className='border-2 p-2 rounded text-blue-500'>
           <GithubIcon />

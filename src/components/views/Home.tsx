@@ -65,7 +65,7 @@ const ScrambleComponent = ({ position }: { position: string }) => {
 
 const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
-    <section className={`h-full w-full ${sectionStyles} flex-wrap font-poppins`}>
+    <section className={`h-full w-full ${sectionStyles} flex-wrap font-poppins px-28`}>
       <BackgroundBadge viewTitle={'Welcome.'} />
       <article className='flex w-full h-full flex-wrap justify-center gap-12'>
         <div className='flex flex-col gap-1 min-w-[300px]'>
