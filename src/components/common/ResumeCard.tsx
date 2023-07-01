@@ -23,8 +23,8 @@ export const BulletList = ({ bullets }: { bullets: Array<string> }) => {
 const ResumeCard = ({ name, setCompany, company, logo }: { name: string, setCompany: (company: JobContentType) => void, company: JobContentType, logo?: any }) => {
   const { technologies } = company || {}
   return (
-    <article className='bg-[#CCCCCC] rounded-md p-4 shadow-lg shadow-inner flex-1'>
-      <div className='relative w-6 h-6 rotate-45 -translate-y-7 xl:translate-x-68 bg-raisin-black'></div>
+    <article className='flex flex-col bg-[#cccccc] rounded-md shadow-md w-full overflow-hidden p-4 min-w-[275px] max-w-[275px] self-center'>
+      <div className='relative w-6 h-6 rotate-45 -translate-y-7 translate-x-62 bg-raisin-black'></div>
       <div className='relative'>
         <div className='flex flex-row items-center gap-4 justify-between -translate-y-4 justify-center relative'>
           <div className='flex'>

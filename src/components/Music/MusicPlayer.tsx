@@ -19,13 +19,12 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: { mood: 
     const currentTrackInfo = MusicMoods[mood][trackIndex % MusicMoods[mood].length] // no going out of bounds >:(
     setCurrentTrack(currentTrackInfo)
     const trackChange = () => playTrack()
-    const trackChangeTimer = setTimeout(trackChange, 250)
+    const trackChangeTimer = setTimeout(trackChange, 450)
     return () => clearTimeout(trackChangeTimer)
   }, [trackIndex, mood])
-
+  console.log(currentTrack)
   const [soundOn, setSoundOn] = useState<Boolean>(true)
   const { artist, track, title } = currentTrack || {}
-  console.log(window.innerWidth)
   useEffect(() => {
     const initializePlayer = () => mood !== 'none' && playTrack()
     const initialPlayTimer = setTimeout(initializePlayer, 150)

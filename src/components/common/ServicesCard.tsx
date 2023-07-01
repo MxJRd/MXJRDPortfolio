@@ -1,19 +1,8 @@
 const ServicesCard = ({ title, content, image }: { title: string, content: string, image: string }) => {
   return (
-    <div className='max-w-sm rounded-lg shadow-xl bg-[#CCCCCC] text-start text-raisin-black flex-1 shadow-md shadow-black min-w-[165px]'>
-      <img className='rounded-t-md' src={image} />
-      <header class="text-xl font-extrabold p-4">{title}</header>
-      {/* <p class="text-black-200 px-4 font-poppins text-md">
-        {content}
-      </p> */}
-      <footer class="text-right py-3 px-4 text-gray-500">
-        <button
-          class="py-2 px-4 mt-5 bg-white rounded-lg text-raisin-black whitespace-nowrap font-semibold hover:bg-gray-200"
-        >
-        
-          Contact me
-        </button>
-      </footer>
+    <div className="flex flex-col bg-white rounded-xl shadow-md w-full overflow-hidden">
+      <img src={image} alt="" className='md:h-60 sm:36' />
+      <a href="#" className="bg-gray-500 text-white md:p-3 p-2 text-center md:text-lg text-sm font-poppins hover:bg-blue-800 transition-all duration-500">{title}</a>
     </div>
   )
 }

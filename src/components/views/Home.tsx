@@ -65,9 +65,8 @@ const ScrambleComponent = ({ position }: { position: string }) => {
 
 const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
-    <section className={`h-full w-full ${sectionStyles} flex-wrap font-poppins px-28`}>
-      <BackgroundBadge viewTitle={'Welcome.'} />
-      <article className='flex w-full h-full flex-wrap justify-center gap-12'>
+    <section className={`${sectionStyles} flex-wrap font-poppins px-28 py-4`}>
+      <article className='flex w-full h-full flex-wrap justify-center md:gap-12 gap-4'>
         <div className='flex flex-col gap-1 min-w-[300px]'>
           <p className='text-center'>
             My name is
@@ -81,7 +80,7 @@ const Home = ({ sectionStyles }: { sectionStyles: string }) => {
             </a>
           </div>
         </div>
-        <div>
+        <div className='min-w-[240px]'>
           <img className='w-[240px] h-[240px] rounded-lg' src={DrummingHard} />
         </div>
       </article>

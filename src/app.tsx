@@ -3,12 +3,14 @@ import '../src/app.css'
 // import Services from './components/views/Services'
 import WelcomeOverlay from './components/views/WelcomeOverlay'
 import PrimaryView from './components/views/PrimaryView';
+import useSize from './components/Music/useSize';
 
 
 function App() {
   const [mood, setMood] = useState<string>('none')
   const [welcome, setWelcome] = useState<boolean>(true)
-  const sectionStyles = "flex md:align-center w-full h-full md:p-16 sm:p-4"
+  const sectionStyles = "flex md:align-center w-full h-full md:p-16 p-4"
+  const windowDimensions = useSize({ height: window.innerHeight, width: window.innerWidth })
   return (
     <>
       {
@@ -19,7 +21,7 @@ function App() {
             </div>
           )
           : (
-            <PrimaryView mood={mood} setMood={setMood} setWelcome={setWelcome} sectionStyles={sectionStyles} />
+            <PrimaryView sectionStyles={sectionStyles} mood={mood} setMood={setMood} setWelcome={setWelcome} />
         )}
     </>
   )

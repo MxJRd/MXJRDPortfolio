@@ -41,11 +41,11 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
             </button>
         </div>
         <div className='flex lg:flex-row flex-col'>
-          <div className='flex px-6 py-4 gap-4 self-start flex-col'>
+          <div className='flex px-6 py-4 gap-4 flex-col md:self-start self-center w-full'>
             <ResumeCard name='First Resonance' setCompany={setCompany} company={firstResonance} />
             <ResumeCard name='Apple' setCompany={setCompany} company={apple} />
           </div>
-          <div className='p-4 flex-2 space-y-2'>
+          <div className='md:p-4 p-1 flex-2 space-y-2'>
             <p className='pb-4 font-roboto-matrix'>{primer}</p>
             {bullets.map((bull: any) => <p className='font-roboto-default tracking-wide'>{bull}</p>)}
           </div>
