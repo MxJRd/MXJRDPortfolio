@@ -9,12 +9,12 @@ import Resume from './Resume'
 
 export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
   return (
-    <div className='bg-black p-4 h-4/5 w-4/5 overflow-y-auto'>
-      <div className='flex justify-between content-center items-center text-center'>
+    <div className='w-4/5 p-4 overflow-y-auto bg-black h-4/5'>
+      <div className='flex items-center content-center justify-between text-center'>
         <h1>Click through!</h1>
         <button className='' onClick={() => setShowReceipts(false)}>X</button>
       </div>
-      <ul className='flex flex-col flex-1 items-start list-disc'>
+      <ul className='flex flex-col items-start flex-1 list-disc'>
         <li>Mentoring over 15 people to get into one of the most competitive career change programs in the world.</li>
         <li>Top 0.5% of players season 4 in League of Legends.</li>
         <li>Built my first car. 1983 Porsche 928, LS1 conversion.</li>
@@ -34,19 +34,19 @@ const Services = ({ sectionStyles }: { sectionStyles: string }) => {
     <section className={`flex flex-col ${sectionStyles} overflow-y-auto overflow-x-hidden`}>
       <BackgroundBadge viewTitle={'Services.'} />
       <div className='flex flex-col p-4'>
-        <ul className='flex xl:gap-8 lg:gap-6 md:gap-4 gap-2 h-full sm:self-center flex-row'>
+        <ul className='flex flex-row h-full gap-2 xl:gap-8 lg:gap-6 md:gap-4 sm:self-center'>
           <ServicesCard title='Employment' content='Download my resume here!' image={EmploymentPic}/>
           <ServicesCard title='Freelance' content="Let's build something together." image={FreelancePic}/>
           <ServicesCard title='Mentorship' content='I love teaching!' image={MentorshipPic}/>
         </ul>
-        <div className='flex flex-col items-center p-12'>
+        <div className='flex flex-col items-center invisible p-12 md:visible'>
           <p className='text-2xl font-poppins text-semibold'>Scroll to see my resume!</p>
-          <a href='#services-scroll' className='cursor p-4 text-fuchsia' >
+          <a href='#services-scroll' className='p-4 cursor text-fuchsia' >
             <ChevronDown />
           </a>
         </div>
       </div>
-        <div className='flex flex-col gap-2 md:p-12 items-center font-poppins flex-1 h-4/5'>
+        <div className='flex flex-col items-center flex-1 gap-2 md:p-12 font-poppins h-4/5'>
           <Resume sectionStyles={sectionStyles} />
         </div>
     </section>

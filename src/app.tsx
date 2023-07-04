@@ -10,7 +10,6 @@ function App() {
   const [mood, setMood] = useState<string>('none')
   const [welcome, setWelcome] = useState<boolean>(true)
   const sectionStyles = "flex md:align-center w-full h-full md:p-16 p-4"
-  const windowDimensions = useSize({ height: window.innerHeight, width: window.innerWidth })
   return (
     <>
       {

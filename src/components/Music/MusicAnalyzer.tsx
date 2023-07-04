@@ -40,7 +40,7 @@ export const MusicAnalyzer = ({ containerDimensions, audioRef, currentTrack }: {
   return (
     <div className='absolute mt-12'>
       {analyzerData && <WaveForm analyzerData={analyzerData} containerDimensions={containerDimensions}/>}
-      <div className='flex space-around items-center'>
+      <div className='flex items-center space-around'>
         <input type="hidden" accept="audio/*" onChange={onFileChange} />
       </div>
     </div>

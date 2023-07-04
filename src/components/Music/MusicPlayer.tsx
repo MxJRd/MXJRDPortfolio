@@ -22,21 +22,22 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: { mood: 
     const trackChangeTimer = setTimeout(trackChange, 450)
     return () => clearTimeout(trackChangeTimer)
   }, [trackIndex, mood])
-  console.log(currentTrack)
-  const [soundOn, setSoundOn] = useState<Boolean>(true)
-  const { artist, track, title } = currentTrack || {}
+
   useEffect(() => {
     const initializePlayer = () => mood !== 'none' && playTrack()
     const initialPlayTimer = setTimeout(initializePlayer, 150)
     return () => clearTimeout(initialPlayTimer)
   }, [])
 
+  const [soundOn, setSoundOn] = useState<Boolean>(true)
+  const { artist, track, title } = currentTrack || {}
+
   return (
     <div className={`absolute m-7 top-20 right-0 min-h-[60px] min-w-[272px] p-0.5 rounded-lg ${playerGradientColor}`}>
-      <section id='music-player-background' className='bg-raisin-black rounded-md min-w-full'>
+      <section id='music-player-background' className='min-w-full rounded-md bg-raisin-black'>
         <p className='text-pink-500 font-poppins'>{title}</p>
-        <p className='font-roboto-matrix pb-1'>{artist}</p>
-        <div className='flex justify-between justify-center'>
+        <p className='pb-1 font-roboto-matrix'>{artist}</p>
+        <div className='flex justify-center justify-between'>
           <PrevButton onClick={() => {
             setTrackIndex((prevIdx) => prevIdx - 1)
           }}/>
@@ -57,7 +58,7 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: { mood: 
             setTrackIndex((prevIdx) => prevIdx + 1)
           }}/>
         </div>
-        <div className='flex p-1 items-center justify-center gap-2'>
+        <div className='flex items-center justify-center gap-2 p-1'>
           <div id='progress-bar' className='flex relative h-2 bg-white rounded-sm overflow-hidden min-w-[175px]'>
             <div id='progress-bar-fill' className="h-2 bg-black rounded-sm min-w-[175px]"></div>
           </div>

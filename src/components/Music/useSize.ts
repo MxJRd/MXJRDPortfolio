@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const useSize = (containerDimensions: { height: number, width: number }) => {
+  const containerRef = useRef<HTMLElement>(null)
   const [width, setWidth] = useState(containerDimensions.width)
-  const [height, setHeight] = useState(containerDimensions.width)
+  const [height, setHeight] = useState(containerDimensions.height)
 
   const setSizes = useCallback(() => {
     setWidth(containerDimensions?.width)

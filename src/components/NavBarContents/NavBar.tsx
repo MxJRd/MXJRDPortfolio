@@ -25,25 +25,26 @@ const NavBarContents = ({ setOpenNav, audioRef, currentTrack }: { setOpenNav: (o
   const currentWindowSize = useSize({ height: window.innerHeight, width: window.innerWidth })
   const [windowSize, setWindowSize] = useState(currentWindowSize)
   const [audioContainerDimensions, setAudioContainerDimensions] = useState<{ height: number, width: number }>({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
-  // console.log(windowSize)
+
   useEffect(() => {
     setWindowSize([window.innerHeight, window.innerWidth])
   }, [windowSize])
+
   useEffect(() => {
     setAudioContainerDimensions({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
   }, [audioContainerDimensions])
 
   return (
-    <nav ref={navBarRef} className="pt-8 pb-8 pr-14 flex justify-between shadow-md overflow-hidden min-w-full h-56 z-1000 font-poppins font-medium text-blue-500">
+    <nav ref={navBarRef} className="flex justify-between h-56 min-w-full pt-8 pb-8 overflow-hidden font-medium text-blue-500 shadow-md pr-14 z-1000 font-poppins">
       {audioRef && <MusicAnalyzer containerDimensions={audioContainerDimensions} audioRef={audioRef} currentTrack={currentTrack} />}
       <div className='flex gap-2 pl-14'>
-        <img className='w-9 h-9 rounded-lg' src={MXJRDLogo} />
+        <img className='rounded-lg w-9 h-9' src={MXJRDLogo} />
         <p className='mt-1 text-blue-300'>MX<span className='text-blue-400'>J</span><span className='text-pink-400'>R</span><span className='text-pink-400'>D</span></p>
       </div>
       <div className='absolute right-7'>
         <CollapsibleNavBar setOpenNav={setOpenNav}/>
       </div>
-      <ul className="flex flex-col gap-10 justify-between mt-1 pl-2 md:visible collapse">
+      <ul className="flex flex-col justify-between gap-10 pl-2 mt-1 md:visible collapse">
         <div className='flex gap-5'>
           <li className='text-blue-500'>
             <Link to='/'>
@@ -68,22 +69,23 @@ const NavBarContents = ({ setOpenNav, audioRef, currentTrack }: { setOpenNav: (o
 
 export const CollapsedNavBar = ({ openNav, setOpenNav }: { openNav: boolean, setOpenNav: (openNavBar: boolean) => void }) => {
   return (
-    <ul style={{ zIndex: 10 }} className='absolute h-72 w-full'>
-      <li className='text-blue-500' onClick={() => setOpenNav(false)}>
-        <Link to='/'>
-          Home
-        </Link>
-      </li>
-      <li className='text-blue-500 whitespace-nowrap' onClick={() => setOpenNav(false)}>
-        <Link to='/about'>
-          About Me
-        </Link>
-      </li>
-      <li className='text-blue-500' onClick={() => setOpenNav(false)}>
-        <Link to='/services'>
-          Services
-        </Link>
-      </li>
+    <ul style={{ zIndex: 10 }} className='absolute flex flex-col justify-around w-full bg-black h-72'>
+      <div className='absolute right-8 top-8'>X</div>
+      <Link to='/'>
+        <li className='h-12 text-blue-500' onClick={() => setOpenNav(false)}>
+            Home
+        </li>
+      </Link>
+      <Link to='/about'>
+        <li className='h-12 text-blue-500 whitespace-nowrap' onClick={() => setOpenNav(false)}>
+            About Me
+        </li>
+      </Link>
+      <Link to='/services'>
+        <li className='h-12 text-blue-500' onClick={() => setOpenNav(false)}>
+            Services
+        </li>
+      </Link>
     </ul>
   )
 }

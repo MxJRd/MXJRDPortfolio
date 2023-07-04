@@ -17,9 +17,9 @@ const ArticleCard = ({ content, title }: { content: string, title: string }) => 
 
   return (
     <article ref={articleRef} className=''>
-      <ul className='flex flex-col gap-12 text-start min-w-180 pr-8 pl-8 text-white md:pl-48'>
-        <div className='flex flex-col relative -translate-x-10 translate-y-32'>
-          <div className='border border-white rounded-md w-3 h-3 bg-raisin-black'></div>
+      <ul className='flex flex-col gap-12 pl-8 pr-8 text-white text-start min-w-180 md:pl-48'>
+        <div className='relative flex flex-col -translate-x-10 translate-y-32'>
+          <div className='w-3 h-3 border border-white rounded-md bg-raisin-black'></div>
           <div style={{ height: `${(height-140).toString()}px` }}className={`absolute border border-1 mt-2.5 ml-1.25 opacity-[0.3]`}></div>
         </div>
         <li className='flex flex-col gap-5.5'>

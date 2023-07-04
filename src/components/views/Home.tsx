@@ -6,12 +6,12 @@ import TextScramble from '../../helpers'
 
 const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
   return (
-    <div className='bg-black p-4 h-4/5 w-4/5 overflow-y-auto'>
-      <div className='flex justify-between content-center items-center text-center'>
+    <div className='w-4/5 p-4 overflow-y-auto bg-black h-4/5'>
+      <div className='flex items-center content-center justify-between text-center'>
         <h1>Click through!</h1>
         <button className='' onClick={() => setShowReceipts(false)}>X</button>
       </div>
-      <ul className='flex flex-col flex-1 items-start list-disc'>
+      <ul className='flex flex-col items-start flex-1 list-disc'>
         <li>Mentoring over 15 people to get into one of the most competitive career change programs in the world.</li>
         <li>Top 0.5% of players season 4 in League of Legends.</li>
         <li>Built my first car. 1983 Porsche 928, LS1 conversion.</li>
@@ -59,24 +59,24 @@ const ScrambleComponent = ({ position }: { position: string }) => {
   }, [OccupationTextScrambler])
 
   return (
-    <p ref={scrambleRef} id='test' className={`${position} text-center text-xl font-roboto-matrix min-w-[340px]`}>{occupations[idx]}</p>
+    <p ref={scrambleRef} id='test' className={`${position} text-center text-xl font-roboto-matrix`}>{occupations[idx]}</p>
   )
 }
 
 const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`${sectionStyles} flex-wrap font-poppins px-28 py-4`}>
-      <article className='flex w-full h-full flex-wrap justify-center md:gap-12 gap-4'>
-        <div className='flex flex-col gap-1 min-w-[300px]'>
+      <article className='flex flex-wrap justify-center w-full h-full gap-4 md:gap-12'>
+        <div className='flex flex-col gap-1 min-w-[340px]'>
           <p className='text-center'>
             My name is
           </p>
           <h1><span className='text-blue-200'>M</span>a<span className='text-blue-200'>x</span> <span className='text-pink-200'>J</span>. <span className='text-blue-200'>R</span>ee<span className='text-blue-200'>d</span></h1>
           <ScrambleComponent position='relative'/>
-          <p className='text-center pt-6 text-dusty-pink'>Play some tunes, enjoy your stay.</p>
+          <p className='pt-6 text-center text-dusty-pink'>Play some tunes, enjoy your stay.</p>
           <div className='pt-4'>
             <a href='mailto:mxjreed@gmail.com'>
-              <button style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }} className='text-raisin-black px-5 py-3 border-2 border-raisin-black'>Contact me.</button>
+              <button style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }} className='px-5 py-3 border-2 text-raisin-black border-raisin-black'>Contact me.</button>
             </a>
           </div>
         </div>
