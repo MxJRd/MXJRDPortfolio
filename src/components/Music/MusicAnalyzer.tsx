@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react"
+import { Ref, useEffect, useState } from "react"
 import WaveForm from "./Waveform"
 import useSize from "./useSize"
+import { TrackInfoType } from "../../assets/music/MusicMoods"
 
 export const MusicAnalyzer = ({ containerDimensions, audioRef, currentTrack }: { containerDimensions: { height: number, width: number }, audioRef: Ref<HTMLAudioElement>, currentTrack: TrackInfoType }) => {
-  const [audioUrl, setAudioUrl] = useState<any>()
-  const [audioSrc, setAudioSrc] = useState<MediaElementAudioSourceNode>()
+  const [, setAudioSrc] = useState<MediaElementAudioSourceNode>() // initialize the audio source.
   const [analyzerData, setAnalyzerData] = useState<any>(null)
-
-  const onFileChange = () => setAudioUrl(currentTrack?.track)
-
+  const [songDuration, setSongDuration] = useState<number>(0)
   useEffect(() => {
     if(window) {
       const audioCtx = new (window.AudioContext!)()
@@ -27,22 +25,11 @@ export const MusicAnalyzer = ({ containerDimensions, audioRef, currentTrack }: {
     }
   }, [])
 
-  useEffect(() => {
-    setAudioUrl(currentTrack?.track)
-  }, [currentTrack?.track])
-
-  useEffect(() => {
-    setAudioUrl(currentTrack?.track)
-  }, [currentTrack?.track])
-
   useSize(containerDimensions)
 
   return (
-    <div className='absolute mt-12'>
+    <div className='absolute mt-11'>
       {analyzerData && <WaveForm analyzerData={analyzerData} containerDimensions={containerDimensions}/>}
-      <div className='flex items-center space-around'>
-        <input type="hidden" accept="audio/*" onChange={onFileChange} />
-      </div>
     </div>
   )
 }

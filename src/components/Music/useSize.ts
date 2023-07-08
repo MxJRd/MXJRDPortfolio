@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const useSize = (containerDimensions: { height: number, width: number }) => {
-  const containerRef = useRef<HTMLElement>(null)
-  const [width, setWidth] = useState(containerDimensions.width)
-  const [height, setHeight] = useState(containerDimensions.height)
+  const [width, setWidth] = useState(window.innerWidth)
+  const [height, setHeight] = useState(window.innerHeight)
 
   const setSizes = useCallback(() => {
-    setWidth(containerDimensions?.width)
-    setHeight(containerDimensions?.height)
+    setWidth(window.innerWidth)
+    setHeight(window.innerHeight)
   }, [setWidth, setHeight])
 
   useEffect(() => {

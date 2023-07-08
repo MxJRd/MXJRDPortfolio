@@ -5,6 +5,7 @@ import { ReactComponent as LinkedInIcon } from '../../assets/linkedin.svg'
 import { ReactComponent as PhoneIcon } from '../../assets/phone.svg'
 import { ReactComponent as EmailIcon } from '../../assets/mail.svg'
 import { ReactComponent as ClosedChevronIcon } from '../../assets/chevron-right.svg'
+import { fetchButtonSize } from '../../helpers'
 
 type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron'
 type Sizes = 'small' | 'medium' | 'large'
@@ -16,17 +17,6 @@ const fetchColor = (color: string) => {
       return 'text-blue-500'
     case 'black':
       return 'text-raisin-black'
-  }
-}
-
-const fetchSize = (size: string) => {
-  switch(size) {
-    case 'small':
-      return 'p-1'
-    case 'medium':
-      return 'p-2'
-    case 'large':
-      return 'p-3'
   }
 }
 
@@ -58,11 +48,11 @@ const CustomButton = ({ iconName, clickHandler, textContent = '', size = 'medium
   const iconOnly = 'border-2 rounded'
 
   const icon = fetchIcon(iconName)
-  const buttonSize = fetchSize(size)
+  const buttonSize = fetchButtonSize(size)
   const buttonColor = fetchColor(color)
   return (
     <div>
-      <button className={classNames(`${iconName ? iconOnly : ''}`, buttonSize, buttonColor)} onClick={clickHandler}>
+      <button className={classNames(`${iconName ? iconOnly : ''}`, buttonSize, buttonColor, 'hover:bg-gray-400')} onClick={clickHandler}>
         { iconName && icon}
         { textContent && textContent }
       </button>

@@ -33,8 +33,8 @@ const Services = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`flex flex-col ${sectionStyles} overflow-y-auto overflow-x-hidden`}>
       <BackgroundBadge viewTitle={'Services.'} />
-      <div className='flex flex-col p-4'>
-        <ul className='flex flex-row h-full gap-2 xl:gap-8 lg:gap-6 md:gap-4 sm:self-center'>
+      <div className='flex flex-col py-14 md:p-4'>
+        <ul className='flex flex-col sm:flex-row h-full gap-2 xl:gap-8 lg:gap-6 md:gap-4 self-center max-w-[250px] sm:max-w-full'>
           <ServicesCard title='Employment' content='Download my resume here!' image={EmploymentPic}/>
           <ServicesCard title='Freelance' content="Let's build something together." image={FreelancePic}/>
           <ServicesCard title='Mentorship' content='I love teaching!' image={MentorshipPic}/>

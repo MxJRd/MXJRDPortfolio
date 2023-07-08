@@ -65,7 +65,7 @@ const ScrambleComponent = ({ position }: { position: string }) => {
 
 const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
-    <section className={`${sectionStyles} flex-wrap font-poppins px-28 py-4`}>
+    <section className={`${sectionStyles} flex-wrap font-poppins px-28 sm:py-4 py-14`}>
       <article className='flex flex-wrap justify-center w-full h-full gap-4 md:gap-12'>
         <div className='flex flex-col gap-1 min-w-[340px]'>
           <p className='text-center'>
@@ -76,7 +76,7 @@ const Home = ({ sectionStyles }: { sectionStyles: string }) => {
           <p className='pt-6 text-center text-dusty-pink'>Play some tunes, enjoy your stay.</p>
           <div className='pt-4'>
             <a href='mailto:mxjreed@gmail.com'>
-              <button style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }} className='px-5 py-3 border-2 text-raisin-black border-raisin-black'>Contact me.</button>
+              <button style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }} className='px-5 py-3 border-2 text-raisin-black border-raisin-black hover:bg-gray-400 hover:text-blue-500'>Contact me.</button>
             </a>
           </div>
         </div>

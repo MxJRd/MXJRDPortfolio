@@ -1,3 +1,25 @@
+export const fetchButtonSize = (size: string) => {
+  switch(size) {
+    case 'small':
+      return 'p-1'
+    case 'medium':
+      return 'p-2'
+    case 'large':
+      return 'p-3'
+  }
+}
+
+export const fetchSVGSize = (size: string) => {
+  switch(size) {
+    case 'small':
+      return 'w-4'
+    case 'medium':
+      return 'w-8'
+    case 'large':
+      return 'w-8'
+  }
+}
+
 class MatrixTextScrambler {
   el: HTMLParagraphElement
   chars: string
