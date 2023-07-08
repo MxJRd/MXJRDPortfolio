@@ -1,4 +1,3 @@
-import { useRef, useState } from 'preact/hooks'
 import BackgroundBadge from '../common/BackgroundBadge'
 import MentorshipPic from '../../assets/services-pics/CollaboratingTeamwork.png'
 import EmploymentPic from '../../assets/services-pics/GuyLookingAtCity.png'

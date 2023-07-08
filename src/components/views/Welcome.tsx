@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface WelcomeProps {
   sectionStyles: string
@@ -28,17 +28,16 @@ const Welcome = ({ sectionStyles, setMood, setWelcome, setAnimateDisappear }: We
       <div className='flex flex-col gap-4'>
         <div className='flex justify-center gap-2'>
           <div>
-            <button onClick={waitToSetMood('mathy')} className='btn bg-white text-black'>Mathy</button>
+            <button onClick={waitToSetMood('mathy')} className='text-black bg-white btn'>Mathy</button>
           </div>
           <div>
-            <button onClick={waitToSetMood('yazzy')} className='btn bg-white text-black'>Yazzy</button>
+            <button onClick={waitToSetMood('yazzy')} className='text-black bg-white btn'>Yazzy</button>
           </div>
         </div>
         <div>
-          <button onClick={setWelcomeAndMood('none')} className='btn bg-white text-black self-center'>You hate music. :(</button> 
+          <button onClick={setWelcomeAndMood('none')} className='self-center text-black bg-white btn'>You hate music. :(</button> 
         </div>
       </div>
-      {/* <p>With enough discipline or aptitude, you can be good at anything. Being incredible requires a large amount of both.</p> */}
     </section>
   )
 }

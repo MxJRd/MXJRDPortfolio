@@ -1,7 +1,4 @@
-import { ReactComponent as GithubIcon } from '../../assets/github.svg'
-import { ReactComponent as LinkedInIcon } from '../../assets/linkedin.svg'
 import { ReactComponent as PhoneIcon } from '../../assets/phone.svg'
-import { ReactComponent as MailIcon } from '../../assets/mail.svg'
 import { useRef, useState } from 'preact/hooks'
 import useClickAway from './hooks/useClickAway'
 import CustomButton from '../common/CustomButton'

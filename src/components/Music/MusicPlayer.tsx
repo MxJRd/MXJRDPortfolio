@@ -68,12 +68,12 @@ const MusicPlayerControls = ({ audioPlayerRef, trackIndex, setTrackIndex, setPla
   )
 }
 
-interface MusicPlayerProgressBarProps {
-  trackProgress: number
-  duration: number
-  onScrub: (e: any) => void
-  onScrubEnd: () => void
-}
+// interface MusicPlayerProgressBarProps {
+//   trackProgress: number
+//   duration: number
+//   onScrub: (e: any) => void
+//   onScrubEnd: () => void
+// }
 
 
 // const MusicPlayerProgressBar = ({ trackProgress, duration, onScrub, onScrubEnd }: MusicPlayerProgressBarProps) => {

@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-
 import { ReactComponent as GithubIcon } from '../../assets/github.svg'
 import { ReactComponent as LinkedInIcon } from '../../assets/linkedin.svg'
 import { ReactComponent as PhoneIcon } from '../../assets/phone.svg'

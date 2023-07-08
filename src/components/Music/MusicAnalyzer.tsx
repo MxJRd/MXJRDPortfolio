@@ -1,12 +1,11 @@
 import { Ref, useEffect, useState } from "react"
 import WaveForm from "./Waveform"
 import useSize from "./useSize"
-import { TrackInfoType } from "../../assets/music/MusicMoods"
 
-export const MusicAnalyzer = ({ containerDimensions, audioRef, currentTrack }: { containerDimensions: { height: number, width: number }, audioRef: Ref<HTMLAudioElement>, currentTrack: TrackInfoType }) => {
+export const MusicAnalyzer = ({ containerDimensions, audioRef }: { containerDimensions: { height: number, width: number }, audioRef: Ref<HTMLAudioElement> }) => {
   const [, setAudioSrc] = useState<MediaElementAudioSourceNode>() // initialize the audio source.
   const [analyzerData, setAnalyzerData] = useState<any>(null)
-  const [songDuration, setSongDuration] = useState<number>(0)
+
   useEffect(() => {
     if(window) {
       const audioCtx = new (window.AudioContext!)()
@@ -16,7 +15,7 @@ export const MusicAnalyzer = ({ containerDimensions, audioRef, currentTrack }: {
   
       const bufferLength = analyzer.frequencyBinCount
       const dataArray = new Uint8Array(bufferLength)
-      const source = audioCtx.createMediaElementSource(audioRef!.current!)
+      const source = audioCtx.createMediaElementSource(audioRef?.current)
 
       setAudioSrc(source)
       source.connect(analyzer)
