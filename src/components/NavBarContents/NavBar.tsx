@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import MXJRDLogo from '../../assets/MXJRDLogo.png'
 import MusicAnalyzer from "../Music/MusicAnalyzer"
-import { Ref, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { TrackInfoType } from "../../assets/music/MusicMoods"
 import useSize from "../Music/useSize"
 import classNames from "classnames"
@@ -28,7 +28,7 @@ const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => v
   )
 }
 
-const NavBarContents = ({ setOpenNav, audioRef, currentTrack, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: Ref<HTMLAudioElement>, currentTrack: TrackInfoType, isDesktopView: boolean }) => {
+const NavBarContents = ({ setOpenNav, audioRef, currentTrack, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, currentTrack: TrackInfoType, isDesktopView: boolean }) => {
   const navBarRef = useRef<HTMLElement>(null)
   const { current } = navBarRef
   const currentWindowSize = useSize({ height: window.innerHeight, width: window.innerWidth })
@@ -95,7 +95,7 @@ export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (
   )
 }
 
-const Navbar = ({ setOpenNav, audioRef, currentTrack, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: Ref<HTMLAudioElement>, currentTrack: TrackInfoType, isDesktopView: boolean }) => (
+const Navbar = ({ setOpenNav, audioRef, currentTrack, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: any, currentTrack: TrackInfoType, isDesktopView: boolean }) => (
   <div className='relative w-full'>
     <NavBarContents setOpenNav={setOpenNav} audioRef={audioRef} currentTrack={currentTrack} isDesktopView={isDesktopView} />
   </div>

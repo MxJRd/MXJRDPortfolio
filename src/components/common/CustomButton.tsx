@@ -22,11 +22,11 @@ const fetchColor = (color: string) => {
 const fetchIcon = (iconName: Icons) => {
   switch(iconName) {
     case 'phone':
-      return <PhoneIcon />;
+      return <PhoneIcon />
     case 'github':
-      return <GithubIcon />;
+      return <GithubIcon />
     case 'linkedin':
-      return <LinkedInIcon />;
+      return <LinkedInIcon />
     case 'email':
       return <EmailIcon />
     case 'right-chevron':

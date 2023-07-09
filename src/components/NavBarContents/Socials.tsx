@@ -27,9 +27,6 @@ const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: 
   const [phoneNumber, setPhoneNumber] = useState('')
   const [open, setOpen] = useState<boolean>(false)
 
-  const ref = useClickAway(() => {
-    setOpen(false)
-  })
   const handleClickPhoneIcon = () => {
     if(!open) {
       setOpen(true)

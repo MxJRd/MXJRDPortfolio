@@ -6,6 +6,7 @@ import { ReactComponent as NextButton } from '../../assets/chevrons-right.svg'
 import MusicMoods, { TrackInfoType } from "../../assets/music/MusicMoods"
 import { fetchSVGSize } from "../../helpers"
 import classNames from "classnames"
+import { RefObject } from "preact"
 
 type Icons = 'play' | 'pause' | 'next' | 'prev'
 
@@ -26,7 +27,7 @@ interface MusicPlayerProps {
   isDesktopView: boolean
   isMobileView: boolean
   mood: string
-  audioRef: Ref<HTMLAudioElement>
+  audioRef: RefObject<HTMLAudioElement>
   currentTrack: TrackInfoType
   setCurrentTrack: (currentTrack: TrackInfoType) => void
 }
@@ -92,7 +93,7 @@ const MusicPlayerControls = ({ audioPlayerRef, trackIndex, setTrackIndex, setPla
 //   )
 // }
 
-const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack, isDesktopView, isMobileView }: MusicPlayerProps) => {
+const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPlayerProps) => {
   const [play, setPlay] = useState(false)
   const intervalRef = useRef(null)
   const [trackIndex, setTrackIndex] = useState<number>(0)
@@ -106,7 +107,6 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack, isDesktopV
   const currentSeconds = Math.floor(trackProgress % 60)
 
   const onScrub = (value: any) => {
-    // Clear any timers already running
     clearInterval(intervalRef.current!)
     audioRef.current!.currentTime = value
     setTrackProgress(audioRef.current!.currentTime)

@@ -1,8 +1,8 @@
-import { Ref, useEffect, useState } from "react"
+import { forwardRef, useEffect, useState } from "react"
 import WaveForm from "./Waveform"
 import useSize from "./useSize"
 
-export const MusicAnalyzer = ({ containerDimensions, audioRef }: { containerDimensions: { height: number, width: number }, audioRef: Ref<HTMLAudioElement> }) => {
+export const MusicAnalyzer = ({ containerDimensions, audioRef }: { containerDimensions: { height: number, width: number }, audioRef: any }) => {
   const [, setAudioSrc] = useState<MediaElementAudioSourceNode>() // initialize the audio source.
   const [analyzerData, setAnalyzerData] = useState<any>(null)
 
@@ -33,4 +33,9 @@ export const MusicAnalyzer = ({ containerDimensions, audioRef }: { containerDime
   )
 }
 
-export default MusicAnalyzer
+
+const MusicAnalyzerForwardedRef = (props: any, ref: any) => {
+  return <MusicAnalyzer {...props} ref={ref} />;
+};
+
+export default forwardRef<HTMLAudioElement>(MusicAnalyzerForwardedRef)

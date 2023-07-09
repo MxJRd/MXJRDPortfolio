@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "preact/hooks"
 
 const useClickAway = (callback: () => void) => {
-  const ref = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleClick = (event: any) => {
@@ -9,9 +9,7 @@ const useClickAway = (callback: () => void) => {
         callback()
       }
     }
-
     document.addEventListener('click', handleClick, true)
-
     return () => {
       document.removeEventListener('click', handleClick, true)
     }

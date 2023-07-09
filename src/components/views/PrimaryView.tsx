@@ -8,24 +8,25 @@ import AboutMe from './AboutMe'
 import { BrowserRouter } from 'react-router-dom'
 import { TrackInfoType } from '../../assets/music/MusicMoods'
 import useSize from '../Music/useSize'
-const Services= lazy(() => import('./Services'))
+import Socials from '../NavBarContents/Socials'
+const Services = lazy(() => import('./Services'))
 
 interface PrimaryViewProps {
   mood: string
-  setMood: (mood: string) => void
-  setWelcome: (welcome: boolean) => void
   sectionStyles: string
 }
 
-const PrimaryView = ({ mood, setMood, setWelcome, sectionStyles }: PrimaryViewProps) => {
+const PrimaryView = ({ mood, sectionStyles }: PrimaryViewProps) => {
   const [openNav, setOpenNav] = useState<boolean>(false)
   const [currentTrack, setCurrentTrack] = useState<TrackInfoType>()
 
   const currentWindowSize = useSize({ width: window.innerWidth, height: window.innerHeight })
-  const [, setCurrentWindowHeight] = useState(currentWindowSize[1])
+  const [currentWindowHeight, setCurrentWindowHeight] = useState(currentWindowSize[1])
   const [currentWindowWidth, setCurrentWindowWidth] = useState(currentWindowSize[0])
+
   const isDesktopView = currentWindowWidth > 1050
   const isMobileView = currentWindowWidth < 762
+
   useEffect(() => {
     setCurrentWindowWidth(currentWindowSize[0])
     setCurrentWindowHeight(currentWindowSize[1])
@@ -34,23 +35,25 @@ const PrimaryView = ({ mood, setMood, setWelcome, sectionStyles }: PrimaryViewPr
   const audioRef = useRef<HTMLAudioElement>(null)
 
   return (
+    <>
       <BrowserRouter>
         <main className='fixed flex flex-col items-center justify-between flex-1 w-full h-full overflow-x-hidden overflow-y-auto text-white max-w-screen'>
-            {openNav && <ExpandedNavBar openNav={openNav} setOpenNav={setOpenNav} /> }
-            <NavBar isDesktopView={isDesktopView} setOpenNav={setOpenNav} audioRef={audioRef} currentTrack={currentTrack} />
-            <Routes>
-              <Route path='/' element={<Home sectionStyles={sectionStyles} setMood={setMood} setWelcome={setWelcome} />} />
-              <Route path='/about' element={<AboutMe sectionStyles={sectionStyles} />} />
-              <Route path='/services' element={
-                <Suspense fallback={<div>loading...</div>}>
-                  <Services sectionStyles={sectionStyles} />
-                </Suspense>
-              } />
-            </Routes>
-            {/* <Socials stack={'flex-col'} currentWindowHeight={currentWindowHeight} isDesktopView={isDesktopView}/> */}
-            {mood !== 'none' ? <MusicPlayer isDesktopView={isDesktopView} isMobileView={isMobileView} mood={mood} audioRef={audioRef} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} /> : null}
+          {openNav && <ExpandedNavBar openNav={openNav} setOpenNav={setOpenNav} />}
+          <NavBar isDesktopView={isDesktopView} setOpenNav={setOpenNav} audioRef={audioRef} currentTrack={currentTrack!} />
+          <Routes>
+            <Route path='/' element={<Home sectionStyles={sectionStyles} />} />
+            <Route path='/about' element={<AboutMe />} />
+            <Route path='/services' element={
+              <Suspense fallback={<div>loading...</div>}>
+                <Services sectionStyles={sectionStyles} />
+              </Suspense>
+            } />
+          </Routes>
+          <Socials currentWindowHeight={currentWindowHeight} isDesktopView={isDesktopView} />
+          {mood !== 'none' ? <MusicPlayer isDesktopView={isDesktopView} isMobileView={isMobileView} mood={mood} audioRef={audioRef} currentTrack={currentTrack!} setCurrentTrack={setCurrentTrack} /> : null}
         </main>
-    </BrowserRouter>
+      </BrowserRouter>
+    </>
   )
 }
 

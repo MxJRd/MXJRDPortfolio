@@ -4,27 +4,27 @@ import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
 
 
-const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
-  return (
-    <div className='w-4/5 p-4 overflow-y-auto bg-black h-4/5'>
-      <div className='flex items-center content-center justify-between text-center'>
-        <h1>Click through!</h1>
-        <button className='' onClick={() => setShowReceipts(false)}>X</button>
-      </div>
-      <ul className='flex flex-col items-start flex-1 list-disc'>
-        <li>Mentoring over 15 people to get into one of the most competitive career change programs in the world.</li>
-        <li>Top 0.5% of players season 4 in League of Legends.</li>
-        <li>Built my first car. 1983 Porsche 928, LS1 conversion.</li>
-        <li>Number 13 player (number 2 Archer) worldwide Tera 2015.</li>
-        <li>Top 3.6% of players in Chess.com puzzles.</li>
-        <li>Played alongside huge bands like Red Jumpsuit Apparatus, Drowning Pool and more.</li>
-        <li>Self taught audio engineer (you can see if you picked a mood).</li>
-        <li>Most popular teacher at Fun Music school.</li>
-        <li><a href='https://tcymbals.com/artists/maxwell-j-reed/'>Endorsed drummer</a></li>
-      </ul>
-    </div>
-  )
-}
+// const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
+//   return (
+//     <div className='w-4/5 p-4 overflow-y-auto bg-black h-4/5'>
+//       <div className='flex items-center content-center justify-between text-center'>
+//         <h1>Click through!</h1>
+//         <button className='' onClick={() => setShowReceipts(false)}>X</button>
+//       </div>
+//       <ul className='flex flex-col items-start flex-1 list-disc'>
+//         <li>Mentoring over 15 people to get into one of the most competitive career change programs in the world.</li>
+//         <li>Top 0.5% of players season 4 in League of Legends.</li>
+//         <li>Built my first car. 1983 Porsche 928, LS1 conversion.</li>
+//         <li>Number 13 player (number 2 Archer) worldwide Tera 2015.</li>
+//         <li>Top 3.6% of players in Chess.com puzzles.</li>
+//         <li>Played alongside huge bands like Red Jumpsuit Apparatus, Drowning Pool and more.</li>
+//         <li>Self taught audio engineer (you can see if you picked a mood).</li>
+//         <li>Most popular teacher at Fun Music school.</li>
+//         <li><a href='https://tcymbals.com/artists/maxwell-j-reed/'>Endorsed drummer</a></li>
+//       </ul>
+//     </div>
+//   )
+// }
 
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
@@ -67,6 +67,7 @@ const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`${sectionStyles} flex-wrap font-poppins px-28 sm:py-4 py-14`}>
       <article className='flex flex-wrap justify-center w-full h-full gap-4 md:gap-12'>
+        <BackgroundBadge viewTitle='Welcome.' />
         <div className='flex flex-col gap-1 min-w-[340px]'>
           <p className='text-center'>
             My name is

@@ -1,8 +1,3 @@
-enum Companies {
-  fr = 'firstResonance',
-  apple = 'apple'
-}
-
 export interface JobContentType {
   bullets: Array<string>,
   technologies: Array<string>
