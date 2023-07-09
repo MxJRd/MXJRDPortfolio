@@ -2,6 +2,7 @@ import { useState } from 'preact/hooks'
 import { ReactComponent as DownloadIcon } from '../../assets/download.svg'
 import resume from '../../assets/resume'
 import ResumeCard from '../common/ResumeCard'
+import MaxResume from '../../assets/Max_Reed_SinglePager.pdf'
 // import { ReactComponent as ReactLogo } from '../../assets/tech-icons/React-icon.svg'
 // import { ReactComponent as TSLogo } from '../../assets/tech-icons/Typescript_logo_2020.svg'
 // import { ReactComponent as ViteLogo } from '../../assets/tech-icons/Vitejs-logo.svg'
@@ -36,7 +37,7 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
         <div className='flex items-center self-center gap-4'>
           <p className="text-2xl font-bold">Résumé</p>
             <button className='p-1 border-2 rounded'>
-              <a href='../../assets/Max_Reed_SinglePager.pdf' download='Max_Reed_Resume' className='text-raisin-black'><DownloadIcon /></a>
+              <a href={MaxResume} download='Max_Reed_Resume' className='text-raisin-black'><DownloadIcon /></a>
             </button>
         </div>
         <div className='flex flex-col lg:flex-row'>
