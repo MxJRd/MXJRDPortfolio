@@ -3,7 +3,6 @@ import '../src/app.css'
 // import Services from './components/views/Services'
 import WelcomeOverlay from './components/views/WelcomeOverlay'
 import PrimaryView from './components/views/PrimaryView';
-import useSize from './components/Music/useSize';
 
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
             </div>
           )
           : (
-            <PrimaryView sectionStyles={sectionStyles} mood={mood} setMood={setMood} setWelcome={setWelcome} />
+            <PrimaryView sectionStyles={sectionStyles} mood={mood} />
         )}
     </>
   )

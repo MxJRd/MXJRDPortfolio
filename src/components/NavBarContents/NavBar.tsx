@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 import MXJRDLogo from '../../assets/MXJRDLogo.png'
-import MusicAnalyzer from "../Music/MusicAnalyzer"
-import { useEffect, useRef, useState } from "react"
-import { TrackInfoType } from "../../assets/music/MusicMoods"
-import useSize from "../Music/useSize"
-import classNames from "classnames"
+import MusicAnalyzer from '../Music/MusicAnalyzer'
+import { useEffect, useRef, useState } from 'react'
+import useSize from '../Music/useSize'
+import classNames from 'classnames'
 
 const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }) => {
   return (
@@ -18,20 +17,20 @@ const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }) => {
 const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => void }) => {
   return (
     <div className='flex'>
-      <button data-collapse-toggle="navbar-default" type="button" className="inline-flex visible p-2 mb-2 text-sm text-gray-500 rounded-lg md:collapse hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      <button data-collapse-toggle='navbar-default' type='button' className='inline-flex visible p-2 mb-2 text-sm text-gray-500 rounded-lg md:collapse hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
         onClick={() => setOpenNav(true)}
       >
-        <span className="sr-only">Open main menu</span>
-        <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        <span className='sr-only'>Open main menu</span>
+        <svg className='w-6 h-6' aria-hidden='true' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clip-rule='evenodd'></path></svg>
       </button>
     </div>
   )
 }
 
-const NavBarContents = ({ setOpenNav, audioRef, currentTrack, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, currentTrack: TrackInfoType, isDesktopView: boolean }) => {
+const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, isDesktopView: boolean }) => {
   const navBarRef = useRef<HTMLElement>(null)
   const { current } = navBarRef
-  const currentWindowSize = useSize({ height: window.innerHeight, width: window.innerWidth })
+  const currentWindowSize = useSize()
   const [windowSize, setWindowSize] = useState(currentWindowSize)
   const [audioContainerDimensions, setAudioContainerDimensions] = useState<{ height: number, width: number }>({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
 
@@ -44,13 +43,13 @@ const NavBarContents = ({ setOpenNav, audioRef, currentTrack, isDesktopView }: {
   }, [audioContainerDimensions])
 
   return (
-    <nav ref={navBarRef} className="flex justify-between min-w-full pt-8 pb-8 overflow-hidden font-medium text-blue-500 shadow-md h-52 pr-14 z-1000 font-poppins">
-      {audioRef && <MusicAnalyzer containerDimensions={audioContainerDimensions} audioRef={audioRef} currentTrack={currentTrack} />}
+    <nav ref={navBarRef} className='flex justify-between min-w-full pt-8 pb-8 overflow-hidden font-medium text-blue-500 shadow-md h-52 pr-14 z-1000 font-poppins'>
+      {audioRef && <MusicAnalyzer containerDimensions={audioContainerDimensions} audioRef={audioRef} />}
       <NavLogoContainer isDesktopView={isDesktopView} />
       <div className='absolute right-3'>
         <CollapsibleNavBar setOpenNav={setOpenNav}/>
       </div>
-      <ul className="flex flex-col justify-between gap-10 pl-2 mt-1 md:visible collapse">
+      <ul className='flex flex-col justify-between gap-10 pl-2 mt-1 md:visible collapse'>
         <div className='flex gap-5'>
           <li className='text-blue-500'>
             <Link to='/'>
@@ -95,9 +94,9 @@ export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (
   )
 }
 
-const Navbar = ({ setOpenNav, audioRef, currentTrack, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: any, currentTrack: TrackInfoType, isDesktopView: boolean }) => (
+const Navbar = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: any, isDesktopView: boolean }) => (
   <div className='relative w-full'>
-    <NavBarContents setOpenNav={setOpenNav} audioRef={audioRef} currentTrack={currentTrack} isDesktopView={isDesktopView} />
+    <NavBarContents setOpenNav={setOpenNav} audioRef={audioRef} isDesktopView={isDesktopView} />
   </div>
 )
 

@@ -1,12 +1,12 @@
-import { Ref, useEffect, useRef, useState } from "preact/hooks"
+import { Ref, useEffect, useRef, useState } from 'preact/hooks'
 import { ReactComponent as PlayButton } from '../../assets/play-circle.svg'
 import { ReactComponent as PauseButton } from '../../assets/pause-circle.svg'
 import { ReactComponent as PrevButton } from '../../assets/chevrons-left.svg'
 import { ReactComponent as NextButton } from '../../assets/chevrons-right.svg'
-import MusicMoods, { TrackInfoType } from "../../assets/music/MusicMoods"
-import { fetchSVGSize } from "../../helpers"
-import classNames from "classnames"
-import { RefObject } from "preact"
+import MusicMoods, { TrackInfoType } from '../../assets/music/MusicMoods'
+import { fetchSVGSize } from '../../helpers'
+import classNames from 'classnames'
+import { RefObject } from 'preact'
 
 type Icons = 'play' | 'pause' | 'next' | 'prev'
 
@@ -80,12 +80,12 @@ const MusicPlayerControls = ({ audioPlayerRef, trackIndex, setTrackIndex, setPla
 // const MusicPlayerProgressBar = ({ trackProgress, duration, onScrub, onScrubEnd }: MusicPlayerProgressBarProps) => {
 //   return (
 //     <input
-//       type="range"
+//       type='range'
 //       value={trackProgress}
-//       step="1"
-//       min="0"
+//       step='1'
+//       min='0'
 //       max={duration ? duration : `${duration}`}
-//       className="progress"
+//       className='progress'
 //       onChange={(e) => onScrub(e?.target?.value)}
 //       onMouseUp={onScrubEnd}
 //       onKeyUp={onScrubEnd}
@@ -126,11 +126,11 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
 
   useEffect(() => {
     if (play) {
-      audioRef.current!.play();
+      audioRef.current!.play()
     } else {
-      audioRef.current!.pause();
+      audioRef.current!.pause()
     }
-  }, [play]);
+  }, [play])
 
   useEffect(() => {
     const currentTrackInfo = MusicMoods[mood][trackIndex % MusicMoods[mood].length] // no going out of bounds >:(
@@ -152,7 +152,7 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
   const handleTrackProgress = () => {
     setTrackProgress(audioRef.current!.currentTime)
   }
-  const [soundOn, setSoundOn] = useState<Boolean>(true)
+  // const [soundOn, setSoundOn] = useState<Boolean>(true)
   const { artist, track, title } = currentTrack || {}
 
   const displaySeconds = currentSeconds > 9 ? currentSeconds : `0${currentSeconds}`
@@ -168,12 +168,12 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
         <div className='flex items-center justify-between'>
           <p className='px-3'>{currentMinutes}:{displaySeconds}</p>
           <input
-            type="range"
+            type='range'
             value={trackProgress}
-            step="1"
-            min="0"
+            step='1'
+            min='0'
             max={duration ? duration : `${duration}`}
-            className="w-20 mx-1 md:w-32 progress"
+            className='w-20 mx-1 md:w-32 progress'
             onChange={(e: any) => onScrub(e?.target?.value)}
             onMouseUp={onScrubEnd}
             onKeyUp={onScrubEnd}

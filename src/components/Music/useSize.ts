@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-const useSize = (containerDimensions: { height: number, width: number }) => {
+const useSize = () => {
   const [width, setWidth] = useState(window.innerWidth)
   const [height, setHeight] = useState(window.innerHeight)
 

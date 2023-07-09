@@ -20,7 +20,7 @@ const PrimaryView = ({ mood, sectionStyles }: PrimaryViewProps) => {
   const [openNav, setOpenNav] = useState<boolean>(false)
   const [currentTrack, setCurrentTrack] = useState<TrackInfoType>()
 
-  const currentWindowSize = useSize({ width: window.innerWidth, height: window.innerHeight })
+  const currentWindowSize = useSize()
   const [currentWindowHeight, setCurrentWindowHeight] = useState(currentWindowSize[1])
   const [currentWindowWidth, setCurrentWindowWidth] = useState(currentWindowSize[0])
 
@@ -39,7 +39,7 @@ const PrimaryView = ({ mood, sectionStyles }: PrimaryViewProps) => {
       <BrowserRouter>
         <main className='fixed flex flex-col items-center justify-between flex-1 w-full h-full overflow-x-hidden overflow-y-auto text-white max-w-screen'>
           {openNav && <ExpandedNavBar openNav={openNav} setOpenNav={setOpenNav} />}
-          <NavBar isDesktopView={isDesktopView} setOpenNav={setOpenNav} audioRef={audioRef} currentTrack={currentTrack!} />
+          <NavBar isDesktopView={isDesktopView} setOpenNav={setOpenNav} audioRef={audioRef} />
           <Routes>
             <Route path='/' element={<Home sectionStyles={sectionStyles} />} />
             <Route path='/about' element={<AboutMe />} />
