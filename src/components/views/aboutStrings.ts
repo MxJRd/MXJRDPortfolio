@@ -1,9 +1,8 @@
 const aboutStrings = {
   about: {
     title: 'About me',
-    content: `Hello, my name is Max. I like building web applications and learning new things. My current jam is React and Typescript though I have interest in learning backend and security.
-    What separates me from everyone else is seeking out the unorthodox or least trodden path. I love blending science and art together in unique ways, whether it's exploring weird time signatures, melodies and rhythm in music, playing off-meta picks in
-    competitive games, or creating my own unique infusions for alcohol (I like mixology and cooking!). There's beauty and curiosity underneath every rock you choose to lift and I strive to have that philosophy shine through in my work and hobbies.`
+    content: `Hello, I'm Max, a multidisciplinary individual with a passion for exploring different domains. I am drawn to designing and building intuitive mobile-friendly web experiences using technologies like React and Typescript. When I'm not building cool things, I'm probably writing music or playing video games with friends.
+    What sets me apart is my inclination for unconventional paths and embracing the intersection of science and art. I firmly believe that every rock we choose to lift reveals beauty and curiosity, and I strive to embody this philosophy in both my professional work and personal hobbies.`
   },
   achievements: {
     title: 'Achievements',

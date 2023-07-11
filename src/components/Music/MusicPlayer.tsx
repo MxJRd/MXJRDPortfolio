@@ -4,7 +4,7 @@ import { ReactComponent as PauseButton } from '../../assets/pause-circle.svg'
 import { ReactComponent as PrevButton } from '../../assets/chevrons-left.svg'
 import { ReactComponent as NextButton } from '../../assets/chevrons-right.svg'
 import MusicMoods, { TrackInfoType } from '../../assets/music/MusicMoods'
-import { fetchSVGSize } from '../../helpers'
+import { bundleClickHandlerAndAnimation, fetchSVGSize } from '../../helpers'
 import classNames from 'classnames'
 import { RefObject } from 'preact'
 
@@ -32,15 +32,15 @@ interface MusicPlayerProps {
   setCurrentTrack: (currentTrack: TrackInfoType) => void
 }
 
-
-
 const MusicControlButton = ({ size, iconName, clickHandler, styles = '' }: { size: string, iconName: Icons, clickHandler: (...args: any) => void, styles?: string }) => {
+  const [clicked, setClicked] = useState<boolean>(false)
   const svgSize = fetchSVGSize(size)
   const icon = fetchIcon(iconName, svgSize!)
   return (
     <div
-     className={classNames(styles)}
-      onClick={clickHandler}
+      className={classNames(styles, 'cursor-pointer hover:text-pink-500', `${clicked && 'animate-clickPulse'}`)}
+      onClick={() => bundleClickHandlerAndAnimation(setClicked, clickHandler)}
+      onAnimationEnd={() => setClicked(false)}
     >
     {icon}
   </div>

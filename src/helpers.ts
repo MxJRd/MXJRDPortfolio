@@ -1,3 +1,10 @@
+import { useCallback, useEffect, useState } from 'react'
+
+export const bundleClickHandlerAndAnimation = (animationHandler: (b: boolean) => void, clickHandler: ((...args: any) => void)) => {
+  animationHandler(true)
+  clickHandler()
+}
+
 export const fetchButtonSize = (size: string) => {
   switch(size) {
     case 'small':
@@ -7,6 +14,24 @@ export const fetchButtonSize = (size: string) => {
     case 'large':
       return 'p-3'
   }
+}
+
+export const useSize = () => {
+  const [width, setWidth] = useState(window.innerWidth)
+  const [height, setHeight] = useState(window.innerHeight)
+
+  const setSizes = useCallback(() => {
+    setWidth(window.innerWidth)
+    setHeight(window.innerHeight)
+  }, [setWidth, setHeight])
+
+  useEffect(() => {
+    window.addEventListener('resize', setSizes)
+    setSizes()
+    return () => window.removeEventListener('resize', setSizes)
+  }, [setSizes])
+
+  return [width, height]
 }
 
 export const fetchSVGSize = (size: string) => {

@@ -1,8 +1,9 @@
+import { Moods } from '../../app'
 import MXJRDLogo from '../../assets/MXJRDLogo.png'
-import Welcome from "./Welcome"
-import { useState } from "react"
+import Welcome from './Welcome'
+import { useState } from 'react'
 
-const WelcomeOverlay = ({ setMood, setWelcome, sectionStyles }: { sectionStyles: string, setMood: (mood: string) => void, setWelcome: (welcome: boolean) => void }) => {
+const WelcomeOverlay = ({ setMood, setWelcome, sectionStyles }: { sectionStyles: string, setMood: (mood: Moods) => void, setWelcome: (welcome: boolean) => void }) => {
   const [animateDisappear, setAnimateDisappear] = useState<boolean>(false)
   return (
     <div className={`w-[400px] ml-auto mr-auto max-w-[400px] ${animateDisappear ? 'animate-ping' : ''}`}>

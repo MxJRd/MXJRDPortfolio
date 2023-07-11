@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'preact/hooks'
 import DrummingHard from '../../assets/DrummingHard.jpg'
 import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
+import classNames from 'classnames'
 
 
 // const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
@@ -63,6 +64,27 @@ const ScrambleComponent = ({ position }: { position: string }) => {
   )
 }
 
+const ContactMeButton = () => {
+  const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
+  return (
+    <a href='mailto:mxjreed@gmail.com'>
+              <button
+                style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
+                className={
+                  classNames(
+                    'px-5 py-3 border-2 text-raisin-black border-raisin-black hover:bg-gray-400 hover:text-blue-500',
+                    `${clickedAnimation ? 'animate-clickPulse' : ''}`
+                  )
+                }
+                onClick={() => setClickedAnimation(true)}
+                onAnimationEnd={() => setClickedAnimation(false)}
+              >
+                Contact me.
+              </button>
+            </a>
+  )
+}
+
 const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`${sectionStyles} flex-wrap font-poppins px-28 sm:py-4 py-14`}>
@@ -76,13 +98,11 @@ const Home = ({ sectionStyles }: { sectionStyles: string }) => {
           <ScrambleComponent position='relative'/>
           <p className='pt-6 text-center text-dusty-pink'>Play some tunes, enjoy your stay.</p>
           <div className='pt-4'>
-            <a href='mailto:mxjreed@gmail.com'>
-              <button style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }} className='px-5 py-3 border-2 text-raisin-black border-raisin-black hover:bg-gray-400 hover:text-blue-500'>Contact me.</button>
-            </a>
+            <ContactMeButton />
           </div>
         </div>
         <div className='min-w-[240px]'>
-          <img className='w-[240px] h-[240px] rounded-lg' src={DrummingHard} />
+          <img className='w-[240px] h-[240px] rounded-lg object-cover object-right' src={DrummingHard} />
         </div>
       </article>
     </section>

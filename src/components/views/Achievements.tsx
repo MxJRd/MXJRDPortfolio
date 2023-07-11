@@ -2,7 +2,7 @@ import { ReactComponent as PhoneIcon } from '../../assets/phone.svg'
 import { ReactComponent as MailIcon } from '../../assets/mail.svg'
 import { useState } from 'preact/hooks'
 
-export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void}) => {
+export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void}): JSX.Element => {
   return (
     <div className='w-4/5 p-4 overflow-y-auto bg-black h-4/5'>
       <div className='flex items-center content-center justify-between text-center'>
@@ -24,7 +24,7 @@ export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolea
   )
 }
 
-const Achievements = ({ sectionStyles }: { sectionStyles: string }) => {
+const Achievements = ({ sectionStyles }: { sectionStyles: string }): JSX.Element => {
   const [showReceipts, setShowReceipts] = useState(false )
   return (
         <section className={`h-full bg-gray-300 flex flex-col items-center justify-center ${sectionStyles}`}>
@@ -41,7 +41,7 @@ const Achievements = ({ sectionStyles }: { sectionStyles: string }) => {
                   <ReceiptsModal setShowReceipts={setShowReceipts}/> 
                 :
                   <div className='w-5/6 p-4 overflow-y-auto h-4/5'>
-                    <h1 className="pb-4 text-4xl font-bold">Achievements</h1>
+                    <h1 className='pb-4 text-4xl font-bold'>Achievements</h1>
                     <div className='flex flex-row'>
                       <p className='flex-1 text-start'>
                         I am a highly motivated individual with a proven track record of success. As a drummer, I had the opportunity to play professionally alongside my childhood heroes, Red Jumpsuit Apparatus, Drowning Pool, and more.
@@ -53,7 +53,7 @@ const Achievements = ({ sectionStyles }: { sectionStyles: string }) => {
                   </div>
           }
           <div className='h-[100px] flex flex-col items-center gap-4'>
-            <p className="text-2xl font-bold">Contact</p>
+            <p className='text-2xl font-bold'>Contact</p>
             <div className='flex gap-4'>
               <button>
                 <a href='mailto:mxjreed@gmail.com'>

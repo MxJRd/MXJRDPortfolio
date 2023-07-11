@@ -56,9 +56,10 @@ const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: 
           <CustomButton iconName='email' size='medium' />
         </a>
         <div>
-          <button alt='Phone number, hidden unless clicked on. No ez web scraping for u ;P' className='p-2 text-blue-500 border-2 rounded' onClick={() => handleClickPhoneIcon()}>
+          {/* <button alt='Phone number, hidden unless clicked on. No ez web scraping for u ;P' className='hover:bg-gray-400 p-2 text-blue-500 border-2 rounded' onClick={() => handleClickPhoneIcon()}>
             <PhoneIcon/>
-          </button>
+          </button> */}
+          <CustomButton iconName='phone' size='medium' clickHandler={() => handleClickPhoneIcon()} />
           <PhoneNumberComponent open={open} setOpen={setOpen} phoneNumber={phoneNumber}/>
         </div>
       </article>

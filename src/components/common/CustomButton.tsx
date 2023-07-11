@@ -4,7 +4,8 @@ import { ReactComponent as LinkedInIcon } from '../../assets/linkedin.svg'
 import { ReactComponent as PhoneIcon } from '../../assets/phone.svg'
 import { ReactComponent as EmailIcon } from '../../assets/mail.svg'
 import { ReactComponent as ClosedChevronIcon } from '../../assets/chevron-right.svg'
-import { fetchButtonSize } from '../../helpers'
+import { bundleClickHandlerAndAnimation, fetchButtonSize } from '../../helpers'
+import { useState } from 'react'
 
 type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron'
 type Sizes = 'small' | 'medium' | 'large'
@@ -38,20 +39,31 @@ const fetchIcon = (iconName: Icons) => {
 interface CustomButtonProps {
   iconName: Icons
   textContent?: string
-  clickHandler?: ({ ...args }) => void
+  clickHandler?: (...args: any) => void
   size: Sizes
   color?: Colors
 }
 
-const CustomButton = ({ iconName, clickHandler, textContent = '', size = 'medium', color = 'blue' }: CustomButtonProps) => {
+const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', size = 'medium', color = 'blue' }: CustomButtonProps) => {
+  const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
   const iconOnly = 'border-2 rounded'
-
   const icon = fetchIcon(iconName)
   const buttonSize = fetchButtonSize(size)
   const buttonColor = fetchColor(color)
+
   return (
     <div>
-      <button className={classNames(`${iconName ? iconOnly : ''}`, buttonSize, buttonColor, 'hover:bg-gray-400')} onClick={clickHandler}>
+      <button
+        className={classNames(
+          `${iconName ? iconOnly : ''}`,
+          `${clickedAnimation ? 'animate-clickPulse' : ''}`,
+          buttonSize,
+          buttonColor,
+          'hover:bg-gray-300 cursor-pointer'
+        )}
+        onClick={() => bundleClickHandlerAndAnimation(setClickedAnimation, clickHandler)}
+        onAnimationEnd={() => setClickedAnimation(false)}
+      >
         { iconName && icon}
         { textContent && textContent }
       </button>

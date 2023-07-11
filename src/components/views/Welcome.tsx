@@ -1,19 +1,20 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import { Moods } from '../../app';
 
 interface WelcomeProps {
   sectionStyles: string
-  setMood: (mood: string) => void
+  setMood: (mood: Moods) => void
   setWelcome: (welcome: boolean) => void
   setAnimateDisappear: (animate: boolean) => void
 }
 
 const Welcome = ({ sectionStyles, setMood, setWelcome, setAnimateDisappear }: WelcomeProps) => {
   let timeoutToClear: number
-  const setWelcomeAndMood = (mood: string) => () => {
+  const setWelcomeAndMood = (mood: Moods) => () => {
     setMood(mood)
     setWelcome(false)
   }
-  const waitToSetMood = (mood: string) => async () => {
+  const waitToSetMood = (mood: Moods) => async () => {
     setAnimateDisappear(true)
     timeoutToClear = setTimeout(setWelcomeAndMood(mood), 700)
   }

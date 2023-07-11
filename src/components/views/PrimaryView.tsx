@@ -7,8 +7,9 @@ import Home from './Home'
 import AboutMe from './AboutMe'
 import { BrowserRouter } from 'react-router-dom'
 import { TrackInfoType } from '../../assets/music/MusicMoods'
-import useSize from '../Music/useSize'
+import { useSize } from '../../helpers'
 import Socials from '../NavBarContents/Socials'
+import LoadingSpinner from '../common/LoadingSpinner'
 const Services = lazy(() => import('./Services'))
 
 interface PrimaryViewProps {
@@ -44,7 +45,7 @@ const PrimaryView = ({ mood, sectionStyles }: PrimaryViewProps) => {
             <Route path='/' element={<Home sectionStyles={sectionStyles} />} />
             <Route path='/about' element={<AboutMe />} />
             <Route path='/services' element={
-              <Suspense fallback={<div>loading...</div>}>
+              <Suspense fallback={<LoadingSpinner />}>
                 <Services sectionStyles={sectionStyles} />
               </Suspense>
             } />

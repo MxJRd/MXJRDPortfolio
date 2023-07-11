@@ -1,8 +1,11 @@
-import { useState } from 'preact/hooks'
+import { StateUpdater, useState } from 'preact/hooks'
 import { ReactComponent as DownloadIcon } from '../../assets/download.svg'
 import resume from '../../assets/resume'
 import ResumeCard from '../common/ResumeCard'
 import MaxResume from '../../assets/Max_Reed_SinglePager.pdf'
+import { useInView } from 'react-intersection-observer'
+import classNames from 'classnames'
+import { useEffect } from 'react'
 // import { ReactComponent as ReactLogo } from '../../assets/tech-icons/React-icon.svg'
 // import { ReactComponent as TSLogo } from '../../assets/tech-icons/Typescript_logo_2020.svg'
 // import { ReactComponent as ViteLogo } from '../../assets/tech-icons/Vitejs-logo.svg'
@@ -26,6 +29,16 @@ import MaxResume from '../../assets/Max_Reed_SinglePager.pdf'
 //   )
 // }
 
+const BulletComponent = ({ bulletContent, animationSlide }: { bulletContent: string, animationSlide: string }) => {
+  const { ref, inView } = useInView({
+    threshold: 0
+  })
+
+  return (
+    <p ref={ref} className={classNames('tracking-wide font-roboto-default', `${inView && animationSlide}`)}>{bulletContent}</p>
+  )
+}
+
 const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
   const { companies: { firstResonance, apple } } = resume || {}
   const [company, setCompany] = useState(firstResonance)
@@ -33,9 +46,9 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`flex ${sectionStyles} justify-center h-screen xl:min-w-[1400px] lg:min-w-[1200px] md:min-w-[1000px] sm:max-w-[1000px]`}>
       <div className='flex flex-col w-4/5 gap-2 rounded-lg text-start'>
-        <h1 id='services-scroll' className="self-center pt-6 text-4xl font-bold whitespace-nowrap">Recent Experience</h1>
+        <h1 id='services-scroll' className='self-center pt-6 text-4xl font-bold whitespace-nowrap'>Recent Experience</h1>
         <div className='flex items-center self-center gap-4'>
-          <p className="text-2xl font-bold">Résumé</p>
+          <p className='text-2xl font-bold'>Résumé</p>
             <button className='p-1 border-2 rounded'>
               <a href={MaxResume} download='Max_Reed_Resume' className='text-raisin-black'><DownloadIcon /></a>
             </button>
@@ -47,7 +60,7 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
           </div>
           <div className='p-1 space-y-2 md:p-4 flex-2'>
             <p className='pb-4 font-roboto-matrix'>{primer}</p>
-            {bullets.map((bull: any) => <p className='tracking-wide font-roboto-default'>{bull}</p>)}
+            {bullets.map((bull: any, idx: number) => <BulletComponent bulletContent={bull} animationSlide={`${idx % 2 === 0 ? 'animate-slide-from-right' : 'animate-slide-from-left'}`}/>)}
           </div>
         </div>
       </div>

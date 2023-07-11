@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom'
 import MXJRDLogo from '../../assets/MXJRDLogo.png'
 import MusicAnalyzer from '../Music/MusicAnalyzer'
 import { useEffect, useRef, useState } from 'react'
-import useSize from '../Music/useSize'
 import classNames from 'classnames'
 
-const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }) => {
+const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }): JSX.Element => {
   return (
     <div className={classNames('flex gap-2 pl-10 sm:pl-14 pt-0.5')}>
       <img className='rounded-lg w-9 h-9' src={MXJRDLogo} />
@@ -14,7 +13,7 @@ const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }) => {
   )
 }
 
-const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => void }) => {
+const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => void }): JSX.Element => {
   return (
     <div className='flex'>
       <button data-collapse-toggle='navbar-default' type='button' className='inline-flex visible p-2 mb-2 text-sm text-gray-500 rounded-lg md:collapse hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
@@ -27,16 +26,10 @@ const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => v
   )
 }
 
-const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, isDesktopView: boolean }) => {
+const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, isDesktopView: boolean }): JSX.Element => {
   const navBarRef = useRef<HTMLElement>(null)
   const { current } = navBarRef
-  const currentWindowSize = useSize()
-  const [windowSize, setWindowSize] = useState(currentWindowSize)
   const [audioContainerDimensions, setAudioContainerDimensions] = useState<{ height: number, width: number }>({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
-
-  useEffect(() => {
-    setWindowSize([window.innerHeight, window.innerWidth])
-  }, [windowSize])
 
   useEffect(() => {
     setAudioContainerDimensions({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
@@ -72,7 +65,7 @@ const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (
   )
 }
 
-export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (openNavBar: boolean) => void }) => {
+export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (openNavBar: boolean) => void }): JSX.Element => {
   return (
     <ul style={{ zIndex: 1 }} className='absolute flex flex-col justify-around w-full mt-1 shadow-lg h-52 bg-raisin-black'>
       <Link to='/'>
@@ -94,7 +87,7 @@ export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (
   )
 }
 
-const Navbar = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: any, isDesktopView: boolean }) => (
+const Navbar = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: any, isDesktopView: boolean }): JSX.Element => (
   <div className='relative w-full'>
     <NavBarContents setOpenNav={setOpenNav} audioRef={audioRef} isDesktopView={isDesktopView} />
   </div>

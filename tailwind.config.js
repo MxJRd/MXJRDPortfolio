@@ -13,6 +13,47 @@ export default {
       'secondary': '#ffffff'
     },
     extend: {
+      animation: {
+        clickBounce: 'bounce 0.2s',
+        clickPulse: 'pulse 0.5s',
+        'slide-from-left': 'slide-from-left 0.75s forwards',
+        'slide-from-right': 'slide-from-right 0.75s forwards'
+      },
+      keyframes: {
+        'click-bounce': {
+          '0%, 100%': {
+            transform: 'translateY(-1%)',
+            'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)'
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)'
+          }
+        },
+        'click-pulse': {
+          '0%': {
+            transform: 'transform(scale(.9) perspective(1px))'
+          },
+          '70%': {
+            transform: 'transform(scale(1))',
+            'box-shadow': '0 0 0 50px rgba(#ffffff, 0)'
+          },
+          '100%': {
+            transform: 'transform(scale(.9))',
+            'box-shadow': '0 0 0 0 rgba(#ffffff, 0)'
+          }
+        },
+        'slide-from-left': {
+          '0%': {
+            transform: 'translateX(100%)'
+          }
+        },
+        'slide-from-right': {
+          '0%': {
+            transform: 'translateX(-100%)'
+          }
+        }
+      },
       colors: {
         'primary': '#ffffff',
         'secondary': '#ffffff',
@@ -40,9 +81,3 @@ export default {
   },
   plugins: [],
 }
-/*
-    textColor: {
-      primary: '#ffffff',
-      secondary: '#ffffff'
-    },
-*/

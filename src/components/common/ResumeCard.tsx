@@ -1,6 +1,6 @@
-import { JobContentType } from "../../assets/resume"
-import Badge from "./Badge"
-import CustomButton from "./CustomButton"
+import { JobContentType } from '../../assets/resume'
+import Badge from './Badge'
+import CustomButton from './CustomButton'
 
 const TechList = ({ technologies }: { technologies: Array<string> } ) => {
   return (
@@ -28,7 +28,7 @@ const ResumeCard = ({ name, setCompany, company, logo }: { name: string, setComp
         <div className='relative flex flex-row items-center justify-center justify-between gap-4 -translate-y-4 pt-3'>
           <div className='flex'>
             {logo && logo}
-            <p className="text-2xl font-bold">{name}</p>
+            <p className='text-2xl font-bold'>{name}</p>
           </div>
           <CustomButton iconName='right-chevron' color='black' size='small' clickHandler={() => setCompany(company)} />
         </div>
