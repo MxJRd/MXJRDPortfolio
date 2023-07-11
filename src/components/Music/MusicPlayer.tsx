@@ -80,11 +80,10 @@ const VolumeSlider = ({ volume, audioRef, setVolume }: { volume: number, audioRe
   return (
     <div className='flex justify-start min-w-[220px] max-w-[220px]'>
       <div className='flex content-center'>
-        <SpeakerOn className='ml-2 mr-2 pr-2'/>
+        <SpeakerOn className='ml-1 mr-2 pr-2'/>
       </div>
       <input 
         type="range"
-        className=''
         value={volume}
         min="1" 
         max="100"
@@ -108,7 +107,6 @@ const TrackProgressSlider = ({ duration, audioRef, play, setPlay, trackProgress,
 
   const songLengthMinutes = Math.floor(duration / 60)
   const songLengthSeconds = Math.floor(duration % 60)
-  console.log(songLengthSeconds)
   const currentMinutes = Math.floor(trackProgress / 60)
   const currentSeconds = Math.floor(trackProgress % 60)
 
@@ -126,7 +124,7 @@ const TrackProgressSlider = ({ duration, audioRef, play, setPlay, trackProgress,
     }
   }
   return (
-    <div className='flex min-w-[272px] justify-between min-w-[220px] max-w-[220px]'>
+    <div className='flex min-w-[272px] justify-center min-w-[220px] max-w-[220px]'>
       <p className='pr-2'>{currentMinutes}:{displayCurrentSeconds}</p>
       <input
         type='range'
@@ -148,7 +146,7 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
   const [play, setPlay] = useState(false)
   const [trackProgress, setTrackProgress] = useState(0)
   const [trackIndex, setTrackIndex] = useState<number>(0)
-  const [volume, setVolume] = useState(0.25)
+  const [volume, setVolume] = useState(0.01)
   const [duration, setDuration] = useState<number>(0)
 
   const playerGradientColor = 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'
@@ -176,12 +174,11 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
     return () => clearTimeout(trackChangeTimer)
   
   }, [trackIndex, mood])
-  useEffect(() => {
-    setVolume(Math.floor(audioRef && audioRef.current!.volume))
-    audioRef.current!.volume = volume
-  }, [])
+
   useEffect(() => {
     const initializePlayer = () => mood !== 'none' && playTrack()
+    setVolume(audioRef.current!.volume)
+    audioRef.current!.volume = volume
     const initialPlayTimer = setTimeout(initializePlayer, 150)
     return () => clearTimeout(initialPlayTimer)
   }, [])
