@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks'
 import '../src/app.css'
-import WelcomeOverlay from './components/views/WelcomeOverlay'
+import WelcomeOverlay from './components/views/Welcome/WelcomeOverlay'
 import PrimaryView from './components/views/PrimaryView';
 
 export type Moods = 'yazzy' | 'mathy' | 'none'

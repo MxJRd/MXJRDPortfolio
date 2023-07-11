@@ -1,10 +1,11 @@
-import BackgroundBadge from '../common/BackgroundBadge'
-import MentorshipPic from '../../assets/services-pics/CollaboratingTeamwork.png'
-import EmploymentPic from '../../assets/services-pics/GuyLookingAtCity.png'
-import FreelancePic from '../../assets/services-pics/LaptopDarkRoom.png'
-import ServicesCard from '../common/ServicesCard'
-import { ReactComponent as ChevronDown } from '../../assets/chevron-down.svg'
+import BackgroundBadge from '../../common/BackgroundBadge'
+import MentorshipPic from '../../../assets/services-pics/CollaboratingTeamwork.png'
+import EmploymentPic from '../../../assets/services-pics/GuyLookingAtCity.png'
+import FreelancePic from '../../../assets/services-pics/LaptopDarkRoom.png'
+import ServicesCard from '../../common/ServicesCard'
+import { ReactComponent as ChevronDown } from '../../../assets/chevron-down.svg'
 import Resume from './Resume'
+import HoneycombBackground from '../../common/HoneycombBackground'
 
 export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
   return (
@@ -31,6 +32,7 @@ export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolea
 const Services = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`flex flex-col ${sectionStyles} overflow-y-auto overflow-x-hidden`}>
+      <HoneycombBackground />
       <BackgroundBadge viewTitle={'Services.'} />
       <div className='flex flex-col py-14 md:p-4'>
         <ul className='flex flex-col sm:flex-row h-full gap-2 xl:gap-8 lg:gap-6 md:gap-4 self-center max-w-[250px] sm:max-w-full'>

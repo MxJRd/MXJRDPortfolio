@@ -1,11 +1,13 @@
-import ArticleCard from '../common/ArticleCard'
-import BackgroundBadge from '../common/BackgroundBadge';
+import ArticleCard from '../../common/ArticleCard'
+import BackgroundBadge from '../../common/BackgroundBadge'
+import HoneycombBackground from '../../common/HoneycombBackground'
 import aboutStrings from './aboutStrings'
 
 const AboutMe = (): JSX.Element => {
   const { about, achievements } = aboutStrings
   return (
     <section className={`flex flex-col items-center max-sm:p-6 w-full h-full overflow-auto pt-1`}>
+      <HoneycombBackground />
       <BackgroundBadge viewTitle={'About.'} />
       <ArticleCard title={about.title} content={about.content}/>
       <ArticleCard title={achievements.title} content={achievements.content}/>

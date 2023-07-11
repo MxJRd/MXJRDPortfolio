@@ -64,7 +64,7 @@ class MatrixTextScrambler {
   setText(newText: string) {
     const oldText = this.el.innerText!
     const length = Math.max(oldText.length, newText.length)
-    const promise = new Promise((resolve) => this.resolve = resolve)
+    const callback= () => 1
     this.queue = []
     for (let i = 0; i < length; i++) {
       const from = oldText[i] || ''
@@ -76,7 +76,7 @@ class MatrixTextScrambler {
     cancelAnimationFrame(this.frameRequest)
     this.frame = 0
     this.update()
-    return promise
+    return callback
   }
   update() {
     let output = ''
@@ -98,7 +98,6 @@ class MatrixTextScrambler {
     }
     this.el.innerHTML = output
     if (complete === this.queue.length) {
-      this.resolve()
     } else {
       this.frameRequest = requestAnimationFrame(this.update)
       this.frame++
@@ -106,6 +105,9 @@ class MatrixTextScrambler {
   }
   randomChar() {
     return this.chars[Math.floor(Math.random() * this.chars.length)]
+  }
+  setPromise(promise: any) {
+    this.resolve = promise.resolve
   }
 }
 

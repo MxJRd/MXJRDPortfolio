@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Moods } from '../../app';
+import { Moods } from '../../../app';
 
 interface WelcomeProps {
   sectionStyles: string

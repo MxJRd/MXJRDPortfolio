@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'preact/hooks'
 import DrummingHard from '../../assets/DrummingHard.jpg'
+
 import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
 import classNames from 'classnames'
+import HoneycombBackground from '../common/HoneycombBackground'
 
 
 // const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
@@ -30,9 +32,7 @@ import classNames from 'classnames'
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
   const [idx, setIdx] = useState<number>(0)
-  const test = new Promise((resolve) => resolve)
-  // @ts-ignore Effect works outside the scope of React. We don't want the component to rerender constantly.
-  const OccupationTextScrambler = new TextScramble(scrambleRef.current!, [], test)
+  const OccupationTextScrambler = new TextScramble(scrambleRef.current!, [], () => null)
   const occupations = [
     'Software engineer.',
     'Drummer.',
@@ -41,17 +41,16 @@ const ScrambleComponent = ({ position }: { position: string }) => {
     'Mixologist.',
     'Mentor.'
   ]
+  const nextOccupation = async () => await OccupationTextScrambler.setText(occupations[idx])
   const goNextOccupation = () => {
     setIdx((prevIdx) => (prevIdx + 1) % occupations.length)
   }
   
   useEffect(() => {
     goNextOccupation()
-
+    OccupationTextScrambler.setPromise(nextOccupation)
   }, [])
   useEffect(() => {
-    const nextOccupation = async () => await OccupationTextScrambler.setText(occupations[idx])
-
     nextOccupation()
     const timer = setTimeout(goNextOccupation, 2000)
     return () => {
@@ -60,7 +59,7 @@ const ScrambleComponent = ({ position }: { position: string }) => {
   }, [OccupationTextScrambler])
 
   return (
-    <p ref={scrambleRef} id='test' className={`${position} text-center text-xl font-roboto-matrix`}>{occupations[idx]}</p>
+    <p ref={scrambleRef} id='test' className={`${position} text-center text-xl font-roboto-matrix`}></p>
   )
 }
 
@@ -68,26 +67,27 @@ const ContactMeButton = () => {
   const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
   return (
     <a href='mailto:mxjreed@gmail.com'>
-              <button
-                style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
-                className={
-                  classNames(
-                    'px-5 py-3 border-2 text-raisin-black border-raisin-black hover:bg-gray-400 hover:text-blue-500',
-                    `${clickedAnimation ? 'animate-clickPulse' : ''}`
-                  )
-                }
-                onClick={() => setClickedAnimation(true)}
-                onAnimationEnd={() => setClickedAnimation(false)}
-              >
-                Contact me.
-              </button>
-            </a>
+      <button
+        style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
+        className={
+          classNames(
+            'px-5 py-3 border-2 text-raisin-black border-raisin-black hover:bg-gray-400 hover:text-blue-500',
+            `${clickedAnimation ? 'animate-clickPulse' : ''}`
+          )
+        }
+        onClick={() => setClickedAnimation(true)}
+        onAnimationEnd={() => setClickedAnimation(false)}
+      >
+        Contact me.
+      </button>
+    </a>
   )
 }
 
 const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`${sectionStyles} flex-wrap font-poppins px-28 sm:py-4 py-14`}>
+      <HoneycombBackground />
       <article className='flex flex-wrap justify-center w-full h-full gap-4 md:gap-12'>
         <BackgroundBadge viewTitle='Welcome.' />
         <div className='flex flex-col gap-1 min-w-[340px]'>

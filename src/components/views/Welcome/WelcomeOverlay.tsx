@@ -1,5 +1,5 @@
-import { Moods } from '../../app'
-import MXJRDLogo from '../../assets/MXJRDLogo.png'
+import { Moods } from '../../../app'
+import MXJRDLogo from '../../../assets/MXJRDLogo.png'
 import Welcome from './Welcome'
 import { useState } from 'react'
 

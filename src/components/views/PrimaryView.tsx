@@ -4,13 +4,13 @@ import MusicPlayer from '../Music/MusicPlayer'
 import { Suspense, lazy } from 'preact/compat'
 import { useEffect, useRef, useState } from 'react'
 import Home from './Home'
-import AboutMe from './AboutMe'
+import AboutMe from './AboutMe/AboutMe'
 import { BrowserRouter } from 'react-router-dom'
 import { TrackInfoType } from '../../assets/music/MusicMoods'
 import { useSize } from '../../helpers'
 import Socials from '../NavBarContents/Socials'
 import LoadingSpinner from '../common/LoadingSpinner'
-const Services = lazy(() => import('./Services'))
+const Services = lazy(() => import('./Services/Services'))
 
 interface PrimaryViewProps {
   mood: string
