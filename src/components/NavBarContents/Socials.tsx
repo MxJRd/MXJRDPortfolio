@@ -1,4 +1,3 @@
-import { ReactComponent as PhoneIcon } from '../../assets/phone.svg'
 import { useRef, useState } from 'preact/hooks'
 import useClickAway from './hooks/useClickAway'
 import CustomButton from '../common/CustomButton'
