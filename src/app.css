@@ -12,9 +12,14 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-webkit-slider-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background: #009fda;
+  cursor: pointer;
+  margin: -4px;
 }
 
 input[type=range]::-moz-slider-thumb {
