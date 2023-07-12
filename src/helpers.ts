@@ -41,7 +41,7 @@ export const fetchSVGSize = (size: string) => {
     case 'medium':
       return 'w-8'
     case 'large':
-      return 'w-8'
+      return 'w-12'
   }
 }
 

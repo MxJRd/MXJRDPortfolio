@@ -5,28 +5,6 @@ import ResumeCard from '../../common/ResumeCard'
 import MaxResume from '../../../assets/Max_Reed_SinglePager.pdf'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'
-// import { ReactComponent as ReactLogo } from '../../assets/tech-icons/React-icon.svg'
-// import { ReactComponent as TSLogo } from '../../assets/tech-icons/Typescript_logo_2020.svg'
-// import { ReactComponent as ViteLogo } from '../../assets/tech-icons/Vitejs-logo.svg'
-
-// const ProfessionalTech = () => {
-//   return (
-//     <div className='flex flex-col items-center justify-center gap-4 p-4'>
-//       <p className='text-4xl font-bold '>Favorite tech!</p>
-//       <ul alt='A list of frontend technology logos.' className='flex gap-2'>
-//         <li>
-//           <ReactLogo className='w-12 h-12'/>
-//         </li>
-//         <li>
-//           <ViteLogo className='w-12 h-12'/>
-//         </li>
-//         <li>
-//           <TSLogo className='w-12 h-12'/>
-//         </li>
-//       </ul>
-//     </div>
-//   )
-// }
 
 const BulletComponent = ({ bulletContent, animationSlide }: { bulletContent: string, animationSlide: string }) => {
   const { ref, inView } = useInView({

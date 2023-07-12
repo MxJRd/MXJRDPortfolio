@@ -50,7 +50,7 @@ const MusicControlButton = ({ size, iconName, clickHandler, styles = '' }: { siz
 
 const MusicPlayerControls = ({ audioPlayerRef, trackIndex, setTrackIndex, setPlay, play }: { audioPlayerRef: Ref<HTMLAudioElement>, trackIndex: number, play: boolean, setPlay: (playPause: boolean) => void, setTrackIndex: (prevIdx: number) => void }) => {
   return (
-    <div style={{ justifyContent: 'space-between' }} className='flex w-full'>
+    <div style={{ justifyContent: 'space-between' }} className='flex'>
       <MusicControlButton styles='pl-1' iconName='prev' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex + 1))}/>
       {
         play
@@ -111,7 +111,7 @@ const TrackProgressSlider = ({ duration, audioRef, play, setPlay, trackProgress,
   const currentSeconds = Math.floor(trackProgress % 60)
 
   const displayCurrentSeconds = currentSeconds > 9 ? currentSeconds : `0${currentSeconds}`
-  const displayLengthSeconds = songLengthSeconds > 9 ? songLengthSeconds : `${songLengthSeconds}0`
+  const displayLengthSeconds = songLengthSeconds > 9 ? songLengthSeconds : `0${songLengthSeconds}`
   const onScrub = (value: any) => {
     clearInterval(intervalRef.current!)
     audioRef.current!.currentTime = value
@@ -193,14 +193,14 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
   }
   return (
     <div className={`absolute m-4 top-16 right-4 md:min-w-[272px] p-0.5 rounded-lg ${playerGradientColor}`}>
-      <section id='music-player-background' className='min-w-full space-y-0 text-sm rounded-md bg-raisin-black'>
+      <section id='music-player-background' className='space-y-0 text-sm rounded-md bg-raisin-black content-center'>
         <p className='text-pink-500 font-poppins'>{title}</p>
         <p className='font-roboto-matrix pb-0.5'>{artist}</p>
         <MusicPlayerControls play={play} setPlay={setPlay} audioPlayerRef={audioRef} trackIndex={trackIndex} setTrackIndex={setTrackIndex} />
-          <div className='flex flex-col items-center px-1'>
-            <TrackProgressSlider audioRef={audioRef} duration={duration} play={play} setPlay={setPlay} trackProgress={trackProgress} setTrackProgress={setTrackProgress} />
-            <VolumeSlider audioRef={audioRef} volume={volume} setVolume={setVolume} />
-          </div>
+        <div className='flex flex-col items-center px-1 max-w-[250px] md:max-w-full'>
+          <TrackProgressSlider audioRef={audioRef} duration={duration} play={play} setPlay={setPlay} trackProgress={trackProgress} setTrackProgress={setTrackProgress} />
+          <VolumeSlider audioRef={audioRef} volume={volume} setVolume={setVolume} />
+        </div>
       </section>
       { audioRef && <audio ref={audioRef} src={track} crossOrigin='anonymous' preload='metadata' onLoadedMetadata={handleMetadata} onTimeUpdate={handleTrackProgress} /> }
     </div>

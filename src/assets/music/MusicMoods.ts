@@ -2,6 +2,7 @@ import Cordova from './CordovaDraft3.mp3'
 import Waves from './Song2Draft1.mp3'
 import Underdog from './Song1Revised1.mp3'
 import Tendencies from './Tendencies(2).mp3'
+import ThousandthCut from './Major9sMakeMeMoistNEUTRON.mp3'
 
 export interface TrackInfoType {
   artist: string
@@ -35,9 +36,15 @@ const TendenciesTrackInfo: TrackInfoType = {
   track: Tendencies
 }
 
+const ThousandthCutTrackInfo: TrackInfoType = {
+  artist: 'All Signs Point To',
+  title: 'ThousandthCut',
+  track: ThousandthCut
+}
+
 const MusicMoods: MusicMoodsType = {
   yazzy: [UnderdogTrackInfo, WavesTrackInfo, CordovaTrackInfo],
-  mathy: [TendenciesTrackInfo]
+  mathy: [TendenciesTrackInfo, ThousandthCutTrackInfo]
 }
 
 export default MusicMoods
