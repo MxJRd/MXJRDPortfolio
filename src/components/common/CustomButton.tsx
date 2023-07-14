@@ -11,6 +11,16 @@ import { makeShimmer } from '../../animations'
 type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron'
 type Sizes = 'small' | 'medium' | 'large'
 type Colors = 'blue' | 'black'
+type BGColors = 'white' | 'slate'
+
+const fetchBGColor = (bgColor: string) => {
+  switch(bgColor) {
+    case 'white':
+      return 'bg-[#ffffff]'
+    case 'slate':
+      return 'bg-slate-100'
+  }
+}
 
 const fetchColor = (color: string) => {
   switch(color) {
@@ -43,15 +53,16 @@ interface CustomButtonProps {
   clickHandler?: (...args: any) => void
   size: Sizes
   color?: Colors
+  bgColor: BGColors
 }
 
-const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', size = 'medium', color = 'blue' }: CustomButtonProps) => {
+const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', size = 'medium', color = 'blue', bgColor = 'white' }: CustomButtonProps) => {
   const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
   const iconOnly = 'border-2 rounded'
   const icon = fetchIcon(iconName)
   const buttonSize = fetchButtonSize(size)
   const buttonColor = fetchColor(color)
-
+  const backgroundColor = fetchBGColor(bgColor)
   return (
     <div>
       <button
@@ -62,6 +73,7 @@ const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', s
           buttonColor,
           'hover:bg-gray-300 cursor-pointer overflow-hidden',
           'before:animate-shimmer',
+          backgroundColor,
           `${makeShimmer}`
         )}
         onClick={() => bundleClickHandlerAndAnimation(setClickedAnimation, clickHandler)}

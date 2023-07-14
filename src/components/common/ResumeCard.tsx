@@ -30,7 +30,7 @@ const ResumeCard = ({ name, setCompany, company, logo }: { name: string, setComp
             {logo && logo}
             <p className='text-2xl font-bold'>{name}</p>
           </div>
-          <CustomButton iconName='right-chevron' color='black' size='small' clickHandler={() => setCompany(company)} />
+          <CustomButton iconName='right-chevron' color='black' bgColor='slate' size='small' clickHandler={() => setCompany(company)} />
         </div>
         <TechList technologies={technologies} />
       </div>

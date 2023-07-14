@@ -44,21 +44,21 @@ const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: 
       <div className='h-64 min-h-60' hidden={!(isDesktopView)}></div>
       <article className={`flex ${isDesktopView ? 'flex-col' : 'flex-row'} gap-2`}>
         <a target='_blank' href='https://github.com/mxjrd'>
-          <CustomButton iconName='github' size='medium' />
+          <CustomButton iconName='github' size='medium' bgColor='white' />
         </a>
         <a target='_blank' href='https://linkedin.com/in/mxjrd'>
-          <CustomButton iconName='linkedin' size='medium' />
+          <CustomButton iconName='linkedin' size='medium' bgColor='white' />
         </a>
       </article>
       <article className={`flex ${isDesktopView ? 'flex-col' : 'flex-row'} gap-2`}>
         <a href='mailto:mxjreed@gmail.com'>
-          <CustomButton iconName='email' size='medium' />
+          <CustomButton iconName='email' size='medium' bgColor='white' />
         </a>
         <div>
           {/* <button className='hover:bg-gray-400 p-2 text-blue-500 border-2 rounded' onClick={() => handleClickPhoneIcon()}>
             <PhoneIcon/>
           </button> */}
-          <CustomButton iconName='phone' size='medium' clickHandler={() => handleClickPhoneIcon()} />
+          <CustomButton iconName='phone' size='medium' clickHandler={() => handleClickPhoneIcon()} bgColor='white' />
           <PhoneNumberComponent open={open} setOpen={setOpen} phoneNumber={phoneNumber}/>
         </div>
       </article>
