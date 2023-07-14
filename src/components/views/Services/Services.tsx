@@ -35,15 +35,15 @@ const Services = ({ sectionStyles }: { sectionStyles: string }) => {
       <HoneycombBackground />
       <BackgroundBadge viewTitle={'Services.'} />
       <div className='flex flex-col py-14 md:p-4'>
-        <ul className='flex flex-col sm:flex-row h-full gap-2 xl:gap-8 lg:gap-6 md:gap-4 self-center max-w-[250px] sm:max-w-full'>
+        <ul className='flex flex-col sm:flex-row h-full gap-2 xl:gap-8 lg:gap-6 md:gap-4 self-center max-w-[250px] sm:max-w-full pb-8'>
           <ServicesCard title='Employment' content='Download my resume here!' image={EmploymentPic}/>
           <ServicesCard title='Freelance' content="Let's build something together." image={FreelancePic}/>
           <ServicesCard title='Mentorship' content='I love teaching!' image={MentorshipPic}/>
         </ul>
         <div className='flex flex-col items-center invisible p-12 md:visible'>
           <p className='text-2xl font-poppins text-semibold'>Scroll to see my resume!</p>
-          <a href='#services-scroll' className='p-4 cursor text-fuchsia' >
-            <ChevronDown />
+          <a href='#services-scroll' className='cursor text-fuchsia' >
+            <ChevronDown style={{ width: '36px', height: '36px' }} />
           </a>
         </div>
       </div>

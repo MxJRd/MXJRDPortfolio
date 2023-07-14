@@ -35,7 +35,7 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
             <ResumeCard name='First Resonance' setCompany={setCompany} company={firstResonance} />
             <ResumeCard name='Apple' setCompany={setCompany} company={apple} />
           </div>
-          <div className='p-1 space-y-2 md:p-4 flex-2'>
+          <div className='p-1 space-y-2 md:p-4 flex-2 mb-16'>
             <p className='pb-4 font-roboto-matrix'>{primer}</p>
             {bullets.map((bull: any, idx: number) => <BulletComponent bulletContent={bull} animationSlide={`${idx % 2 === 0 ? 'animate-slide-from-right' : 'animate-slide-from-left'}`}/>)}
           </div>

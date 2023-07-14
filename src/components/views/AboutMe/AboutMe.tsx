@@ -80,7 +80,9 @@ const AboutMe = (): JSX.Element => {
       <BackgroundBadge viewTitle={'About.'} />
       <ArticleCard title={about.title} content={about.content}/>
       <ProfessionalTech />
-      <ArticleCard title={achievements.title} content={achievements.content}/>
+      <div className='mb-16'>
+        <ArticleCard title={achievements.title} content={achievements.content}/>
+      </div>
       {/* <ArticleCard title={'Recent Jams'} content={'Take a peek at what I\'m listening to :)'} /> */}
     </section>
   )
