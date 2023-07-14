@@ -35,12 +35,13 @@ const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: 
       setPhoneNumber('')
     }
   }
-  const windowHeight = `${currentWindowHeight}px`
+  const windowHeight = `${currentWindowHeight - 1}px`
 
   const stack = classNames('flex-col items-center bg-pink-500 ml-6')
   const row = 'flex-col my-5 mx-6 top-12 left-0'
+
   return (
-    <section style={{ height: `${isDesktopView ? windowHeight : ''}`  }} className={`absolute flex ${isDesktopView ? stack : row} gap-2 pl-4 sm:pl-8 pr-6 pb-2 pt-7 rounded-lg left-0 bg-opacity-10`}>
+    <section style={{ height: `${isDesktopView ? windowHeight : ''}`  }} className={`absolute flex ${isDesktopView ? stack : row} gap-2 pl-1 sm:pl-8 pr-6 pb-2 pt-7 rounded-lg left-0 bg-opacity-10`}>
       <div className='h-64 min-h-60' hidden={!(isDesktopView)}></div>
       <article className={`flex ${isDesktopView ? 'flex-col' : 'flex-row'} gap-2`}>
         <a target='_blank' href='https://github.com/mxjrd'>

@@ -39,7 +39,7 @@ input[type="range"] {
   appearance: none;
   background: transparent;
   cursor: pointer;
-  width: 150px;
+  width: 100px;
 }
 
 #clip-corners {

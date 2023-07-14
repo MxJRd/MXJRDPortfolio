@@ -75,7 +75,7 @@ const ProfessionalTech = () => {
 const AboutMe = (): JSX.Element => {
   const { about, achievements } = aboutStrings
   return (
-    <section alt='This is the about me section.' className={`flex flex-col items-center max-sm:p-6 w-full h-full overflow-auto pt-1`}>
+    <section alt='This is the about me section.' className={`flex flex-col items-center max-sm:p-6 w-full h-full overflow-y-auto overflow-x-hidden pt-1`}>
       <HoneycombBackground />
       <BackgroundBadge viewTitle={'About.'} />
       <ArticleCard title={about.title} content={about.content}/>

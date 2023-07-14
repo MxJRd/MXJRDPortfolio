@@ -25,7 +25,7 @@ const WelcomeView = ({ setWelcomeAndMood, welcome, animateDisappear, setAnimateD
   }, [])
   const fadeItem = `transition ${selection ? 'opacity-0 duration-500' : 'opacity-100'}`
   return (
-    <div className='flex w-full h-full font-poppins'>
+    <div className='flex w-full h-full font-poppins overflow-hidden'>
       <div
         style={{ opacity: 0.8 }}
         className='w-[50%] bg-black hover:bg-pink-500 cursor-pointer'
@@ -48,7 +48,7 @@ const WelcomeView = ({ setWelcomeAndMood, welcome, animateDisappear, setAnimateD
       </div>
       <button
         style={{ zIndex: 10 }}
-        className={`absolute left-0 right-0 m-auto bottom-24 text-white cursor-pointer bg-gray-500 hover:bg-purple-500 px-16 py-6 font-roboto-matrix ${fadeItem}`}
+        className={`absolute left-0 right-0 m-auto bottom-12 md:bottom-24 text-white cursor-pointer bg-gray-500 hover:bg-purple-500 md:px-16 md:py-6 px-3 py-6 font-roboto-matrix max-w-[320px] whitespace-nowrap ${fadeItem}`}
         onClick={waitToSetMood('none')}
       >
         You hate my music. :(

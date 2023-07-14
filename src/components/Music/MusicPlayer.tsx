@@ -51,7 +51,7 @@ const MusicControlButton = ({ size, iconName, clickHandler, styles = '' }: { siz
 const MusicPlayerControls = ({ audioPlayerRef, trackIndex, setTrackIndex, setPlay, play }: { audioPlayerRef: Ref<HTMLAudioElement>, trackIndex: number, play: boolean, setPlay: (playPause: boolean) => void, setTrackIndex: (prevIdx: number) => void }) => {
   return (
     <div style={{ justifyContent: 'space-between' }} className='flex'>
-      <MusicControlButton styles='pl-1' iconName='prev' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex + 1))}/>
+      <MusicControlButton styles='pl-0 sm:pl-1' iconName='prev' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex + 1))}/>
       {
         play
         ?
@@ -65,7 +65,7 @@ const MusicPlayerControls = ({ audioPlayerRef, trackIndex, setTrackIndex, setPla
             audioPlayerRef.current!.play()
           }}/>
       }
-      <MusicControlButton styles='pr-1' iconName='next' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex - 1))}/>
+      <MusicControlButton styles='pl-0 sm:pl-1' iconName='next' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex - 1))}/>
     </div>
   )
 }
@@ -78,15 +78,17 @@ const VolumeSlider = ({ volume, audioRef, setVolume }: { volume: number, audioRe
   }
   {/* { soundOn ? <SpeakerOn onClick={() => setSoundOn(!soundOn)} /> : <SpeakerOff onClick={() => setSoundOn(!soundOn)} /> } */}
   return (
-    <div className='flex justify-start min-w-[220px] max-w-[220px]'>
+    <div className='flex justify-center min-w-[220px] max-w-[220px] md:min-w-[272px] md:max-w-[272px] pr-7'>
       <div className='flex content-center'>
         <SpeakerOn className='ml-1 mr-2 pr-2'/>
       </div>
       <input 
         type="range"
+        className='max-w-[85px] md:min-w-[160px] mr-2'
         value={volume}
+        step='1'
         min="1" 
-        max="100"
+        max="99"
         onChange={handleVolumeChange}
       />
     </div>
@@ -124,7 +126,7 @@ const TrackProgressSlider = ({ duration, audioRef, play, setPlay, trackProgress,
     }
   }
   return (
-    <div className='flex min-w-[272px] justify-center min-w-[220px] max-w-[220px]'>
+    <div className='flex justify-center'>
       <p className='pr-2'>{currentMinutes}:{displayCurrentSeconds}</p>
       <input
         type='range'
@@ -132,7 +134,7 @@ const TrackProgressSlider = ({ duration, audioRef, play, setPlay, trackProgress,
         step='1'
         min='0'
         max={duration ? duration : `${duration}`}
-        className=''
+        className='max-w-[85px] md:min-w-[160px]'
         onChange={(e: any) => onScrub(e?.target?.value)}
         onMouseUp={onScrubEnd}
         onKeyUp={onScrubEnd}
@@ -192,12 +194,12 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
     setDuration(e.currentTarget.duration)
   }
   return (
-    <div className={`absolute m-4 top-16 right-4 md:min-w-[272px] p-0.5 rounded-lg ${playerGradientColor}`}>
+    <div className={`absolute m-4 top-16 right-2 sm:right-4 max-w-[200px] md:min-w-[272px] p-0.5 rounded-lg ${playerGradientColor}`}>
       <section id='music-player-background' className='space-y-0 text-sm rounded-md bg-raisin-black content-center'>
         <p className='text-pink-500 font-poppins'>{title}</p>
         <p className='font-roboto-matrix pb-0.5'>{artist}</p>
         <MusicPlayerControls play={play} setPlay={setPlay} audioPlayerRef={audioRef} trackIndex={trackIndex} setTrackIndex={setTrackIndex} />
-        <div className='flex flex-col items-center px-1 max-w-[250px] md:max-w-full'>
+        <div className='flex flex-col items-center px-1 max-w-[160px] md:max-w-full'>
           <TrackProgressSlider audioRef={audioRef} duration={duration} play={play} setPlay={setPlay} trackProgress={trackProgress} setTrackProgress={setTrackProgress} />
           <VolumeSlider audioRef={audioRef} volume={volume} setVolume={setVolume} />
         </div>
