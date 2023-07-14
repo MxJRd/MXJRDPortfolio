@@ -11,7 +11,7 @@ const PhoneNumberComponent = ({ phoneNumber, open, setOpen }: { phoneNumber: str
       {!open
         ? null
         :  
-        (<div ref={divRef} className={`absolute translate-x-[60px] -translate-y-[160px] sm:translate-x-[80px] sm:-translate-y-[40px] font-semibold bg-pink-500 p-2 rounded-lg w-32 ${phoneNumber !== '' ? '' : 'hidden'}`}>
+        (<div ref={divRef} alt='Phone number, hidden unless clicked on. No ez web scraping for u ;P' className={`absolute translate-x-[60px] -translate-y-[160px] sm:translate-x-[80px] sm:-translate-y-[40px] font-semibold bg-pink-500 p-2 rounded-lg w-32 ${phoneNumber !== '' ? '' : 'hidden'}`}>
           {
             phoneNumber
           }
@@ -55,7 +55,7 @@ const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: 
           <CustomButton iconName='email' size='medium' />
         </a>
         <div>
-          {/* <button alt='Phone number, hidden unless clicked on. No ez web scraping for u ;P' className='hover:bg-gray-400 p-2 text-blue-500 border-2 rounded' onClick={() => handleClickPhoneIcon()}>
+          {/* <button className='hover:bg-gray-400 p-2 text-blue-500 border-2 rounded' onClick={() => handleClickPhoneIcon()}>
             <PhoneIcon/>
           </button> */}
           <CustomButton iconName='phone' size='medium' clickHandler={() => handleClickPhoneIcon()} />

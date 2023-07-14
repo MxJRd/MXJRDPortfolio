@@ -8,7 +8,7 @@ interface WelcomeProps {
   setAnimateDisappear: (animate: boolean) => void
 }
 
-const Welcome = ({ sectionStyles, setMood, setWelcome, setAnimateDisappear }: WelcomeProps) => {
+const WelcomeControls = ({ sectionStyles, setMood, setWelcome, setAnimateDisappear }: WelcomeProps) => {
   let timeoutToClear: number
   const setWelcomeAndMood = (mood: Moods) => () => {
     setMood(mood)
@@ -25,7 +25,7 @@ const Welcome = ({ sectionStyles, setMood, setWelcome, setAnimateDisappear }: We
   }, [])
 
   return (
-    <section className={`bg-black/0.5 flex flex-col ${sectionStyles} rounded-lg h-full`}>
+    <section className={`absolute top-24 bg-black/0.5 flex flex-col rounded-lg h-fit w-fit`}>
       <div className='flex flex-col gap-4'>
         <div className='flex justify-center gap-2'>
           <div>
@@ -43,4 +43,4 @@ const Welcome = ({ sectionStyles, setMood, setWelcome, setAnimateDisappear }: We
   )
 }
 
-export default Welcome
+export default WelcomeControls

@@ -38,7 +38,7 @@ const TendenciesTrackInfo: TrackInfoType = {
 
 const ThousandthCutTrackInfo: TrackInfoType = {
   artist: 'All Signs Point To',
-  title: 'ThousandthCut',
+  title: 'Thousandth Cut',
   track: ThousandthCut
 }
 

@@ -3,6 +3,7 @@
   width: 100vw;
   margin: 0 auto;
   text-align: center;
+  /* background: linear-gradient(to bottom right, #242124 60%, #FF00FF 300%) 100% no-repeat; */
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
