@@ -1,26 +1,24 @@
 import { useState } from 'preact/hooks'
 import '../src/app.css'
-// import WelcomeOverlay from './components/views/Welcome/WelcomeOverlay'
-import PrimaryView from './components/views/PrimaryView';
-import classNames from 'classnames';
-import WelcomeControls from './components/views/Welcome/WelcomeControls';
-import WelcomeView from './components/views/Welcome/WelcomeView';
+import PrimaryView from './components/views/PrimaryView'
+import WelcomeView from './components/views/Welcome/WelcomeView'
 
 export type Moods = 'yazzy' | 'mathy' | 'none'
 
-const getMoodGradient = (mood: string) => {
-  const hoverMathyGradient = 'linear-gradient(to right, #242124 50%, #FF00FF 300%) 100% no-repeat'
-  const hoverYazzyGradient = 'linear-gradient(to right, #242124 50%, #FF00FF 300%) 100% no-repeat'
-
- // mood ? hoverMathyGradient : hoverYazzyGradient
-  return ''
+const getMoodGradient = (args: { mood: string }): string => {
+  const { mood } = args ?? {}
+  const hoverMathyGradient = 'linear-gradient(to bottom right, #242124 50%, #FF00FF 300%) 100% no-repeat'
+  const hoverYazzyGradient = 'linear-gradient(to bottom right, #242124 50%, #00CCFF 300%) 100% no-repeat'
+  // if welcome -> 
+  return mood === 'mathy' ? hoverMathyGradient : hoverYazzyGradient
+  // return ''
 }
 
-const getWelcomeGradient = (args: { welcome: boolean, welcomeGradient: string }) => {
-  const { welcome, welcomeGradient } = args
-  const primaryGradient = 'linear-gradient(to bottom right, #242124 60%, #FF00FF 300%) 100% no-repeat'
+const getWelcomeGradient = (args: { welcome: boolean, moodGradient: string }) => {
+  const { welcome, moodGradient } = args
+  const primaryGradient = moodGradient
 
-  return welcome ? welcomeGradient : primaryGradient
+  return welcome ? '' : primaryGradient
 }
 
 function App() {
@@ -29,8 +27,8 @@ function App() {
   const sectionStyles = 'flex md:align-center w-full h-full md:p-16 p-4'
   const [animateDisappear, setAnimateDisappear] = useState<boolean>(false)
 
-  const welcomeGradient = getMoodGradient(mood)
-  const isWelcomeGradient = getWelcomeGradient({ welcome, welcomeGradient })
+  const moodGradient = getMoodGradient({ mood })
+  const isWelcomeGradient = getWelcomeGradient({ welcome, moodGradient })
 
   const setWelcomeAndMood = (mood: Moods) => () => {
     setMood(mood)

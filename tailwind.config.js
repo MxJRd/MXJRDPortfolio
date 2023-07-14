@@ -17,7 +17,10 @@ export default {
         clickBounce: 'bounce 0.2s',
         clickPulse: 'pulse 0.5s',
         'slide-from-left': 'slide-from-left 0.75s forwards',
-        'slide-from-right': 'slide-from-right 0.75s forwards'
+        'slide-from-right': 'slide-from-right 0.75s forwards',
+        'slide-to-left': 'slide-to-left 1s forwards',
+        'slide-to-right': 'slide-to-right 1s forwards',
+        fade: 'fade-out 1s ease-in-out'
       },
       keyframes: {
         'click-bounce': {
@@ -50,6 +53,16 @@ export default {
         },
         'slide-from-right': {
           '0%': {
+            transform: 'translateX(-100%)'
+          }
+        },
+        'slide-to-left': {
+          '100%': {
+            transform: 'translateX(100%)'
+          }
+        },
+        'slide-to-right': {
+          '100%': {
             transform: 'translateX(-100%)'
           }
         }
