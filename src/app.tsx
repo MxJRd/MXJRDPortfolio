@@ -9,9 +9,7 @@ const getMoodGradient = (args: { mood: string }): string => {
   const { mood } = args ?? {}
   const hoverMathyGradient = 'linear-gradient(to bottom right, #242124 50%, #FF00FF 300%) 100% no-repeat'
   const hoverYazzyGradient = 'linear-gradient(to bottom right, #242124 50%, #00CCFF 300%) 100% no-repeat'
-  // if welcome -> 
   return mood === 'mathy' ? hoverMathyGradient : hoverYazzyGradient
-  // return ''
 }
 
 const getWelcomeGradient = (args: { welcome: boolean, moodGradient: string }) => {

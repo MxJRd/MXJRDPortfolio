@@ -15,12 +15,13 @@ export default {
     extend: {
       animation: {
         clickBounce: 'bounce 0.2s',
-        clickPulse: 'pulse 0.5s',
+        'click-pulse': 'pulse 0.25s',
         'slide-from-left': 'slide-from-left 0.75s forwards',
         'slide-from-right': 'slide-from-right 0.75s forwards',
         'slide-to-left': 'slide-to-left 1s forwards',
         'slide-to-right': 'slide-to-right 1s forwards',
-        fade: 'fade-out 1s ease-in-out'
+        fade: 'fade-out 1s ease-in-out',
+        shimmer: 'shimmer 2.5s 2'
       },
       keyframes: {
         'click-bounce': {
@@ -64,6 +65,14 @@ export default {
         'slide-to-right': {
           '100%': {
             transform: 'translateX(-100%)'
+          }
+        },
+        shimmer: {
+          '0%': {
+            transform: 'translateX(-300%)',
+          },
+          '100%': {
+            transform: 'translateY(-2rem)',
           }
         }
       },

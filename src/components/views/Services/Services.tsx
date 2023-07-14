@@ -43,7 +43,7 @@ const Services = ({ sectionStyles }: { sectionStyles: string }) => {
         <div className='flex flex-col items-center invisible p-12 md:visible'>
           <p className='text-2xl font-poppins text-semibold'>Scroll to see my resume!</p>
           <a href='#services-scroll' className='cursor text-fuchsia' >
-            <ChevronDown style={{ width: '36px', height: '36px' }} />
+            <ChevronDown style={{ width: '36px', height: '36px' }}  className='animate-bounce mt-4' />
           </a>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { ReactComponent as EmailIcon } from '../../assets/mail.svg'
 import { ReactComponent as ClosedChevronIcon } from '../../assets/chevron-right.svg'
 import { bundleClickHandlerAndAnimation, fetchButtonSize } from '../../helpers'
 import { useState } from 'react'
+import { makeShimmer } from '../../animations'
 
 type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron'
 type Sizes = 'small' | 'medium' | 'large'
@@ -56,10 +57,12 @@ const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', s
       <button
         className={classNames(
           `${iconName ? iconOnly : ''}`,
-          `${clickedAnimation ? 'animate-clickPulse' : ''}`,
+          `${clickedAnimation ? 'animate-click-pulse' : ''}`,
           buttonSize,
           buttonColor,
-          'hover:bg-gray-300 cursor-pointer'
+          'hover:bg-gray-300 cursor-pointer overflow-hidden',
+          'before:animate-shimmer',
+          `${makeShimmer}`
         )}
         onClick={() => bundleClickHandlerAndAnimation(setClickedAnimation, clickHandler)}
         onAnimationEnd={() => setClickedAnimation(false)}
@@ -70,5 +73,7 @@ const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', s
     </div>
   )
 }
+
+// (to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%)
 
 export default CustomButton
