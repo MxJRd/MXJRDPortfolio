@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import MXJRDLogo from '../../assets/MXJRDLogo.png'
 import MusicAnalyzer from '../Music/MusicAnalyzer'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
+import useClickAway from './hooks/useClickAway'
 
 const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }): JSX.Element => {
   return (
-    <div className={classNames('flex gap-2 pl-10 sm:pl-14 pt-0.5')}>
+    <div alt='MXJRD Logo container' className={classNames('flex gap-2 pl-10 sm:pl-14 pt-0.5')}>
       <img className='rounded-lg w-9 h-9' src={MXJRDLogo} />
       <p className={classNames('mt-1.5 text-blue-300', `${isDesktopView ? '-rotate-90 mt-3' : ''}`)}>MX<span className='text-blue-400'>J</span><span className='text-pink-400'>R</span><span className='text-pink-400'>D</span></p>
     </div>
@@ -15,7 +16,7 @@ const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }): JSX.El
 
 const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => void }): JSX.Element => {
   return (
-    <div className='flex'>
+    <div alt='Mobile navigation menu.' className='flex'>
       <button data-collapse-toggle='navbar-default' type='button' className='inline-flex visible p-2 mb-2 text-sm text-gray-500 rounded-lg md:collapse hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
         onClick={() => setOpenNav(true)}
       >
@@ -27,7 +28,7 @@ const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => v
 }
 
 const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, isDesktopView: boolean }): JSX.Element => {
-  const navBarRef = useRef<HTMLElement>(null)
+  const navBarRef = useClickAway(() => setOpenNav(false))
   const { current } = navBarRef
   const [audioContainerDimensions, setAudioContainerDimensions] = useState<{ height: number, width: number }>({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
 
@@ -36,25 +37,25 @@ const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (
   }, [audioContainerDimensions])
 
   return (
-    <nav ref={navBarRef} className='flex justify-between min-w-full pt-8 pb-8 overflow-hidden font-medium text-blue-500 shadow-md h-52 pr-14 z-1000 font-poppins'>
+    <nav alt='Desktop navigation bar.' ref={navBarRef} className='flex justify-between min-w-full pt-8 pb-8 overflow-hidden font-medium text-blue-500 shadow-md h-52 pr-14 z-1000 font-poppins'>
       {audioRef && <MusicAnalyzer containerDimensions={audioContainerDimensions} audioRef={audioRef} />}
       <NavLogoContainer isDesktopView={isDesktopView} />
       <div className='absolute right-3'>
         <CollapsibleNavBar setOpenNav={setOpenNav}/>
       </div>
-      <ul className='flex flex-col justify-between gap-10 pl-2 mt-1 md:visible collapse'>
+      <ul alt='Links to different website pages.' className='flex flex-col justify-between gap-10 pl-2 mt-1 md:visible collapse'>
         <div className='flex gap-5'>
-          <li className='text-blue-500'>
+          <li alt='Home link' className='text-blue-500'>
             <Link to='/'>
               Home
             </Link>
           </li>
-          <li className='text-blue-500 whitespace-nowrap'>
+          <li alt='About Me link' className='text-blue-500 whitespace-nowrap'>
             <Link to='/about'>
               About Me
             </Link>
           </li>
-          <li className='text-blue-500'>
+          <li alt='Services link' className='text-blue-500'>
             <Link to='/services'>
               Services
             </Link>

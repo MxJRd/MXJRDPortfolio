@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks'
 import { ReactComponent as DownloadIcon } from '../../../assets/download.svg'
 import resume from '../../../assets/resume'
-import ResumeCard from '../../common/ResumeCard'
+import ResumeCard from './ResumeCard'
 import MaxResume from '../../../assets/Max_Reed_SinglePager.pdf'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'
@@ -26,7 +26,7 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
         <h1 id='services-scroll' className='self-center pt-6 text-4xl font-bold whitespace-nowrap'>Recent Experience</h1>
         <div className='flex items-center self-center gap-4'>
           <p className='text-2xl font-bold'>Résumé</p>
-            <button className='p-1 border-2 rounded'>
+            <button className='p-1 border-2 rounded bg-white'>
               <a href={MaxResume} download='Max_Reed_Resume' className='text-raisin-black'><DownloadIcon /></a>
             </button>
         </div>
@@ -37,7 +37,7 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
           </div>
           <div className='p-1 space-y-2 md:p-4 flex-2 mb-16'>
             <p className='pb-4 font-roboto-matrix'>{primer}</p>
-            {bullets.map((bull: any, idx: number) => <BulletComponent bulletContent={bull} animationSlide={`${idx % 2 === 0 ? 'animate-slide-from-right' : 'animate-slide-from-left'}`}/>)}
+            {bullets.map((bull, idx) => <BulletComponent bulletContent={bull} animationSlide={`${idx % 2 === 0 ? 'animate-slide-from-right' : 'animate-slide-from-left'}`}/>)}
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
     "@uidotdev/usehooks": "^2.0.1",
     "preact": "^10.13.2",
     "react": "^18.2.0",

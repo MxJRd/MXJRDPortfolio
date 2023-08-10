@@ -5,7 +5,7 @@ const useSetViewTitle = (title: string) => {
   useEffect(() => {
     setViewTitle(title)
   }, [])
-  console.log(viewTitle)
+
   return { viewTitle, setViewTitle }
 }
 

@@ -21,7 +21,7 @@ export default {
         'slide-to-left': 'slide-to-left 1s forwards',
         'slide-to-right': 'slide-to-right 1s forwards',
         fade: 'fade-out 1s ease-in-out',
-        shimmer: 'shimmer 2.5s 2'
+        shimmer: 'shimmer 2.5s 4'
       },
       keyframes: {
         'click-bounce': {

@@ -10,6 +10,10 @@ interface WelcomeViewProps {
   setAnimateDisappear: (animate: boolean) => void
 }
 
+const SEOText = ({ content }: { content: string }): JSX.Element => {
+  return <p className='absolute text-transparent'>{content}</p>
+}
+
 const WelcomeView = ({ setWelcomeAndMood, welcome, animateDisappear, setAnimateDisappear }: WelcomeViewProps) => {
   let timeoutToClear: number
   const [selection, setSelection] = useState<boolean>(false)
@@ -26,6 +30,7 @@ const WelcomeView = ({ setWelcomeAndMood, welcome, animateDisappear, setAnimateD
   const fadeItem = `transition ${selection ? 'opacity-0 duration-500' : 'opacity-100'}`
   return (
     <div className='flex w-full h-full font-poppins overflow-hidden'>
+      <SEOText content="Hello! My name is Max Reed and I'm a web developer and frontend expert. Welcome to my website." />
       <div
         style={{ opacity: 0.8 }}
         className='w-[50%] bg-black hover:bg-pink-500 cursor-pointer'

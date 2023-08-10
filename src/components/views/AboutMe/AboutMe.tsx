@@ -1,4 +1,4 @@
-import ArticleCard from '../../common/ArticleCard'
+import ArticleCard from './ArticleCard'
 import BackgroundBadge from '../../common/BackgroundBadge'
 import HoneycombBackground from '../../common/HoneycombBackground'
 import aboutStrings from './aboutStrings'

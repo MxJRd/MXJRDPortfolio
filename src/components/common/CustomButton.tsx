@@ -8,7 +8,7 @@ import { bundleClickHandlerAndAnimation, fetchButtonSize } from '../../helpers'
 import { useState } from 'react'
 import { makeShimmer } from '../../animations'
 
-type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron'
+type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron' | ''
 type Sizes = 'small' | 'medium' | 'large'
 type Colors = 'blue' | 'black'
 type BGColors = 'white' | 'slate'
@@ -48,7 +48,7 @@ const fetchIcon = (iconName: Icons) => {
 }
 
 interface CustomButtonProps {
-  iconName: Icons
+  iconName?: Icons
   textContent?: string
   clickHandler?: (...args: any) => void
   size: Sizes
@@ -56,7 +56,7 @@ interface CustomButtonProps {
   bgColor: BGColors
 }
 
-const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', size = 'medium', color = 'blue', bgColor = 'white' }: CustomButtonProps) => {
+const CustomButton = ({ iconName = '', clickHandler = () => null, textContent = '', size = 'medium', color = 'blue', bgColor = 'white' }: CustomButtonProps) => {
   const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
   const iconOnly = 'border-2 rounded'
   const icon = fetchIcon(iconName)
@@ -85,7 +85,5 @@ const CustomButton = ({ iconName, clickHandler = () => null, textContent = '', s
     </div>
   )
 }
-
-// (to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%)
 
 export default CustomButton

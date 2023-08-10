@@ -6,33 +6,10 @@ import TextScramble from '../../helpers'
 import classNames from 'classnames'
 import HoneycombBackground from '../common/HoneycombBackground'
 
-
-// const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
-//   return (
-//     <div className='w-4/5 p-4 overflow-y-auto bg-black h-4/5'>
-//       <div className='flex items-center content-center justify-between text-center'>
-//         <h1>Click through!</h1>
-//         <button className='' onClick={() => setShowReceipts(false)}>X</button>
-//       </div>
-//       <ul className='flex flex-col items-start flex-1 list-disc'>
-//         <li>Mentoring over 15 people to get into one of the most competitive career change programs in the world.</li>
-//         <li>Top 0.5% of players season 4 in League of Legends.</li>
-//         <li>Built my first car. 1983 Porsche 928, LS1 conversion.</li>
-//         <li>Number 13 player (number 2 Archer) worldwide Tera 2015.</li>
-//         <li>Top 3.6% of players in Chess.com puzzles.</li>
-//         <li>Played alongside huge bands like Red Jumpsuit Apparatus, Drowning Pool and more.</li>
-//         <li>Self taught audio engineer (you can see if you picked a mood).</li>
-//         <li>Most popular teacher at Fun Music school.</li>
-//         <li><a href='https://tcymbals.com/artists/maxwell-j-reed/'>Endorsed drummer</a></li>
-//       </ul>
-//     </div>
-//   )
-// }
-
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
   const [idx, setIdx] = useState<number>(0)
-  const OccupationTextScrambler = new TextScramble(scrambleRef.current!, [], () => null)
+  const OccupationTextScrambler = new TextScramble(scrambleRef?.current, [], () => null)
   const occupations = [
     'Software engineer.',
     'Drummer.',
@@ -71,7 +48,7 @@ const ContactMeButton = () => {
         style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
         className={
           classNames(
-            'px-5 py-3 border-2 text-raisin-black border-raisin-black hover:bg-gray-400 hover:text-blue-500',
+            'px-5 py-3 border-2 text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500',
             `${clickedAnimation ? 'animate-clickPulse' : ''}`
           )
         }

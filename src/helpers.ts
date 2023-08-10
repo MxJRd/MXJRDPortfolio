@@ -16,9 +16,15 @@ export const fetchButtonSize = (size: string) => {
   }
 }
 
-export const useSize = () => {
+export const useSize = ({ elemRef }: { elemRef: any }) => {
   const [width, setWidth] = useState(window.innerWidth)
   const [height, setHeight] = useState(window.innerHeight)
+  const resizeObserver = new ResizeObserver((entries) => {
+    const entry = entries[0]
+  })
+  useEffect(() => {
+    resizeObserver.observe(elemRef.current)
+  }, [elemRef])
 
   const setSizes = useCallback(() => {
     setWidth(window.innerWidth)
@@ -62,7 +68,7 @@ class MatrixTextScrambler {
     this.frameRequest = frameRequest
   }
   setText(newText: string) {
-    const oldText = this.el.innerText!
+    const oldText = this.el?.innerText ?? ''
     const length = Math.max(oldText.length, newText.length)
     const callback= () => 1
     this.queue = []
@@ -96,7 +102,7 @@ class MatrixTextScrambler {
         output += from
       }
     }
-    this.el.innerHTML = output
+    if(this.el) this.el.innerHTML = output
     if (complete === this.queue.length) {
     } else {
       this.frameRequest = requestAnimationFrame(this.update)

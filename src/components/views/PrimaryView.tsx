@@ -7,21 +7,22 @@ import Home from './Home'
 import AboutMe from './AboutMe/AboutMe'
 import { BrowserRouter } from 'react-router-dom'
 import { TrackInfoType } from '../../assets/music/MusicMoods'
-import { useSize } from '../../helpers'
 import Socials from '../NavBarContents/Socials'
 import LoadingSpinner from '../common/LoadingSpinner'
+import Projects from './Projects/Projects'
+import NotFound from '../NotFound'
 const Services = lazy(() => import('./Services/Services'))
 
 interface PrimaryViewProps {
   mood: string
   sectionStyles: string
+  currentWindowSize: any
 }
 
-const PrimaryView = ({ mood, sectionStyles }: PrimaryViewProps) => {
+const PrimaryView = ({ mood, sectionStyles, currentWindowSize }: PrimaryViewProps) => {
   const [openNav, setOpenNav] = useState<boolean>(false)
   const [currentTrack, setCurrentTrack] = useState<TrackInfoType>()
 
-  const currentWindowSize = useSize()
   const [currentWindowHeight, setCurrentWindowHeight] = useState(currentWindowSize[1])
   const [currentWindowWidth, setCurrentWindowWidth] = useState(currentWindowSize[0])
 
@@ -49,6 +50,8 @@ const PrimaryView = ({ mood, sectionStyles }: PrimaryViewProps) => {
                 <Services sectionStyles={sectionStyles} />
               </Suspense>
             } />
+            <Route path='/projects' element={<Projects />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
           <Socials currentWindowHeight={currentWindowHeight} isDesktopView={isDesktopView} />
           {mood !== 'none' ? <MusicPlayer isDesktopView={isDesktopView} isMobileView={isMobileView} mood={mood} audioRef={audioRef} currentTrack={currentTrack!} setCurrentTrack={setCurrentTrack} /> : null}

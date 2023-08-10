@@ -1,6 +1,6 @@
-import { JobContentType } from '../../assets/resume'
-import Badge from './Badge'
-import CustomButton from './CustomButton'
+import { JobContentType } from '../../../assets/resume'
+import Badge from '../../common/Badge'
+import CustomButton from '../../common/CustomButton'
 
 const TechList = ({ technologies }: { technologies: Array<string> } ) => {
   return (

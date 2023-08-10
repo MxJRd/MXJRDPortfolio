@@ -8,6 +8,7 @@ import { bundleClickHandlerAndAnimation, fetchSVGSize } from '../../helpers'
 import classNames from 'classnames'
 import { RefObject } from 'preact'
 import { ReactComponent as SpeakerOn } from '../../assets/volume-2.svg'
+import LoadingSpinner from '../common/LoadingSpinner'
 
 type Icons = 'play' | 'pause' | 'next' | 'prev'
 
@@ -150,13 +151,12 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
   const [trackIndex, setTrackIndex] = useState<number>(0)
   const [volume, setVolume] = useState(0.01)
   const [duration, setDuration] = useState<number>(0)
-
   const playerGradientColor = 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'
+  const isLoading = Number.isNaN(trackProgress) || audioRef.current === null
   const playTrack = () => {
     setPlay(true)
     audioRef?.current?.play()
   }
-
   useEffect(() => {
     if (play) {
       audioRef.current!.play()
@@ -195,15 +195,20 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
   }
   return (
     <div className={`absolute m-4 top-16 right-2 sm:right-4 max-w-[200px] md:min-w-[272px] p-0.5 rounded-lg ${playerGradientColor}`}>
-      <section id='music-player-background' className='space-y-0 text-sm rounded-md bg-raisin-black content-center'>
-        <p className='text-pink-500 font-poppins'>{title}</p>
-        <p className='font-roboto-matrix pb-0.5'>{artist}</p>
-        <MusicPlayerControls play={play} setPlay={setPlay} audioPlayerRef={audioRef} trackIndex={trackIndex} setTrackIndex={setTrackIndex} />
-        <div className='flex flex-col items-center px-1 max-w-[160px] md:max-w-full'>
-          <TrackProgressSlider audioRef={audioRef} duration={duration} play={play} setPlay={setPlay} trackProgress={trackProgress} setTrackProgress={setTrackProgress} />
-          <VolumeSlider audioRef={audioRef} volume={volume} setVolume={setVolume} />
-        </div>
-      </section>
+      { isLoading
+        ? <LoadingSpinner />
+        : (
+          <section id='music-player-background' className='space-y-0 text-sm rounded-md bg-raisin-black content-center'>
+            <p className='text-pink-500 font-poppins'>{title}</p>
+            <p className='font-roboto-matrix pb-0.5'>{artist}</p>
+            <MusicPlayerControls play={play} setPlay={setPlay} audioPlayerRef={audioRef} trackIndex={trackIndex} setTrackIndex={setTrackIndex} />
+            <div className='flex flex-col items-center px-1 max-w-[160px] md:max-w-full'>
+              <TrackProgressSlider audioRef={audioRef} duration={duration} play={play} setPlay={setPlay} trackProgress={trackProgress} setTrackProgress={setTrackProgress} />
+              <VolumeSlider audioRef={audioRef} volume={volume} setVolume={setVolume} />
+            </div>
+          </section>
+        )
+      }
       { audioRef && <audio ref={audioRef} src={track} crossOrigin='anonymous' preload='metadata' onLoadedMetadata={handleMetadata} onTimeUpdate={handleTrackProgress} /> }
     </div>
   )
