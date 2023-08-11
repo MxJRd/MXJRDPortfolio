@@ -9,7 +9,7 @@ import HoneycombBackground from '../common/HoneycombBackground'
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
   const [idx, setIdx] = useState<number>(0)
-  const OccupationTextScrambler = new TextScramble(scrambleRef?.current, [], () => null)
+  const OccupationTextScrambler = new TextScramble(scrambleRef.current!, [], () => null)
   const occupations = [
     'Software engineer.',
     'Drummer.',
@@ -27,6 +27,7 @@ const ScrambleComponent = ({ position }: { position: string }) => {
     goNextOccupation()
     OccupationTextScrambler.setPromise(nextOccupation)
   }, [])
+
   useEffect(() => {
     nextOccupation()
     const timer = setTimeout(goNextOccupation, 2000)

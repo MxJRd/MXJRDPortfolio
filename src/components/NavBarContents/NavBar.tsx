@@ -3,7 +3,7 @@ import MXJRDLogo from '../../assets/MXJRDLogo.png'
 import MusicAnalyzer from '../Music/MusicAnalyzer'
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
-import useClickAway from './hooks/useClickAway'
+import useClickAway from '../../hooks/useClickAway'
 
 const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }): JSX.Element => {
   return (
@@ -68,19 +68,19 @@ const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (
 
 export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (openNavBar: boolean) => void }): JSX.Element => {
   return (
-    <ul style={{ zIndex: 1 }} className='absolute flex flex-col justify-around w-full mt-1 shadow-lg h-52 bg-raisin-black'>
-      <Link to='/'>
-        <li className='h-10 text-blue-500' onClick={() => setOpenNav(false)}>
+    <ul style={{ zIndex: 4 }} className='absolute flex flex-col justify-around w-full mt-1 shadow-lg h-52 bg-raisin-black font-bold font-poppins h-10 text-blue-500 text-center'>
+      <Link to='/' className='flex-1 hover:bg-gray-800'>
+        <li className='translate-y-[70%]' onClick={() => setOpenNav(false)}>
             Home
         </li>
       </Link>
-      <Link to='/about'>
-        <li className='h-10 text-blue-500 whitespace-nowrap' onClick={() => setOpenNav(false)}>
+      <Link to='/about' className='flex-1 hover:bg-gray-800'>
+        <li className='translate-y-[70%] whitespace-nowrap' onClick={() => setOpenNav(false)}>
             About Me
         </li>
       </Link>
-      <Link to='/services'>
-        <li className='h-10 text-blue-500' onClick={() => setOpenNav(false)}>
+      <Link to='/services' className='flex-1 hover:bg-gray-800'>
+        <li className='translate-y-[70%]' onClick={() => setOpenNav(false)}>
             Services
         </li>
       </Link>

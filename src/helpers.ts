@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const bundleClickHandlerAndAnimation = (animationHandler: (b: boolean) => void, clickHandler: ((...args: any) => void)) => {
   animationHandler(true)
@@ -17,27 +17,24 @@ export const fetchButtonSize = (size: string) => {
 }
 
 export const useSize = ({ elemRef }: { elemRef: any }) => {
-  const [width, setWidth] = useState(window.innerWidth)
-  const [height, setHeight] = useState(window.innerHeight)
-  const resizeObserver = new ResizeObserver((entries) => {
-    const entry = entries[0]
+
+  const [elemSize, setElemSize] = useState({
+    width: 0,
+    height: 0
   })
-  useEffect(() => {
-    resizeObserver.observe(elemRef.current)
-  }, [elemRef])
 
-  const setSizes = useCallback(() => {
-    setWidth(window.innerWidth)
-    setHeight(window.innerHeight)
-  }, [setWidth, setHeight])
+  const resizeObserverInstance = useRef(new ResizeObserver((entries) => {
+    const entry = entries[0]
+    setElemSize({ width: Math.round(entry.target.clientWidth), height: Math.round(entry.target.clientHeight) })
+  }))
 
   useEffect(() => {
-    window.addEventListener('resize', setSizes)
-    setSizes()
-    return () => window.removeEventListener('resize', setSizes)
-  }, [setSizes])
+    if(elemRef.current) resizeObserverInstance.current.observe(elemRef.current)
 
-  return [width, height]
+    return () => resizeObserverInstance.current.unobserve(elemRef.current)
+  }, [elemRef, resizeObserverInstance])
+
+  return [elemSize.width, elemSize.height]
 }
 
 export const fetchSVGSize = (size: string) => {

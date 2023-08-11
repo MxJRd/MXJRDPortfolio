@@ -1,5 +1,5 @@
 import { Ref, useState } from 'preact/hooks'
-import useClickAway from './hooks/useClickAway'
+import useClickAway from '../../hooks/useClickAway'
 import CustomButton from '../common/CustomButton'
 import classNames from 'classnames'
 

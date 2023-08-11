@@ -31,9 +31,8 @@ export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolea
 }
 
 const ServiceCardContainer = ({ setSelectedService }: { setSelectedService: StateUpdater<string> }) => {
-  const [loadingPictures, setLoadingPictures] = useState(false)
   return (
-    <ul className='flex flex-col sm:flex-row h-full gap-2 xl:gap-8 lg:gap-6 md:gap-4 self-center max-w-[250px] sm:max-w-full pb-8'>
+    <ul className='flex flex-col sm:flex-row h-full gap-4 xl:gap-8 lg:gap-6 md:gap-4 self-center max-w-[250px] sm:max-w-full pb-8'>
       <ServicesCard title='Employment' content='Download my resume here!' image={EmploymentPic} setSelectedService={setSelectedService} />
       <ServicesCard title='Freelance' content="Let's build something together." image={FreelancePic} setSelectedService={setSelectedService} />
       <ServicesCard title='Mentorship' content='I love teaching!' image={MentorshipPic} setSelectedService={setSelectedService} />
@@ -47,7 +46,7 @@ const Services = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
     <section className={`flex flex-col ${sectionStyles} overflow-y-auto overflow-x-hidden`}>
       <HoneycombBackground />
-      {/* <ServicesForm selectedService={selectedService} /> */}
+      { selectedService !== '' && <ServicesForm selectedService={selectedService} setSelectedService={setSelectedService}/> }
       <BackgroundBadge viewTitle={'Services.'} />
       <div className='flex flex-col py-14 md:p-4'>
         <ServiceCardContainer setSelectedService={setSelectedService}/>

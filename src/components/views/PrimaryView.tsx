@@ -10,7 +10,7 @@ import { TrackInfoType } from '../../assets/music/MusicMoods'
 import Socials from '../NavBarContents/Socials'
 import LoadingSpinner from '../common/LoadingSpinner'
 import Projects from './Projects/Projects'
-import NotFound from '../NotFound'
+import NotFound from './NotFound'
 const Services = lazy(() => import('./Services/Services'))
 
 interface PrimaryViewProps {

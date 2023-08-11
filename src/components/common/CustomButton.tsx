@@ -69,6 +69,8 @@ const CustomButton = ({ iconName = '', clickHandler = () => null, textContent = 
         className={classNames(
           `${iconName ? iconOnly : ''}`,
           `${clickedAnimation ? 'animate-click-pulse' : ''}`,
+          'shadow-md',
+          'shadow-black',
           buttonSize,
           buttonColor,
           'hover:bg-gray-300 cursor-pointer overflow-hidden',
