@@ -4,7 +4,7 @@ import DrummingHard from '../../assets/DrummingHard.jpg'
 import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
 import HoneycombBackground from '../common/HoneycombBackground'
-import { makeLift } from '../../animations'
+import { makeButtonExpand, makeLift, makePressed } from '../../animations'
 
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
@@ -45,16 +45,21 @@ const ScrambleComponent = ({ position }: { position: string }) => {
 
 const ContactMeButton = () => {
   const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
-  console.log(clickedAnimation) //${clickedAnimation ? 'animate-hover-pulse' : ''} 
+
   return (
     <a href='mailto:mxjreed@gmail.com'>
       <button
-        style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
+        // style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
         className={
-          `${makeLift} px-5 py-3 border-2 text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500`
+          `${makeLift} ${clickedAnimation ? makePressed : ''}
+          ${makeButtonExpand}
+          relative px-5 py-3 border-2 text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500
+          rounded-br-lg rounded-tl-lg
+          after:rounded-br-lg after:rounded-tl-lg
+          `
         }
         onClick={() => setClickedAnimation(true)}
-        onAnimationEnd={() => setClickedAnimation(false)}
+        onTransitionEnd={() => setClickedAnimation(false)}
       >
         Contact me.
       </button>

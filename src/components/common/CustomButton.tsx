@@ -82,7 +82,7 @@ const CustomButton = ({ iconName = '', clickHandler = () => null, className, tex
           `${makeLift}`
         )}
         onClick={() => bundleClickHandlerAndAnimation(setClickedAnimation, clickHandler)}
-        onAnimationEnd={() => setClickedAnimation(false)}
+        onTransitionEnd={() => setClickedAnimation(false)}
       >
         { iconName && icon }
         { textContent && textContent }
