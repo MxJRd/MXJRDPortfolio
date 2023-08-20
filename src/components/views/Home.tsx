@@ -3,13 +3,14 @@ import DrummingHard from '../../assets/DrummingHard.jpg'
 
 import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
-import classNames from 'classnames'
 import HoneycombBackground from '../common/HoneycombBackground'
+import { makeLift } from '../../animations'
 
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
   const [idx, setIdx] = useState<number>(0)
   const OccupationTextScrambler = new TextScramble(scrambleRef.current!, [], () => null)
+
   const occupations = [
     'Software engineer.',
     'Drummer.',
@@ -18,11 +19,12 @@ const ScrambleComponent = ({ position }: { position: string }) => {
     'Mixologist.',
     'Mentor.'
   ]
+
   const nextOccupation = async () => await OccupationTextScrambler.setText(occupations[idx])
   const goNextOccupation = () => {
     setIdx((prevIdx) => (prevIdx + 1) % occupations.length)
   }
-  
+
   useEffect(() => {
     goNextOccupation()
     OccupationTextScrambler.setPromise(nextOccupation)
@@ -43,15 +45,13 @@ const ScrambleComponent = ({ position }: { position: string }) => {
 
 const ContactMeButton = () => {
   const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
+  console.log(clickedAnimation) //${clickedAnimation ? 'animate-hover-pulse' : ''} 
   return (
     <a href='mailto:mxjreed@gmail.com'>
       <button
         style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
         className={
-          classNames(
-            'px-5 py-3 border-2 text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500',
-            `${clickedAnimation ? 'animate-clickPulse' : ''}`
-          )
+          `${makeLift} px-5 py-3 border-2 text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500`
         }
         onClick={() => setClickedAnimation(true)}
         onAnimationEnd={() => setClickedAnimation(false)}

@@ -6,7 +6,7 @@ import { ReactComponent as EmailIcon } from '../../assets/mail.svg'
 import { ReactComponent as ClosedChevronIcon } from '../../assets/chevron-right.svg'
 import { bundleClickHandlerAndAnimation, fetchButtonSize } from '../../helpers'
 import { useState } from 'react'
-import { makeShimmer } from '../../animations'
+import { makeLift, makeShimmer } from '../../animations'
 
 type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron' | ''
 type Sizes = 'small' | 'medium' | 'large'
@@ -50,13 +50,14 @@ const fetchIcon = (iconName: Icons) => {
 interface CustomButtonProps {
   iconName?: Icons
   textContent?: string
+  className?: string
   clickHandler?: (...args: any) => void
   size: Sizes
   color?: Colors
   bgColor: BGColors
 }
 
-const CustomButton = ({ iconName = '', clickHandler = () => null, textContent = '', size = 'medium', color = 'blue', bgColor = 'white' }: CustomButtonProps) => {
+const CustomButton = ({ iconName = '', clickHandler = () => null, className, textContent = '', size = 'medium', color = 'blue', bgColor = 'white' }: CustomButtonProps) => {
   const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
   const iconOnly = 'border-2 rounded'
   const icon = fetchIcon(iconName)
@@ -68,6 +69,7 @@ const CustomButton = ({ iconName = '', clickHandler = () => null, textContent = 
       <button
         className={classNames(
           `${iconName ? iconOnly : ''}`,
+          `${className}`,
           `${clickedAnimation ? 'animate-click-pulse' : ''}`,
           'shadow-md',
           'shadow-black',
@@ -76,12 +78,13 @@ const CustomButton = ({ iconName = '', clickHandler = () => null, textContent = 
           'hover:bg-gray-300 cursor-pointer overflow-hidden',
           'before:animate-shimmer',
           backgroundColor,
-          `${makeShimmer}`
+          `${makeShimmer}`,
+          `${makeLift}`
         )}
         onClick={() => bundleClickHandlerAndAnimation(setClickedAnimation, clickHandler)}
         onAnimationEnd={() => setClickedAnimation(false)}
       >
-        { iconName && icon}
+        { iconName && icon }
         { textContent && textContent }
       </button>
     </div>

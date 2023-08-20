@@ -1,10 +1,13 @@
 import { useState } from "react"
 import LoadingSpinner from "../../common/LoadingSpinner"
+import classNames from "classnames"
+import { makeLift } from "../../../animations"
 
 interface ServicesCardProps {
   title: string
   content: string
   image: string
+  className?: string
   setSelectedService: (s: string) => void
 }
 
@@ -17,10 +20,17 @@ const buildEmailSubject = (title: string): string => {
   }
 }
 
-const ServicesCard: React.FC<ServicesCardProps> = ({ title, image, setSelectedService }: ServicesCardProps): JSX.Element => {
+const ServicesCard: React.FC<ServicesCardProps> = ({ title, image, className = '', setSelectedService }: ServicesCardProps): JSX.Element => {
   const [loading, setLoading] = useState(true)
   return (
-        <div className='flex flex-col w-full overflow-hidden bg-white shadow-lg shadow-black h-fit rounded-xl cursor-pointer' onClick={() => setSelectedService(buildEmailSubject(title))} >
+        <div 
+          className={classNames(
+              className,
+              `${makeLift}`,
+              'flex flex-col w-full overflow-hidden bg-white shadow-lg shadow-black h-fit rounded-xl cursor-pointer'
+          )}
+          onClick={() => setSelectedService(buildEmailSubject(title))}
+        >
           { loading && <LoadingSpinner /> }
           <img
             src={image}

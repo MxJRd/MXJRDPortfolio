@@ -4,6 +4,7 @@ import MusicAnalyzer from '../Music/MusicAnalyzer'
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import useClickAway from '../../hooks/useClickAway'
+import { makeLift } from '../../animations'
 
 const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }): JSX.Element => {
   return (
@@ -44,18 +45,18 @@ const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (
         <CollapsibleNavBar setOpenNav={setOpenNav}/>
       </div>
       <ul alt='Links to different website pages.' className='flex flex-col justify-between gap-10 pl-2 mt-1 md:visible collapse'>
-        <div className='flex gap-5'>
-          <li alt='Home link' className='text-blue-500'>
+        <div className='flex gap-5 text-blue-500'>
+          <li alt='Home link' className={`${makeLift}`}>
             <Link to='/'>
               Home
             </Link>
           </li>
-          <li alt='About Me link' className='text-blue-500 whitespace-nowrap'>
+          <li alt='About Me link' className={`${makeLift} whitespace-nowrap`}>
             <Link to='/about'>
               About Me
             </Link>
           </li>
-          <li alt='Services link' className='text-blue-500'>
+          <li alt='Services link' className={`${makeLift}`}>
             <Link to='/services'>
               Services
             </Link>
@@ -69,17 +70,17 @@ const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (
 export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (openNavBar: boolean) => void }): JSX.Element => {
   return (
     <ul style={{ zIndex: 4 }} className='absolute flex flex-col justify-around w-full mt-1 shadow-lg h-52 bg-raisin-black font-bold font-poppins h-10 text-blue-500 text-center'>
-      <Link to='/' className='flex-1 hover:bg-gray-800'>
+      <Link to='/' className='flex-1'>
         <li className='translate-y-[70%]' onClick={() => setOpenNav(false)}>
             Home
         </li>
       </Link>
-      <Link to='/about' className='flex-1 hover:bg-gray-800'>
+      <Link to='/about' className='flex-1'>
         <li className='translate-y-[70%] whitespace-nowrap' onClick={() => setOpenNav(false)}>
             About Me
         </li>
       </Link>
-      <Link to='/services' className='flex-1 hover:bg-gray-800'>
+      <Link to='/services' className='flex-1'>
         <li className='translate-y-[70%]' onClick={() => setOpenNav(false)}>
             Services
         </li>

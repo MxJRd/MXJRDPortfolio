@@ -2,6 +2,7 @@ import { Ref, useState } from 'preact/hooks'
 import useClickAway from '../../hooks/useClickAway'
 import CustomButton from '../common/CustomButton'
 import classNames from 'classnames'
+import { doMakeShrink } from '../../animations'
 
 const PhoneNumberComponent = ({ phoneNumber, phoneComponentRef }: { phoneNumber: string, phoneComponentRef: Ref<HTMLDivElement> }) => {
   return (
@@ -35,23 +36,25 @@ const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: 
   return (
     <section alt='A toolbar with links to social media.' style={{ zIndex: 3, height: `${isDesktopView ? windowHeight : ''}` }} className={`absolute flex ${isDesktopView ? stack : row} gap-2 pl-1 sm:pl-8 pr-6 pb-2 pt-7 rounded-lg left-0 bg-opacity-10`}>
       <div className='h-64 min-h-60' hidden={!(isDesktopView)}></div>
-      <article className={`flex ${isDesktopView ? 'flex-col' : 'flex-row'} gap-2`}>
-        <a alt='Link to github' target='_blank' href='https://github.com/mxjrd'>
-          <CustomButton iconName='github' size='medium' bgColor='white' />
-        </a>
-        <a alt='Link to LinkedIn' target='_blank' href='https://linkedin.com/in/mxjrd'>
-          <CustomButton iconName='linkedin' size='medium' bgColor='white' />
-        </a>
-      </article>
-      <article className={`flex ${isDesktopView ? 'flex-col' : 'flex-row'} gap-2`}>
-        <a alt='Link to Email' href='mailto:mxjreed@gmail.com'>
-          <CustomButton iconName='email' size='medium' bgColor='white' />
-        </a>
-        <div alt='Button group to reveal phone number'>
-          <CustomButton iconName='phone' size='medium' clickHandler={() => handleClickPhoneIcon()} bgColor='white' />
-          { showPhoneNumber ? <PhoneNumberComponent phoneComponentRef={phoneNumberComponentRef} phoneNumber={phoneNumber} /> : null }
-        </div>
-      </article>
+      <div className='group/btn'>
+        <article className={`pb-2 flex ${isDesktopView ? 'flex-col' : 'flex-row'} gap-2`}>
+          <a alt='Link to github' target='_blank' href='https://github.com/mxjrd'>
+            <CustomButton className={doMakeShrink('group-hover/btn')} iconName='github' size='medium' bgColor='white' />
+          </a>
+          <a alt='Link to LinkedIn' target='_blank' href='https://linkedin.com/in/mxjrd'>
+            <CustomButton className={doMakeShrink('group-hover/btn')} iconName='linkedin' size='medium' bgColor='white' />
+          </a>
+        </article>
+        <article className={`flex ${isDesktopView ? 'flex-col' : 'flex-row'} gap-2`}>
+          <a alt='Link to Email' href='mailto:mxjreed@gmail.com'>
+            <CustomButton className={doMakeShrink('group-hover/btn')} iconName='email' size='medium' bgColor='white' />
+          </a>
+          <div alt='Button group to reveal phone number'>
+            <CustomButton className={doMakeShrink('group-hover/btn')}  iconName='phone' size='medium' clickHandler={() => handleClickPhoneIcon()} bgColor='white' />
+            { showPhoneNumber ? <PhoneNumberComponent phoneComponentRef={phoneNumberComponentRef} phoneNumber={phoneNumber} /> : null }
+          </div>
+        </article>
+      </div>
     </section>
   );
 };
