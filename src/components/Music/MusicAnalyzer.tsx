@@ -4,9 +4,10 @@ import WaveForm from './Waveform'
 interface MusicAnalyzerProps {
   containerDimensions: { height: number, width: number }
   audioRef: any
+  mood: string
 }
 
-export const MusicAnalyzer = ({ containerDimensions, audioRef }: MusicAnalyzerProps) => {
+export const MusicAnalyzer = ({ containerDimensions, audioRef, mood }: MusicAnalyzerProps) => {
   const [, setAudioSrc] = useState<MediaElementAudioSourceNode>() // initialize the audio source.
   const [analyzerData, setAnalyzerData] = useState<any>(null)
 
@@ -30,7 +31,7 @@ export const MusicAnalyzer = ({ containerDimensions, audioRef }: MusicAnalyzerPr
 
   return (
     <div className='absolute mt-11'>
-      {analyzerData && <WaveForm analyzerData={analyzerData} containerDimensions={containerDimensions}/>}
+      {analyzerData && <WaveForm analyzerData={analyzerData} mood={mood} containerDimensions={containerDimensions}/>}
     </div>
   )
 }

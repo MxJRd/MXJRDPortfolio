@@ -28,7 +28,7 @@ const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => v
   )
 }
 
-const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, isDesktopView: boolean }): JSX.Element => {
+const NavBarContents = ({ setOpenNav, audioRef, isDesktopView, mood }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, isDesktopView: boolean, mood: string }): JSX.Element => {
   const navBarRef = useClickAway(() => setOpenNav(false))
   const { current } = navBarRef
   const [audioContainerDimensions, setAudioContainerDimensions] = useState<{ height: number, width: number }>({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
@@ -39,7 +39,7 @@ const NavBarContents = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (
 
   return (
     <nav alt='Desktop navigation bar.' ref={navBarRef} className='flex justify-between min-w-full pt-8 pb-8 overflow-hidden font-medium text-blue-500 shadow-md h-52 pr-14 z-1000 font-poppins'>
-      {audioRef && <MusicAnalyzer containerDimensions={audioContainerDimensions} audioRef={audioRef} />}
+      {audioRef && <MusicAnalyzer containerDimensions={audioContainerDimensions} mood={mood} audioRef={audioRef} />}
       <NavLogoContainer isDesktopView={isDesktopView} />
       <div className='absolute right-3'>
         <CollapsibleNavBar setOpenNav={setOpenNav}/>
@@ -89,9 +89,16 @@ export const ExpandedNavBar = ({ setOpenNav }: { openNav: boolean, setOpenNav: (
   )
 }
 
-const Navbar = ({ setOpenNav, audioRef, isDesktopView }: { setOpenNav: (openNavBar: boolean) => void, audioRef: any, isDesktopView: boolean }): JSX.Element => (
+interface NavBarProps {
+  setOpenNav: (openNavBar: boolean) => void
+  audioRef: any
+  isDesktopView: boolean
+  mood: string
+}
+
+const Navbar = ({ setOpenNav, audioRef, isDesktopView, mood }: NavBarProps): JSX.Element => (
   <div className='relative w-full'>
-    <NavBarContents setOpenNav={setOpenNav} audioRef={audioRef} isDesktopView={isDesktopView} />
+    <NavBarContents setOpenNav={setOpenNav} mood={mood} audioRef={audioRef} isDesktopView={isDesktopView} />
   </div>
 )
 

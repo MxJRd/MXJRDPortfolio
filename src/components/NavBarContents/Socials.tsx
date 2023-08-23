@@ -1,7 +1,6 @@
 import { Ref, useState } from 'preact/hooks'
 import useClickAway from '../../hooks/useClickAway'
 import CustomButton from '../common/CustomButton'
-import classNames from 'classnames'
 import { doMakeShrink } from '../../animations'
 
 const PhoneNumberComponent = ({ phoneNumber, phoneComponentRef }: { phoneNumber: string, phoneComponentRef: Ref<HTMLDivElement> }) => {
@@ -14,7 +13,7 @@ const PhoneNumberComponent = ({ phoneNumber, phoneComponentRef }: { phoneNumber:
   )
 }
 
-const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: number, isDesktopView: boolean }) => {
+const Socials = ({ currentWindowHeight, isDesktopView, mood }: { currentWindowHeight: number, isDesktopView: boolean, mood: string }) => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [showPhoneNumber, setShowPhoneNumber] = useState<boolean>(false)
   const phoneNumberComponentRef = useClickAway(() => setShowPhoneNumber(false))
@@ -30,7 +29,7 @@ const Socials = ({ currentWindowHeight, isDesktopView }: { currentWindowHeight: 
   }
   const windowHeight = `${currentWindowHeight - 1}px`
 
-  const stack = classNames('flex-col items-center bg-pink-500 ml-6')
+  const stack = `flex-col items-center ${mood === 'mathy' ? 'bg-pink-500' : 'bg-blue-500'} ml-6`
   const row = 'flex-col my-5 mx-6 top-12 left-0'
 
   return (

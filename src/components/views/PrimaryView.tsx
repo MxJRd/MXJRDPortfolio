@@ -41,7 +41,7 @@ const PrimaryView = ({ mood, sectionStyles, currentWindowSize }: PrimaryViewProp
       <BrowserRouter>
         <main className='fixed flex flex-col items-center justify-between flex-1 w-full h-full overflow-x-hidden overflow-y-auto text-white max-w-screen'>
           {openNav && <ExpandedNavBar openNav={openNav} setOpenNav={setOpenNav} />}
-          <NavBar isDesktopView={isDesktopView} setOpenNav={setOpenNav} audioRef={audioRef} />
+          <NavBar isDesktopView={isDesktopView} setOpenNav={setOpenNav} audioRef={audioRef} mood={mood} />
           <Routes>
             <Route path='/' element={<Home sectionStyles={sectionStyles} />} />
             <Route path='/about' element={<AboutMe />} />
@@ -53,7 +53,7 @@ const PrimaryView = ({ mood, sectionStyles, currentWindowSize }: PrimaryViewProp
             <Route path='/projects' element={<Projects />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
-          <Socials currentWindowHeight={currentWindowHeight} isDesktopView={isDesktopView} />
+          <Socials currentWindowHeight={currentWindowHeight} mood={mood} isDesktopView={isDesktopView} />
           {mood !== 'none' ? <MusicPlayer isDesktopView={isDesktopView} isMobileView={isMobileView} mood={mood} audioRef={audioRef} currentTrack={currentTrack!} setCurrentTrack={setCurrentTrack} /> : null}
         </main>
       </BrowserRouter>

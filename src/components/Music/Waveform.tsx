@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react"
 
-function animateBars(analyser: any, canvas: HTMLCanvasElement, canvasCtx: any, dataArray: Array<number>, bufferLength: number) {
+function animateBars(analyser: any, canvas: HTMLCanvasElement, canvasCtx: any, dataArray: Array<number>, bufferLength: number, mood: string) {
 
   analyser.getByteFrequencyData(dataArray)
   const canvasHeight = canvas.height / 1.55
@@ -11,7 +11,7 @@ function animateBars(analyser: any, canvas: HTMLCanvasElement, canvasCtx: any, d
 
   let column = 0
 
-  canvasCtx.fillStyle = '#00CCFF'
+  canvasCtx.fillStyle = mood === 'mathy' ? '#e91e63' : '#00CCFF' // bg-pink-500 or bg-blue-500
   // Loop through each buffer element in the `dataArray`.
   dataArray.forEach((buffer: number) => {
   // Calculate the height of the current bar based on the audio data and the canvas height.
@@ -26,12 +26,13 @@ function animateBars(analyser: any, canvas: HTMLCanvasElement, canvasCtx: any, d
 type WaveformProps = {
   analyzerData: any,
   containerDimensions: { height: number, width: number }
+  mood: string
 }
 
-const Waveform: React.FC<WaveformProps> = ({ analyzerData, containerDimensions }: WaveformProps): JSX.Element => {
+const Waveform: React.FC<WaveformProps> = ({ analyzerData, containerDimensions, mood }: WaveformProps): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { dataArray, analyzer, bufferLength } = analyzerData
-
+  console.log(mood)
   // Function to draw the waveform
   const drawWaveform = (dataArray: Array<number>, analyzer: any, bufferLength: any) => {
     const canvas = canvasRef.current
@@ -41,7 +42,7 @@ const Waveform: React.FC<WaveformProps> = ({ analyzerData, containerDimensions }
     const animate = () => {
       requestAnimationFrame(animate)
       canvas.width = canvas.width
-      animateBars(analyzer, canvas, canvasCtx, dataArray, bufferLength)
+      animateBars(analyzer, canvas, canvasCtx, dataArray, bufferLength, mood)
     }
     animate()
   }

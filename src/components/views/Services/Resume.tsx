@@ -2,7 +2,7 @@ import { useState } from 'preact/hooks'
 import { ReactComponent as DownloadIcon } from '../../../assets/download.svg'
 import resume from '../../../assets/resume'
 import ResumeCard from './ResumeCard'
-import MaxResume from '../../../assets/Max_Reed_SinglePager.pdf'
+import MaxResume from '../../../assets/Max_Reed_CV.pdf'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'
 
