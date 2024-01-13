@@ -28,7 +28,7 @@ const occupations: TimelineItem[] = [
   },
   {
     title: 'Software Engineer',
-    employer: 'USPS',
+    employer: 'ComplyAI',
     date: '2021 - Present',
     content: 'I build cool software!',
     current: true
