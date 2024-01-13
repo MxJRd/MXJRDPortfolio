@@ -79,12 +79,12 @@ const resume: ResumeType = {
     },
     creatrify: {
       name: 'Creatrify',
-      primer: 'Contributed bug fixes, testing, and features to multiple applications. Built documentation for end to end and integration testing best practices as well as built a library to allow users to fast access to testing on their applications using Webpack.',
+      primer: 'I help guide product and user experience decisions on the Creatrify platform! I occasionally bug hunt and bug fix here and there too.',
       bullets: [
         '● Guiding the design team and CEO to increase marketing potential and customer retention.',
-        '● Conducting market research to simplify and improve user flows.',
-        '● Improved user flow by designing and simplifying existing flows.',
-        '● Debugging and troubleshooting mobile responsive design and bug hunting using CSS and TypeScript.',
+        '● Conducting market research to simplify and improve various user flows.',
+        '● Providing engineer guidance and expertise to solve various problems related to mobile responsiveness and usability.',
+        '● Debugging and troubleshooting mobile responsive design as bug hunting, troubleshooting and debugging using CSS and TypeScript. Improving user flows and overall design by studying and simplifying existing user flows for a more seamless experience.',
       ],
       technologies: [
         'Angular',
