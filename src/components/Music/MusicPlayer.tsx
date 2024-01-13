@@ -32,15 +32,17 @@ interface MusicPlayerProps {
   audioRef: RefObject<HTMLAudioElement>
   currentTrack: TrackInfoType
   setCurrentTrack: (currentTrack: TrackInfoType) => void
+  play: boolean
+  setPlay: (b: boolean) => void
 }
 
-const MusicControlButton = ({ size, iconName, clickHandler, styles = '' }: { size: string, iconName: Icons, clickHandler: (...args: any) => void, styles?: string }) => {
+const MusicControlButton = ({ size, iconName, mood, clickHandler, styles = '' }: { size: string, mood: string, iconName: Icons, clickHandler: (...args: any) => void, styles?: string }) => {
   const [clicked, setClicked] = useState<boolean>(false)
   const svgSize = fetchSVGSize(size)
   const icon = fetchIcon(iconName, svgSize!)
   return (
     <div
-      className={classNames(styles, 'cursor-pointer hover:text-pink-500', `${clicked && 'animate-clickPulse'}`)}
+      className={classNames(styles, `cursor-pointer ${mood === 'mathy' ? 'hover:text-pink-500' : 'hover:text-blue-500'}`, `${clicked && 'animate-clickPulse'}`)}
       onClick={() => bundleClickHandlerAndAnimation(setClicked, clickHandler)}
       onAnimationEnd={() => setClicked(false)}
     >
@@ -49,24 +51,24 @@ const MusicControlButton = ({ size, iconName, clickHandler, styles = '' }: { siz
   )
 }
 
-const MusicPlayerControls = ({ audioPlayerRef, trackIndex, setTrackIndex, setPlay, play }: { audioPlayerRef: Ref<HTMLAudioElement>, trackIndex: number, play: boolean, setPlay: (playPause: boolean) => void, setTrackIndex: (prevIdx: number) => void }) => {
+const MusicPlayerControls = ({ audioPlayerRef, trackIndex, mood, setTrackIndex, setPlay, play }: { audioPlayerRef: Ref<HTMLAudioElement>, mood: string, trackIndex: number, play: boolean, setPlay: (playPause: boolean) => void, setTrackIndex: (prevIdx: number) => void }) => {
   return (
     <div style={{ justifyContent: 'space-between' }} className='flex'>
-      <MusicControlButton styles='pl-0 sm:pl-1' iconName='prev' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex + 1))}/>
+      <MusicControlButton mood={mood} styles='pl-0 sm:pl-1' iconName='prev' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex + 1))}/>
       {
         play
         ?
-          <MusicControlButton iconName='pause' size='large' clickHandler={() => {
+          <MusicControlButton mood={mood} iconName='pause' size='large' clickHandler={() => {
             setPlay(false)
             audioPlayerRef.current!.pause()
           }}/>
         :
-          <MusicControlButton iconName='play' size='large' clickHandler={() => {
+          <MusicControlButton mood={mood} iconName='play' size='large' clickHandler={() => {
             setPlay(true)
             audioPlayerRef.current!.play()
           }}/>
       }
-      <MusicControlButton styles='pl-0 sm:pl-1' iconName='next' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex - 1))}/>
+      <MusicControlButton mood={mood} styles='pl-0 sm:pl-1' iconName='next' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex - 1))}/>
     </div>
   )
 }
@@ -145,14 +147,14 @@ const TrackProgressSlider = ({ duration, audioRef, play, setPlay, trackProgress,
   )
 }
 
-const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPlayerProps) => {
-  const [play, setPlay] = useState(false)
+const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack, play, setPlay }: MusicPlayerProps) => {
   const [trackProgress, setTrackProgress] = useState(0)
   const [trackIndex, setTrackIndex] = useState<number>(0)
   const [volume, setVolume] = useState(0.01)
   const [duration, setDuration] = useState<number>(0)
   const playerGradientColor = 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'
   const isLoading = Number.isNaN(trackProgress) || audioRef.current === null
+
   const playTrack = () => {
     setPlay(true)
     audioRef?.current?.play()
@@ -184,6 +186,7 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
     const initialPlayTimer = setTimeout(initializePlayer, 150)
     return () => clearTimeout(initialPlayTimer)
   }, [])
+
   const handleTrackProgress = () => {
     setTrackProgress(audioRef.current!.currentTime)
   }
@@ -201,7 +204,14 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack }: MusicPla
           <section id='music-player-background' className='space-y-0 text-sm rounded-md bg-raisin-black content-center'>
             <p className='text-pink-500 font-poppins'>{title}</p>
             <p className='font-roboto-matrix pb-0.5'>{artist}</p>
-            <MusicPlayerControls play={play} setPlay={setPlay} audioPlayerRef={audioRef} trackIndex={trackIndex} setTrackIndex={setTrackIndex} />
+            <MusicPlayerControls
+              play={play}
+              setPlay={setPlay}
+              mood={mood}
+              audioPlayerRef={audioRef}
+              trackIndex={trackIndex}
+              setTrackIndex={setTrackIndex}
+            />
             <div className='flex flex-col items-center px-1 max-w-[160px] md:max-w-full'>
               <TrackProgressSlider audioRef={audioRef} duration={duration} play={play} setPlay={setPlay} trackProgress={trackProgress} setTrackProgress={setTrackProgress} />
               <VolumeSlider audioRef={audioRef} volume={volume} setVolume={setVolume} />

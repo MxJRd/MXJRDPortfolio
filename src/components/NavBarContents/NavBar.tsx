@@ -6,10 +6,10 @@ import classNames from 'classnames'
 import useClickAway from '../../hooks/useClickAway'
 import { makeLift } from '../../animations'
 
-const NavLogoContainer = ({ isDesktopView }: { isDesktopView: boolean }): JSX.Element => {
+const NavLogoContainer = ({ isDesktopView, play }: { isDesktopView: boolean, play: boolean }): JSX.Element => {
   return (
-    <div alt='MXJRD Logo container' className={classNames('flex gap-2 pl-10 sm:pl-14 pt-0.5')}>
-      <img className='rounded-lg w-9 h-9' src={MXJRDLogo} />
+    <div style={{ zIndex: 10 }} alt='MXJRD Logo container' className={classNames('flex gap-2 pl-10 sm:pl-14 pt-0.5')}>
+      <img className={`rounded-full w-9 h-9 ${play ? 'animate-spin' : ''}`} src={MXJRDLogo} />
       <p className={classNames('mt-1.5 text-blue-300', `${isDesktopView ? '-rotate-90 mt-3' : ''}`)}>MX<span className='text-blue-400'>J</span><span className='text-pink-400'>R</span><span className='text-pink-400'>D</span></p>
     </div>
   )
@@ -28,7 +28,15 @@ const CollapsibleNavBar = ({ setOpenNav }: { setOpenNav: (openNav: boolean) => v
   )
 }
 
-const NavBarContents = ({ setOpenNav, audioRef, isDesktopView, mood }: { setOpenNav: (openNavBar: boolean) => void, audioRef: HTMLAudioElement, isDesktopView: boolean, mood: string }): JSX.Element => {
+interface NavBarContentsProps {
+  setOpenNav: (openNavBar: boolean) => void
+  audioRef: HTMLAudioElement
+  isDesktopView: boolean
+  mood: string
+  play: boolean
+}
+
+const NavBarContents = ({ setOpenNav, audioRef, isDesktopView, mood, play }: NavBarContentsProps): JSX.Element => {
   const navBarRef = useClickAway(() => setOpenNav(false))
   const { current } = navBarRef
   const [audioContainerDimensions, setAudioContainerDimensions] = useState<{ height: number, width: number }>({ height: current?.clientHeight ?? 0, width: current?.clientWidth ?? 0 })
@@ -40,7 +48,7 @@ const NavBarContents = ({ setOpenNav, audioRef, isDesktopView, mood }: { setOpen
   return (
     <nav alt='Desktop navigation bar.' ref={navBarRef} className='flex justify-between min-w-full pt-8 pb-8 overflow-hidden font-medium text-blue-500 shadow-md h-52 pr-14 z-1000 font-poppins'>
       {audioRef && <MusicAnalyzer containerDimensions={audioContainerDimensions} mood={mood} audioRef={audioRef} />}
-      <NavLogoContainer isDesktopView={isDesktopView} />
+      <NavLogoContainer isDesktopView={isDesktopView} play={play} />
       <div className='absolute right-3'>
         <CollapsibleNavBar setOpenNav={setOpenNav}/>
       </div>
@@ -94,12 +102,14 @@ interface NavBarProps {
   audioRef: any
   isDesktopView: boolean
   mood: string
+  play: boolean
 }
 
-const Navbar = ({ setOpenNav, audioRef, isDesktopView, mood }: NavBarProps): JSX.Element => (
+const Navbar = ({ setOpenNav, audioRef, isDesktopView, mood, play }: NavBarProps): JSX.Element => (
   <div className='relative w-full'>
-    <NavBarContents setOpenNav={setOpenNav} mood={mood} audioRef={audioRef} isDesktopView={isDesktopView} />
+    <NavBarContents play={play} setOpenNav={setOpenNav} mood={mood} audioRef={audioRef} isDesktopView={isDesktopView} />
   </div>
 )
 
 export default Navbar
+

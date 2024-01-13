@@ -17,8 +17,8 @@ const BulletComponent = ({ bulletContent, animationSlide }: { bulletContent: str
 }
 
 const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
-  const { companies: { firstResonance, apple } } = resume || {}
-  const [company, setCompany] = useState(firstResonance)
+  const { companies: { firstResonance, apple, complyAI, creatrify } } = resume || {}
+  const [company, setCompany] = useState(complyAI)
   const { bullets, primer } = company || {}
   return (
     <section className={`flex ${sectionStyles} justify-center h-screen xl:min-w-[1400px] lg:min-w-[1200px] md:min-w-[1000px] sm:max-w-[1000px]`}>
@@ -32,8 +32,10 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
         </div>
         <div className='flex flex-col lg:flex-row'>
           <div className='flex flex-col self-center w-full gap-4 px-6 py-4 md:self-start'>
+            <ResumeCard name='ComplyAI' setCompany={setCompany} company={complyAI} />
             <ResumeCard name='First Resonance' setCompany={setCompany} company={firstResonance} />
             <ResumeCard name='Apple' setCompany={setCompany} company={apple} />
+            <ResumeCard name='Creatrify' setCompany={setCompany} company={creatrify} />
           </div>
           <div className='p-1 space-y-2 md:p-4 flex-2 mb-16'>
             <p className='pb-4 font-roboto-matrix'>{primer}</p>

@@ -45,7 +45,7 @@ function App() {
             <WelcomeView welcome={welcome} setWelcomeAndMood={setWelcomeAndMood} animateDisappear={animateDisappear} setAnimateDisappear={setAnimateDisappear}/>
           )
           : (
-            <PrimaryView sectionStyles={sectionStyles} mood={mood} currentWindowSize={currentWindowSize} />
+            <PrimaryView sectionStyles={sectionStyles} mood={mood} setMood={setMood} currentWindowSize={currentWindowSize} />
           )
       }
     </div>
