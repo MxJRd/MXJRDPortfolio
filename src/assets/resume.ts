@@ -2,6 +2,7 @@ export interface JobContentType {
   bullets: Array<string>,
   technologies: Array<string>
   primer: string
+  name: string
 }
 
 interface ResumeType {
@@ -13,6 +14,7 @@ interface ResumeType {
 const resume: ResumeType = {
   companies: {
     complyAI: {
+      name: 'ComplyAI',
       primer: 'As the sole Frontend Engineer, I am responsible for crafting, strategizing, and constructing the frontend codebase and user pathways. I also add endpoints, resources and other necessities in the backend using Python and Flask :)',
       bullets: [
         '● Inheriting the frontend codebase (React, Vite, GraphQL, Apollo, styled-components), debugging, planning, designing and building features.',
@@ -31,6 +33,7 @@ const resume: ResumeType = {
       ],
     },
     firstResonance: {
+      name: 'First Resonance',
       primer: 'Software for improving the manufacturing pipeline for Fortune 500 companies and bleeding edge aerospace. It maintains complex data relationships in order to improve supply chains, the traceability of parts, and to allow users to collaborate and sign off on each others work. I built many features front to back from prototyping, design to production',
       bullets: [
         '● Planning, designing and building responsive enterprise-level web applications (React, Sass and Tailwind) serving Fortune 500 companies.',
@@ -56,6 +59,7 @@ const resume: ResumeType = {
       ]
     },
     apple: {
+      name: 'Apple',
       primer: 'Contributed bug fixes, testing, and features to multiple applications. Built documentation for end to end and integration testing best practices as well as built a library to allow users to fast access to testing on their applications using Webpack.',
       bullets: [
         '● Debugging, troubleshooting and resolving critical issues (e.g., React and Typescript), such as preventing further bugs and unblocking critical features on core Apple applications and tools.',
@@ -74,6 +78,7 @@ const resume: ResumeType = {
       ],
     },
     creatrify: {
+      name: 'Creatrify',
       primer: 'Contributed bug fixes, testing, and features to multiple applications. Built documentation for end to end and integration testing best practices as well as built a library to allow users to fast access to testing on their applications using Webpack.',
       bullets: [
         '● Guiding the design team and CEO to increase marketing potential and customer retention.',

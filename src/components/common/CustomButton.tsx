@@ -51,6 +51,7 @@ interface CustomButtonProps {
   iconName?: Icons
   textContent?: string
   className?: string
+  active?: boolean;
   clickHandler?: (...args: any) => void
   size: Sizes
   color?: Colors

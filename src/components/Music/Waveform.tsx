@@ -32,7 +32,6 @@ type WaveformProps = {
 const Waveform: React.FC<WaveformProps> = ({ analyzerData, containerDimensions, mood }: WaveformProps): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { dataArray, analyzer, bufferLength } = analyzerData
-  console.log(mood)
   // Function to draw the waveform
   const drawWaveform = (dataArray: Array<number>, analyzer: any, bufferLength: any) => {
     const canvas = canvasRef.current
