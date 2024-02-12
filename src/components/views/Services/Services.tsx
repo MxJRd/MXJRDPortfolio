@@ -8,6 +8,7 @@ import Resume from './Resume'
 import HoneycombBackground from '../../common/HoneycombBackground'
 import ServicesForm from './ServicesForm'
 import { StateUpdater, useState } from 'preact/compat'
+import Timeline from '../AboutMe/timeline/Timeline'
 
 export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
   return (
@@ -21,7 +22,7 @@ export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolea
         <li>Top 0.5% of players season 4 in League of Legends.</li>
         <li>Built my first car. 1983 Porsche 928, LS1 conversion.</li>
         <li>Number 13 player (number 2 Archer) worldwide Tera 2015.</li>
-        <li>Top 3.6% of players in Chess.com puzzles.</li>
+        <li>Top 3% of players in Chess.com puzzles.</li>
         <li>Played alongside famous bands like Red Jumpsuit Apparatus, Drowning Pool and more.</li>
         <li>Most popular teacher at Fun Music school.</li>
         <li><a href='https://tcymbals.com/artists/maxwell-j-reed/'>Endorsed drummer</a></li>

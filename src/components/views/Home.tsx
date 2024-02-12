@@ -5,7 +5,6 @@ import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
 import HoneycombBackground from '../common/HoneycombBackground'
 import { makeButtonExpand, makeLift, makePressed } from '../../animations'
-import Timeline from './AboutMe/timeline/Timeline'
 
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
@@ -87,9 +86,6 @@ const Home = ({ sectionStyles }: { sectionStyles: string }) => {
         </div>
         <div className='min-w-[240px]'>
           <img className='w-[240px] h-[240px] rounded-lg object-cover object-right' src={DrummingHard} />
-        </div>
-        <div className='w-4/5'>
-          <Timeline />
         </div>
       </article>
     </section>

@@ -1,7 +1,7 @@
 const aboutStrings = {
   about: {
     title: 'About me',
-    content: `Hello, I'm Max, a multidisciplinary individual with a passion for designing and building intuitive, mobile-friendly web experiences using technologies like React and Typescript. When I'm not building cool things, I'm probably writing music, working out, or playing video games with friends.
+    content: `Hello, I'm Max, a multidisciplinary individual with a passion for designing and building intuitive, mobile-friendly web experiences using technologies like React and Typescript. When I'm not building cool things, I'm probably writing music, working out, doing jiu jitsu, or playing video games with friends.
     What sets me apart is my inclination for unconventional paths and embracing the intersection of science and art.`
   },
   achievements: {

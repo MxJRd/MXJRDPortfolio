@@ -13,6 +13,7 @@ import { ReactComponent as NodeLogo } from '../../../assets/tech-icons/NodeLogo.
 import { ReactComponent as HTMLLogo } from '../../../assets/tech-icons/htmlLogo.svg'
 import { fetchSVGSize } from '../../../helpers'
 import classNames from 'classnames'
+import Timeline from './timeline/Timeline'
 
 type Logos = 'ts' | 'react' | 'vite' | 'css' | 'tw' | 'gql' | 'node' | 'js' | 'html' | 'css'
 
@@ -51,7 +52,7 @@ const LogoItem = ({ logoName, size }: {logoName: Logos, size: string }) => {
 
 const ProfessionalTech = () => {
   return (
-    <div className='flex flex-col items-center justify-center gap-4 pt-12'>
+    <div className='flex flex-col items-center justify-center gap-4 pt-12 pb-6'>
       <ul alt='A list of frontend technology logos. These directly correlate with things I have used professionally.' className='flex flex-col items-center gap-4 pr-12 sm:p-4'>
         <li className='flex gap-2'>
           <LogoItem logoName='react' size='large'/>
@@ -80,6 +81,9 @@ const AboutMe = (): JSX.Element => {
       <BackgroundBadge viewTitle={'About.'} />
       <ArticleCard title={about.title} content={about.content}/>
       <ProfessionalTech />
+      <div className='w-4/5'>
+        <Timeline />
+      </div>
       <div className='mb-16'>
         <ArticleCard title={achievements.title} content={achievements.content}/>
       </div>
