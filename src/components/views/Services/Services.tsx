@@ -8,7 +8,6 @@ import Resume from './Resume'
 import HoneycombBackground from '../../common/HoneycombBackground'
 import ServicesForm from './ServicesForm'
 import { StateUpdater, useState } from 'preact/compat'
-import Timeline from '../AboutMe/timeline/Timeline'
 
 export const ReceiptsModal = ({ setShowReceipts }: { setShowReceipts: (b: boolean) => void }) => {
   return (
