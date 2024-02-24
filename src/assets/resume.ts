@@ -18,6 +18,13 @@ const resume: ResumeType = {
       primer: 'As the sole Frontend Engineer, I am responsible for crafting, strategizing, and constructing the frontend codebase and user pathways. I also add endpoints, resources and other necessities in the backend using Python and Flask :)',
       bullets: [
         '● Inheriting the frontend codebase (React, Vite, GraphQL, Apollo, styled-components), debugging, planning, designing and building features.',
+        '● Designing and building a state management solution leveraging Zustand, hooks, and tanstack-query.',
+        '● As the sole Frontend Engineer, I am responsible for crafting, strategizing, and constructing the frontend codebase and user pathways as well as connecting frontend and backend.',
+        '● Acting as product and working with the team to develop application requirements and features.',
+        '● Building backend GraphQL resolvers in TypeScript.',
+        '● Designing and implementing authn/authz flows leveraging Auth0, in React, Python and building out an RBAC system according to OWASP best practices.',
+        '● Planning and estimating tasks leveraging Jira and assigning tasks to interns while providing guidance.',
+        '● Building multiple mobile responsive views and components leveraging TanStack-table, TanStack-query, and TailwindCSS styling.',
         '● Starting a new frontend Codebase (React, Vite, TailwindCSS) utilizing best practices.',
         '● Collaborating with product and design teams to develop application requirements and estimations. Building backend GraphQL resolvers in TypeScript.',
         '● Fixing a showstopper bug in AWS within the first week of joining.',

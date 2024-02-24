@@ -20,6 +20,7 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
   const { companies: { firstResonance, apple, complyAI, creatrify } } = resume || {}
   const [company, setCompany] = useState(complyAI)
   const { bullets, primer } = company || {}
+
   return (
     <section className={`flex ${sectionStyles} justify-center h-screen xl:min-w-[1400px] lg:min-w-[1200px] md:min-w-[1000px] sm:max-w-[1000px]`}>
       <div className='flex flex-col w-4/5 gap-2 rounded-lg text-start'>
