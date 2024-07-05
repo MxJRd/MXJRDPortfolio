@@ -27,10 +27,17 @@ const occupations: TimelineItem[] = [
     content: 'Maintained machines.'
   },
   {
-    title: 'Software Engineer',
+    title: 'Lead Frontend Engineer',
     employer: 'ComplyAI',
     date: '2021 - Present',
-    content: 'I build cool software!',
+    content: 'I build user experiences!',
+    current: true
+  },
+  {
+    title: 'Senior Software Engineer',
+    employer: 'Stealthy boi',
+    date: '2024 - Present',
+    content: 'I lead cool people!',
     current: true
   }
 ]

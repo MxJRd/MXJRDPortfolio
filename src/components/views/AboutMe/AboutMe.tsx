@@ -14,6 +14,7 @@ import { ReactComponent as HTMLLogo } from '../../../assets/tech-icons/htmlLogo.
 import { fetchSVGSize } from '../../../helpers'
 import classNames from 'classnames'
 import Timeline from './timeline/Timeline'
+import { SpecialRedirectButton } from '../../common/SpecialRedirectButton'
 
 type Logos = 'ts' | 'react' | 'vite' | 'css' | 'tw' | 'gql' | 'node' | 'js' | 'html' | 'css'
 
@@ -52,7 +53,7 @@ const LogoItem = ({ logoName, size }: {logoName: Logos, size: string }) => {
 
 const ProfessionalTech = () => {
   return (
-    <div className='flex flex-col items-center justify-center gap-4 pt-12 pb-6'>
+    <div className='flex flex-col items-center justify-center gap-4 pt-6 pb-6'>
       <ul alt='A list of frontend technology logos. These directly correlate with things I have used professionally.' className='flex flex-col items-center gap-4 pr-12 sm:p-4'>
         <li className='flex gap-2'>
           <LogoItem logoName='react' size='large'/>
@@ -80,6 +81,12 @@ const AboutMe = (): JSX.Element => {
       <HoneycombBackground />
       <BackgroundBadge viewTitle={'About.'} />
       <ArticleCard title={about.title} content={about.content}/>
+      <div className='mt-6'>
+        <SpecialRedirectButton title='Take a peek at my github' to='https://github.com/mxjrd' newTab />
+      </div>
+      {/* <button >
+        <a className='text-white hover:text-slate-100' href="https://github.com/mxjrd" target='_blank'>Take a peek at my github</a>
+      </button> */}
       <ProfessionalTech />
       <div className='w-4/5'>
         <Timeline />

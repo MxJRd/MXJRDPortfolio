@@ -1,8 +1,11 @@
 export interface JobContentType {
-  bullets: Array<string>,
+  bullets: Array<string>
+  title: string
   technologies: Array<string>
   primer: string
   name: string
+  current?: boolean
+  tagline?: string
 }
 
 interface ResumeType {
@@ -13,9 +16,34 @@ interface ResumeType {
 
 const resume: ResumeType = {
   companies: {
+    stealth: {
+      name: 'Stealth',
+      title: 'Senior Software Engineer / Team lead',
+      tagline: '(Contact me for a detailed resume!)',
+      current: true,
+      primer: 'My responsibilities include designing system features, guiding key technological choices, leading a team of engineers, and mentoring on best practices. We use cutting edge techniques and technologies to innovate AI product development.',
+      bullets: [
+        '● Designing system features, guiding technological choices, and leading a team of engineers to execute on multiple AI healthcare products.',
+        '● Leading and mentoring various engineers (MLE, Data Scientist, Fullstack) on software engineering best practices.',
+        '● Designing and building an AI product leveraging RAG (Retrieval Augmented Generation) using huggingface, langchain and Pinecone',
+        '● Contributing to the design and execution of cutting edge AI products leveraging RAG and various AI models like Llama-3, OpenAI GPT’s, and Google Gemini.',
+        '● Collaborating with various stakeholders and providing impactful insight into product features, overall design, and guiding key technological choices.',
+        '● Decomposing products into roadmaps and manageable tasks using Linear and assigning these tasks and features to the engineering team.',
+      ],
+      technologies: [
+        'React',
+        'Typescript',
+        'HuggingFace',
+        'Databricks',
+        'Python',
+        'Flask'
+      ],
+    },
     complyAI: {
       name: 'ComplyAI',
-      primer: 'As the sole Frontend Engineer, I am responsible for crafting, strategizing, and constructing the frontend codebase and user pathways. I also add endpoints, resources and other necessities in the backend using Python and Flask :)',
+      title: 'Lead Frontend Engineer',
+      current: true,
+      primer: 'As the sole Frontend Engineer, I am responsible for designing, strategizing, and constructing the frontend codebase and user pathways. I also add endpoints, resources and other necessities in the backend using Python and Flask :)',
       bullets: [
         '● Inheriting the frontend codebase (React, Vite, GraphQL, Apollo, styled-components), debugging, planning, designing and building features.',
         '● Designing and building a state management solution leveraging Zustand, hooks, and tanstack-query.',
@@ -36,11 +64,13 @@ const resume: ResumeType = {
         'Typescript',
         'GraphQL',
         'Python',
-        'Flask'
+        'Flask',
+        'Cypress'
       ],
     },
     firstResonance: {
       name: 'First Resonance',
+      title: 'Frontend Engineer',
       primer: 'Software for improving the manufacturing pipeline for Fortune 500 companies and bleeding edge aerospace. It maintains complex data relationships in order to improve supply chains, the traceability of parts, and to allow users to collaborate and sign off on each others work. I built many features front to back from prototyping, design to production',
       bullets: [
         '● Planning, designing and building responsive enterprise-level web applications (React, Sass and Tailwind) serving Fortune 500 companies.',
@@ -67,6 +97,7 @@ const resume: ResumeType = {
     },
     apple: {
       name: 'Apple',
+      title: 'Software Engineer',
       primer: 'Contributed bug fixes, testing, and features to multiple applications. Built documentation for end to end and integration testing best practices as well as built a library to allow users to fast access to testing on their applications using Webpack.',
       bullets: [
         '● Debugging, troubleshooting and resolving critical issues (e.g., React and Typescript), such as preventing further bugs and unblocking critical features on core Apple applications and tools.',
@@ -86,6 +117,7 @@ const resume: ResumeType = {
     },
     creatrify: {
       name: 'Creatrify',
+      title: 'UI/UX Consultant',
       primer: 'I help guide product and user experience decisions on the Creatrify platform! I occasionally bug hunt and bug fix here and there too.',
       bullets: [
         '● Guiding the design team and CEO to increase marketing potential and customer retention.',

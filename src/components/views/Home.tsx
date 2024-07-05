@@ -4,7 +4,7 @@ import DrummingHard from '../../assets/DrummingHard.jpg'
 import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
 import HoneycombBackground from '../common/HoneycombBackground'
-import { makeButtonExpand, makeLift, makePressed } from '../../animations'
+import { SpecialRedirectButton } from '../common/SpecialRedirectButton'
 
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
@@ -43,29 +43,7 @@ const ScrambleComponent = ({ position }: { position: string }) => {
   )
 }
 
-const ContactMeButton = () => {
-  const [clickedAnimation, setClickedAnimation] = useState<boolean>(false)
 
-  return (
-    <a href='mailto:mxjreed@gmail.com'>
-      <button
-        // style={{ borderTopRightRadius: '2px', borderBottomLeftRadius: '2px' }}
-        className={
-          `${makeLift} ${clickedAnimation ? makePressed : ''}
-          ${makeButtonExpand}
-          relative px-5 py-3 border-2 text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500
-          rounded-br-lg rounded-tl-lg
-          after:rounded-br-lg after:rounded-tl-lg
-          `
-        }
-        onClick={() => setClickedAnimation(true)}
-        onTransitionEnd={() => setClickedAnimation(false)}
-      >
-        Contact me.
-      </button>
-    </a>
-  )
-}
 
 const Home = ({ sectionStyles }: { sectionStyles: string }) => {
   return (
@@ -81,7 +59,7 @@ const Home = ({ sectionStyles }: { sectionStyles: string }) => {
           <ScrambleComponent position='relative'/>
           <p className='pt-6 text-center text-dusty-pink'>Play some tunes, enjoy your stay.</p>
           <div className='pt-4'>
-            <ContactMeButton />
+            <SpecialRedirectButton title='Contact me.' to='mailto:mxjreed@gmail.com' />
           </div>
         </div>
         <div className='min-w-[240px]'>
