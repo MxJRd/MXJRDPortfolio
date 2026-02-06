@@ -31,24 +31,36 @@ type WaveformProps = {
 
 const Waveform: React.FC<WaveformProps> = ({ analyzerData, containerDimensions, mood }: WaveformProps): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const animationFrameRef = useRef<number | null>(null)
   const { dataArray, analyzer, bufferLength } = analyzerData
   // Function to draw the waveform
-  const drawWaveform = (dataArray: Array<number>, analyzer: any, bufferLength: any) => {
+  const drawWaveform = (dataArray: Array<number>, analyzer: any, bufferLength: any, currentMood: string) => {
     const canvas = canvasRef.current
     if (!canvas || !analyzer) return
     const canvasCtx = canvas.getContext("2d")
 
     const animate = () => {
-      requestAnimationFrame(animate)
+      animationFrameRef.current = requestAnimationFrame(animate)
       canvas.width = canvas.width
-      animateBars(analyzer, canvas, canvasCtx, dataArray, bufferLength, mood)
+      animateBars(analyzer, canvas, canvasCtx, dataArray, bufferLength, currentMood)
     }
     animate()
   }
 
   useEffect(() => {
-    drawWaveform(dataArray, analyzer, bufferLength)
-  }, [dataArray, analyzer, bufferLength])
+    // Cancel any existing animation frame
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current)
+    }
+    drawWaveform(dataArray, analyzer, bufferLength, mood)
+    
+    // Cleanup function to cancel animation frame on unmount
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+      }
+    }
+  }, [dataArray, analyzer, bufferLength, mood])
 
   return (
     <canvas

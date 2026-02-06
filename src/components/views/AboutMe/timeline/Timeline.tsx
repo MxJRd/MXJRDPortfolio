@@ -29,15 +29,22 @@ const occupations: TimelineItem[] = [
   {
     title: 'Lead Frontend Engineer',
     employer: 'ComplyAI',
-    date: '2021 - Present',
+    date: '2021 - 2024',
     content: 'I build user experiences!',
-    current: true
+    current: false
   },
   {
     title: 'Senior Software Engineer',
-    employer: 'Stealthy boi',
-    date: '2024 - Present',
-    content: 'I lead cool people!',
+    employer: 'Persistent Technologies',
+    date: '2024 - 2025',
+    content: 'Designing features and leading a team of engineers on AI healthcare products.',
+    current: false
+  },
+  {
+    title: 'Senior Software Engineer',
+    employer: 'Pacific Health',
+    date: '2025 - Present',
+    content: 'Leading architectural design and building a complex scheduling platform.',
     current: true
   }
 ]
