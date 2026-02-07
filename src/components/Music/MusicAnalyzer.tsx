@@ -8,7 +8,7 @@ interface MusicAnalyzerProps {
 }
 
 export const MusicAnalyzer = ({ containerDimensions, audioRef, mood }: MusicAnalyzerProps) => {
-  const [, setAudioSrc] = useState<MediaElementAudioSourceNode>() // initialize the audio source.
+  const [, setAudioSrc] = useState<MediaElementAudioSourceNode>()
   const [analyzerData, setAnalyzerData] = useState<any>(null)
 
   useEffect(() => {

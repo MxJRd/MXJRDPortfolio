@@ -1,10 +1,11 @@
-import { useState, useRef } from 'preact/hooks'
+import { useState, useRef, useEffect } from 'preact/hooks'
 import { ReactComponent as DownloadIcon } from '../../../assets/download.svg'
 import resume from '../../../assets/resume'
 import ResumeCard from './ResumeCard'
 import MaxResume from '../../../assets/Max_Reed_CV.pdf'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'
+import { useLocation } from 'react-router-dom'
 
 const BulletComponent = ({ bulletContent, animationSlide }: { bulletContent: string, animationSlide: string }) => {
   const hasAnimated = useRef(false)
@@ -24,8 +25,38 @@ const BulletComponent = ({ bulletContent, animationSlide }: { bulletContent: str
 
 const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
   const { companies } = resume ?? {}
+  const location = useLocation()
   const [company, setCompany] = useState(companies.pacificHealth)
+  const [shouldScroll, setShouldScroll] = useState(false)
   const { bullets, primer, tagline, name: companyName, title } = company ?? {}
+
+  // Handle navigation from timeline
+  useEffect(() => {
+    const state = location.state as { companyKey?: string, scrollToDetails?: boolean }
+    if (state?.companyKey && companies[state.companyKey]) {
+      setCompany(companies[state.companyKey])
+      setShouldScroll(true)
+    }
+  }, [location.state, companies])
+
+  // Scroll after company has been updated and rendered
+  useEffect(() => {
+    if (shouldScroll) {
+      // Use requestAnimationFrame to ensure DOM has updated
+      requestAnimationFrame(() => {
+        const state = location.state as { scrollToDetails?: boolean }
+        const isVerticalLayout = window.innerWidth < 1024 // lg breakpoint
+        const scrollTarget = (isVerticalLayout || state?.scrollToDetails)
+          ? document.getElementById('company-details')
+          : document.getElementById('services-scroll')
+        
+        if (scrollTarget) {
+          scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        setShouldScroll(false)
+      })
+    }
+  }, [shouldScroll, company, location.state])
 
   return (
     <section className={`flex ${sectionStyles} justify-center h-screen xl:min-w-[1400px] lg:min-w-[1200px] md:min-w-[1000px] sm:max-w-[1000px]`}>
@@ -45,11 +76,12 @@ const Resume = ({ sectionStyles }: { sectionStyles: string }) => {
             {
               Object.values(companies).map((companyInfo) => {
                 const { name, current } = companyInfo
-                return <ResumeCard name={name} current={current} setCompany={setCompany} company={companyInfo} />
+                const isSelected = company.name === companyInfo.name
+                return <ResumeCard name={name} current={current} setCompany={setCompany} company={companyInfo} isSelected={isSelected} />
               })
             }
           </div>
-          <div className='p-1 space-y-2 md:p-4 mb-16 flex-1 lg:min-w-0 lg:max-w-none w-full'>
+          <div id='company-details' className='p-1 space-y-2 md:p-4 mb-16 flex-1 lg:min-w-0 lg:max-w-none w-full'>
             <div>
               <p className='pb-2 font-roboto-matrix text-lg text-blue-500'>{companyName + (` ${tagline ?? ''}`)}</p>
               <hr />

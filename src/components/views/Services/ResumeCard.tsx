@@ -20,7 +20,7 @@ export const BulletList = ({ bullets }: { bullets: Array<string> }) => {
   )
 }
 
-const ResumeCard = ({ name, setCompany, company, logo, current }: { name: string, setCompany: (company: JobContentType) => void, company: JobContentType, logo?: any, current?: boolean }) => {
+const ResumeCard = ({ name, setCompany, company, logo, current, isSelected }: { name: string, setCompany: (company: JobContentType) => void, company: JobContentType, logo?: any, current?: boolean, isSelected?: boolean }) => {
   const { technologies } = company || {}
   return (
     <article id='clip-corners' className={`flex flex-col ${current ? 'bg-pink-500 text-gray-500' : 'bg-gray-500 text-white'} rounded-b-md rounded-tl-md w-[275px] overflow-hidden p-4 self-center`}>
@@ -33,10 +33,21 @@ const ResumeCard = ({ name, setCompany, company, logo, current }: { name: string
           <CustomButton
             iconName='right-chevron'
             color='black'
-            bgColor='slate'
+            bgColor={isSelected ? 'cyan' : 'slate'}
             size='small'
             clickHandler={() => {
               setCompany(company)
+              
+              requestAnimationFrame(() => {
+                const isVerticalLayout = window.innerWidth < 1024
+                const scrollTarget = isVerticalLayout 
+                  ? document.getElementById('company-details')
+                  : document.getElementById('services-scroll')
+                
+                if (scrollTarget) {
+                  scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              })
             }}
           />
         </div>

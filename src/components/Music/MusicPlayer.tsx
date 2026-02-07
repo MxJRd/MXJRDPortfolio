@@ -153,7 +153,7 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack, play, setP
   const [volume, setVolume] = useState(0.01)
   const [duration, setDuration] = useState<number>(0)
   const playerGradientColor = 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'
-  const isLoading = Number.isNaN(trackProgress) || audioRef.current === null
+  const isLoading = Number.isNaN(duration) || Number.isNaN(trackProgress) || !duration || audioRef.current === null
 
   const playTrack = () => {
     setPlay(true)

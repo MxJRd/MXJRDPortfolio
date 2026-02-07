@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'preact/hooks'
 import DrummingHard from '../../assets/DrummingHard.jpg'
+import DrummingHard2 from '../../assets/DrummingHard2.jpg'
+import Wedding from '../../assets/Wedding.jpg'
 
 import BackgroundBadge from '../common/BackgroundBadge'
 import TextScramble from '../../helpers'
 import HoneycombBackground from '../common/HoneycombBackground'
 import { SpecialRedirectButton } from '../common/SpecialRedirectButton'
+import Carousel from '../common/Carousel'
 
 const ScrambleComponent = ({ position }: { position: string }) => {
   const scrambleRef = useRef<HTMLParagraphElement>(null)
@@ -62,8 +65,12 @@ const Home = ({ sectionStyles }: { sectionStyles: string }) => {
             <SpecialRedirectButton title='Contact me.' to='mailto:mxjreed@gmail.com' />
           </div>
         </div>
-        <div className='min-w-[240px]'>
-          <img className='w-[240px] h-[240px] rounded-lg object-cover object-right' src={DrummingHard} />
+        <div className='min-w-[240px] w-[240px] h-[240px]'>
+          <Carousel 
+            images={[DrummingHard, DrummingHard2, Wedding]} 
+            interval={2000}
+            className='w-[240px] h-[240px]'
+          />
         </div>
       </article>
     </section>

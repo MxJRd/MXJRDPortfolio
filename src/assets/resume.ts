@@ -21,9 +21,9 @@ const resume: ResumeType = {
       title: 'Senior Software Engineer',
       tagline: 'Irvine',
       current: true,
-      primer: 'Led the architectural and technical design as a two-engineer team, launching a tier one complex scheduling product from conception to production, now serving 17,000+ monthly users on a Rust, GraphQL, and React stack.',
+      primer: 'Led the architectural and technical design as a two-engineer team, launching a tier one complex scheduling product from conception to production, now serving 17,000+ (4,100 monthly) users on a Rust, GraphQL, and React stack.',
       bullets: [
-        '● Led the architectural and technical design as a two-engineer team, launching a tier one complex scheduling product from conception to production, now serving 17,000+ monthly users on a Rust, GraphQL, and React stack.',
+        '● Led the architectural and technical design as a two-engineer team, launching a tier one complex scheduling product from conception to production, now serving 17,000+ (4,100 monthly) users on a Rust, GraphQL, and React stack.',
         '● Contributed to a metadata-driven backend framework (YAML/CSV → Rust/SQL/GraphQL codegen), where schemas, CTE-based queries, and seed SQL are generated from declarative configs—dramatically accelerating schema evolution and reducing boilerplate.',
         '● Designed, built, and shipped a fullstack scheduling platform in 9 months that handles tens of thousands of schedules, supports role-based access control, and reduces operational workflow times by 80%+.',
         '● Architected and shipped a Rust based sync service using procedural macros and a custom semantic-matching DSL to map complex FHIR-like MongoDB documents to normalized SQL tables—safely syncing 100k+ documents into PostgreSQL via Kafka consumers and direct DB pipelines to establish a single source of truth.',

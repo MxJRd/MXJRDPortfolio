@@ -11,34 +11,41 @@ import { ReactComponent as JSLogo } from '../../../assets/tech-icons/jsLogo.svg'
 import { ReactComponent as GraphQLLogo } from '../../../assets/tech-icons/GraphQLLogo.svg'
 import { ReactComponent as NodeLogo } from '../../../assets/tech-icons/NodeLogo.svg'
 import { ReactComponent as HTMLLogo } from '../../../assets/tech-icons/htmlLogo.svg'
+import { ReactComponent as RustLogo } from '../../../assets/tech-icons/RustLogo.svg'
+import { ReactComponent as PythonLogo } from '../../../assets/tech-icons/PythonLogo.svg'
 import { fetchSVGSize } from '../../../helpers'
 import classNames from 'classnames'
 import Timeline from './timeline/Timeline'
 import { SpecialRedirectButton } from '../../common/SpecialRedirectButton'
 
-type Logos = 'ts' | 'react' | 'vite' | 'css' | 'tw' | 'gql' | 'node' | 'js' | 'html' | 'css'
+type Logos = 'ts' | 'react' | 'vite' | 'css' | 'tw' | 'gql' | 'node' | 'js' | 'html' | 'css' | 'rust' | 'python'
 
 const fetchLogo = (logoName: string, size: string) => {
   const logoSize = fetchSVGSize(size)
+  const responsiveSize = 'h-16 md:h-14'
   switch(logoName) {
     case 'ts': 
-      return <TSLogo className={classNames(logoSize, 'h-12')}/>
+      return <TSLogo className={classNames(logoSize, responsiveSize)}/>
     case 'react':
-      return <ReactLogo className={classNames(logoSize, 'h-12')}/>
+      return <ReactLogo className={classNames(logoSize, responsiveSize)}/>
     case 'vite':
-      return <ViteLogo className={classNames(logoSize, 'h-12')}/>
+      return <ViteLogo className={classNames(logoSize, responsiveSize)}/>
     case 'css':
-      return <CSSLogo className={classNames(logoSize, 'h-12')}/>
+      return <CSSLogo className={classNames(logoSize, responsiveSize)}/>
     case 'tw':
-      return <TailwindLogo className={classNames(logoSize, 'h-12')}/>
+      return <TailwindLogo className={classNames(logoSize, responsiveSize)}/>
     case 'js':
-      return <JSLogo className={classNames(logoSize, 'h-12 rounded-md')}/>
+      return <JSLogo className={classNames(logoSize, responsiveSize, 'rounded-md')}/>
     case 'gql':
-      return <GraphQLLogo className={classNames(logoSize, 'h-12')}/>
+      return <GraphQLLogo className={classNames(logoSize, responsiveSize)}/>
     case 'html':
-      return <HTMLLogo className={classNames(logoSize, 'h-12')} />
+      return <HTMLLogo className={classNames(logoSize, responsiveSize)} />
     case 'node':
-      return <NodeLogo className={classNames(logoSize, 'h-12')}/>
+      return <NodeLogo className={classNames(logoSize, responsiveSize)}/>
+    case 'rust':
+      return <RustLogo className={classNames(logoSize, responsiveSize)}/>
+    case 'python':
+      return <PythonLogo className={classNames(logoSize, responsiveSize)}/>
   }
 }
 
@@ -56,6 +63,7 @@ const ProfessionalTech = () => {
     <div className='flex flex-col items-center justify-center gap-4 pt-6 pb-6'>
       <ul alt='A list of frontend technology logos. These directly correlate with things I have used professionally.' className='flex flex-col items-center gap-4 pr-12 sm:p-4'>
         <li className='flex gap-2'>
+          <LogoItem logoName='rust' size='large'/>
           <LogoItem logoName='react' size='large'/>
           <LogoItem logoName='ts' size='large'/>
         </li>
@@ -68,6 +76,7 @@ const ProfessionalTech = () => {
         <li className='flex gap-2'>
           <LogoItem logoName='vite' size='large'/>
           <LogoItem logoName='tw' size='large'/>
+          <LogoItem logoName='python' size='large'/>
         </li>
       </ul>
     </div>

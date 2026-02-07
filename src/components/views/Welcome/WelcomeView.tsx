@@ -56,7 +56,7 @@ const WelcomeView = ({ setWelcomeAndMood, welcome, animateDisappear, setAnimateD
         className={`absolute left-0 right-0 m-auto bottom-12 md:bottom-24 text-white cursor-pointer bg-gray-500 hover:bg-purple-500 md:px-16 md:py-6 px-3 py-6 font-roboto-matrix max-w-[320px] whitespace-nowrap ${fadeItem}`}
         onClick={waitToSetMood('none')}
       >
-        You hate my music. :(
+        You hate my music :(
       </button>
     </div>
   )

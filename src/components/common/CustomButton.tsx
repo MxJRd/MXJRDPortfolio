@@ -11,7 +11,7 @@ import { makeLift, makeShimmer } from '../../animations'
 type Icons = 'phone' | 'github' | 'linkedin' | 'email' | 'right-chevron' | ''
 type Sizes = 'small' | 'medium' | 'large'
 type Colors = 'blue' | 'black'
-type BGColors = 'white' | 'slate'
+type BGColors = 'white' | 'slate' | 'cyan'
 
 const fetchBGColor = (bgColor: string) => {
   switch(bgColor) {
@@ -19,6 +19,8 @@ const fetchBGColor = (bgColor: string) => {
       return 'bg-[#ffffff]'
     case 'slate':
       return 'bg-slate-100'
+    case 'cyan':
+      return 'bg-cyan-500'
   }
 }
 

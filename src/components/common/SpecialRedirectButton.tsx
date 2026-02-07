@@ -10,7 +10,7 @@ export const SpecialRedirectButton = ({ to, title, newTab }: { to: string, title
         className={
           `${makeLift} ${clickedAnimation ? makePressed : ''}
           ${makeButtonExpand}
-          relative px-5 py-3 border-2 text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500
+          relative px-5 py-3 border-2 font-semibold text-raisin-black border-raisin-black bg-white hover:bg-gray-400 hover:text-blue-500
           rounded-br-lg rounded-tl-lg
           after:rounded-br-lg after:rounded-tl-lg
           `
