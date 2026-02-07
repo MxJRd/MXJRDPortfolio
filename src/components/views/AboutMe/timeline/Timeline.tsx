@@ -1,8 +1,8 @@
 import TimelineItem from "./TimelineItem"
-interface TimelineItem { title: string, content: string, date: string, employer: string, current?: boolean, technologies?: string[], companyKey?: string }
+interface TimelineItem { title: string, date: string, employer: string, current?: boolean, technologies?: string[], companyKey?: string }
 
 // Color progression utility: programmatic gradient from green to blue
-const getProgressionColors = (index: number, total: number) => {
+const getProgressionColors = (index: number) => {
   // Programmatic color progression: green-300 → cyan-500 → blue-900
   // As we progress, green decreases and blue increases, meeting in the middle
   const nodeColors = [
@@ -36,26 +36,22 @@ const nonTechnicalJobs: TimelineItem[] = [
     title: 'Music Teacher',
     employer: 'Fun Music / Self',
     date: '2015 - Present',
-    content: 'Taught music classes to all ages.',
     current: true
   },
   {
     title: 'Chocolatier',
     employer: 'Godiva',
-    date: '2017 - 2018',
-    content: 'Made and sold chocolates.'
+    date: '2017 - 2018'
   },
   {
     title: 'Insurance Agent',
     employer: 'Aflac/Colonial Life',
-    date: '2016-2018',
-    content: 'Did insurance things.'
+    date: '2016-2018'
   },
   {
     title: 'Mechanic',
     employer: 'USPS',
-    date: '2019 - 2021',
-    content: 'Maintained machines.'
+    date: '2019 - 2021'
   }
 ]
 
@@ -64,7 +60,6 @@ const technicalJobs: TimelineItem[] = [
     title: 'Software Engineer',
     employer: 'Apple',
     date: '2021',
-    content: 'Built testing infrastructure and documentation for Apple applications.',
     current: false,
     technologies: ['react', 'ts', 'node'],
     companyKey: 'apple'
@@ -73,7 +68,6 @@ const technicalJobs: TimelineItem[] = [
     title: 'Frontend Engineer',
     employer: 'First Resonance',
     date: '2021 - 2022',
-    content: 'Built enterprise web applications for Fortune 500 aerospace companies.',
     current: false,
     technologies: ['react', 'ts', 'gql'],
     companyKey: 'firstResonance'
@@ -82,7 +76,6 @@ const technicalJobs: TimelineItem[] = [
     title: 'Lead Frontend Engineer',
     employer: 'ComplyAI',
     date: '2022 - 2024',
-    content: 'Led frontend development and built authentication systems.',
     current: false,
     technologies: ['react', 'ts', 'python'],
     companyKey: 'complyAI'
@@ -91,7 +84,6 @@ const technicalJobs: TimelineItem[] = [
     title: 'Senior Software Engineer',
     employer: 'Persistent Technologies',
     date: '2024 - 2025',
-    content: 'Designing features and leading a team of engineers on AI healthcare products.',
     current: false,
     technologies: ['ts', 'react', 'python'],
     companyKey: 'persistentTechnologies'
@@ -100,7 +92,6 @@ const technicalJobs: TimelineItem[] = [
     title: 'Senior Software Engineer',
     employer: 'Pacific Health',
     date: '2025 - Present',
-    content: 'Leading architectural design and building a complex scheduling platform.',
     current: true,
     technologies: ['rust', 'react', 'ts'],
     companyKey: 'pacificHealth'
@@ -114,8 +105,8 @@ const Timeline = () => {
         <h4 className="text-lg font-semibold text-center mb-4 text-pink-400">Non-Technical Experience</h4>
         <ol className="items-center justify-center flex-wrap md:flex">
           {
-            nonTechnicalJobs.map(({ title, date, content, employer, current }) => 
-              <TimelineItem title={title} date={date} content={content} employer={employer} current={current} />
+            nonTechnicalJobs.map(({ title, date, employer, current }) => 
+              <TimelineItem title={title} date={date} employer={employer} current={current} />
             )
           }
         </ol>
@@ -124,14 +115,13 @@ const Timeline = () => {
         <h4 className="text-lg font-semibold text-center mb-4 text-blue-400">Technical Experience</h4>
         <ol className="items-center justify-center flex-wrap md:flex">
           {
-            technicalJobs.map(({ title, date, content, employer, current, technologies, companyKey }, index) => {
-              const colors = getProgressionColors(index, technicalJobs.length)
+            technicalJobs.map(({ title, date, employer, current, technologies, companyKey }, index) => {
+              const colors = getProgressionColors(index)
               return (
                 <TimelineItem 
                   key={employer}
                   title={title} 
                   date={date} 
-                  content={content} 
                   employer={employer} 
                   current={current} 
                   technologies={technologies}

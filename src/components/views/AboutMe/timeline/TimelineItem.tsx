@@ -7,9 +7,7 @@ import { ReactComponent as NodeLogo } from '../../../../assets/tech-icons/NodeLo
 import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
-interface TimelineItemProps { title: string, content: string, date: string, employer: string, current?: boolean, technologies?: string[], nodeColor?: string, lineColor?: string, iconColor?: string, companyKey?: string }
-
-type TechLogoType = 'ts' | 'react' | 'gql' | 'rust' | 'python' | 'node'
+interface TimelineItemProps { title: string, date: string, employer: string, current?: boolean, technologies?: string[], nodeColor?: string, lineColor?: string, iconColor?: string, companyKey?: string }
 
 const fetchLogo = (logoName: string) => {
   const logoSize = 'w-6 h-6 md:w-5 md:h-5'
@@ -29,7 +27,7 @@ const fetchLogo = (logoName: string) => {
   }
 }
 
-const TimelineItem = ({ title, content, date, employer, current, technologies, nodeColor, lineColor, iconColor, companyKey }: TimelineItemProps) => {
+const TimelineItem = ({ title, date, employer, current, technologies, nodeColor, lineColor, iconColor, companyKey }: TimelineItemProps) => {
   const navigate = useNavigate()
 
   const getNodeStyle = () => {
