@@ -54,7 +54,7 @@ const MusicControlButton = ({ size, iconName, mood, clickHandler, styles = '' }:
 const MusicPlayerControls = ({ audioPlayerRef, trackIndex, mood, setTrackIndex, setPlay, play }: { audioPlayerRef: Ref<HTMLAudioElement>, mood: string, trackIndex: number, play: boolean, setPlay: (playPause: boolean) => void, setTrackIndex: (prevIdx: number) => void }) => {
   return (
     <div style={{ justifyContent: 'space-between' }} className='flex'>
-      <MusicControlButton mood={mood} styles='pl-0 sm:pl-1' iconName='prev' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex + 1))}/>
+      <MusicControlButton mood={mood} styles='pl-0 sm:pl-1' iconName='prev' size='large' clickHandler={() => setTrackIndex(trackIndex - 1)}/>
       {
         play
         ?
@@ -68,7 +68,7 @@ const MusicPlayerControls = ({ audioPlayerRef, trackIndex, mood, setTrackIndex, 
             audioPlayerRef.current!.play()
           }}/>
       }
-      <MusicControlButton mood={mood} styles='pl-0 sm:pl-1' iconName='next' size='large' clickHandler={() => setTrackIndex(Math.abs(trackIndex - 1))}/>
+      <MusicControlButton mood={mood} styles='pl-0 sm:pl-1' iconName='next' size='large' clickHandler={() => setTrackIndex(trackIndex + 1)}/>
     </div>
   )
 }
@@ -168,7 +168,9 @@ const MusicPlayer = ({ mood, audioRef, currentTrack, setCurrentTrack, play, setP
   }, [play])
 
   useEffect(() => {
-    const currentTrackInfo = MusicMoods[mood][trackIndex % MusicMoods[mood].length] // no going out of bounds >:(
+    const tracksLength = MusicMoods[mood].length
+    const wrappedIndex = ((trackIndex % tracksLength) + tracksLength) % tracksLength
+    const currentTrackInfo = MusicMoods[mood][wrappedIndex]
     setCurrentTrack(currentTrackInfo)
     setDuration(audioRef.current!.duration)
 

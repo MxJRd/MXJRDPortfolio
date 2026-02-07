@@ -43,7 +43,7 @@ const ThousandthCutTrackInfo: TrackInfoType = {
 }
 
 const MusicMoods: MusicMoodsType = {
-  yazzy: [UnderdogTrackInfo, WavesTrackInfo, CordovaTrackInfo],
+  yazzy: [CordovaTrackInfo, UnderdogTrackInfo, WavesTrackInfo],
   mathy: [TendenciesTrackInfo, ThousandthCutTrackInfo]
 }
 
